@@ -1,5 +1,32 @@
-<!-- menu -->
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer #drawer class="example-sidenav" mode="side">
+    <p>
+      <mat-toolbar color="primary">
+        <span>Nuestra tienda</span>
+      </mat-toolbar>
+    </p>
+    <mat-list role="list">
+      <mat-list-item role="listitem">
+        <button  mat-button color="primary">
+          <mat-icon mat-list-icon>dialpad</mat-icon> Productos
+        </button>
+      </mat-list-item>
+      <mat-list-item role="listitem">
+        <button mat-button color="primary">
+          <mat-icon mat-list-icon>dialpad</mat-icon> Pedidos
+        </button>
+      </mat-list-item>
+    </mat-list>
+  </mat-drawer>
 
-<div class="container">
-  <router-outlet></router-outlet>
-</div>
+  <div class="sidenav-content">
+    <button color="accent" type="button" mat-icon-button (click)="drawer.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <div class="container">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+
+</mat-drawer-container>
+
