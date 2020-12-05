@@ -125,6 +125,10 @@
               "devServerTarget": "admin:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {}
         }
       }
     }
