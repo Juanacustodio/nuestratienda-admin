@@ -11,7 +11,6 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatButtonModule} from '@angular/material/button';
-import {MatListModule} from '@angular/material/list';
 
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
@@ -40,7 +39,6 @@ import {FormsModule} from '@angular/forms';
     MatToolbarModule,
     MatSidenavModule,
     MatButtonModule,
-    MatListModule,
     MatCardModule,
     MatGridListModule,
     MatFormFieldModule,

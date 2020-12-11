@@ -23,3 +23,14 @@ table {
     width: 100%;
   }
 }
+.sidenav {
+  padding: 0;
+  min-width: 200px;
+  .mat-button {
+    height: 48px;
+    text-align: left;
+    padding-left: 30px;
+    display: block;
+    width: 100%;
+  }
+}
