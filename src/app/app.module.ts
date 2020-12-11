@@ -17,6 +17,8 @@ import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
 import { ProductoComponent } from './producto/producto.component';
 
+import { DataService } from './data/DataService';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +37,9 @@ import { ProductoComponent } from './producto/producto.component';
     MatButtonModule,
     MatListModule,
   ],
-  providers: [],
+  providers: [
+    DataService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
