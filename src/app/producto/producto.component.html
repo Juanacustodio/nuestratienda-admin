@@ -1,5 +1,47 @@
-<h1>Producto: {{ producto.nombre }}</h1>
+<h1>Detalle de producto</h1>
 
-<form>
-
-</form>
+<mat-card class="example-card">
+  <mat-card-header>
+    <mat-card-title>{{ producto.nombre }}</mat-card-title>
+    <mat-card-subtitle>S/ {{ producto.precio }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-grid-list cols="2">
+      <mat-grid-tile>
+        <div class="detail">
+          <mat-form-field appearance="fill" class="detail__field-100">
+            <mat-label>Nombre</mat-label><input matInput value="{{ producto.nombre }}" [(ngModel)]="producto.nombre">
+          </mat-form-field>
+          <br>
+          <mat-form-field appearance="fill" class="detail__field-100">
+            <mat-label>Descripción</mat-label><textarea matInput value="{{ producto.descripcion }}"></textarea>
+          </mat-form-field>
+          <br>
+          <mat-form-field appearance="fill" class="detail__field-100">
+            <mat-label>Url de imagen</mat-label><input matInput value="{{ producto.urlImg }}">
+          </mat-form-field>
+          <br>
+          <mat-form-field appearance="fill" class="detail__field-100">
+            <mat-label>Precio</mat-label><input matInput type="number" value="{{ producto.precio }}">
+          </mat-form-field>
+          <br>
+          <mat-form-field appearance="fill" class="detail__field-100">
+            <mat-label>Marca</mat-label><input matInput value="{{ producto.marca }}">
+          </mat-form-field>
+          <br>
+          <mat-form-field appearance="fill" class="detail__field-100">
+            <mat-label>Categoría</mat-label><input matInput value="{{ producto.categoria }}">
+          </mat-form-field>
+        </div>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <div>
+          <img mat-card-image src="{{ producto.urlImg }}">
+        </div>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button color="primary">GUARDAR</button>
+  </mat-card-actions>
+</mat-card>

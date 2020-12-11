@@ -16,7 +16,12 @@ export class ProductoComponent implements OnInit {
     this.id = '';
     this.producto = {
       id: '',
-      nombre: ''
+      nombre: '',
+      urlImg: '',
+      descripcion: '',
+      precio: 0,
+      marca: '',
+      categoria: '',
     };
     this.activatedRoute.params.subscribe(params => {
       this.id = params.id;

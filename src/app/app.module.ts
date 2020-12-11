@@ -18,6 +18,11 @@ import { environment } from '../environments/environment';
 import { ProductoComponent } from './producto/producto.component';
 
 import { DataService } from './data/DataService';
+import {MatCardModule} from '@angular/material/card';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -36,6 +41,11 @@ import { DataService } from './data/DataService';
     MatSidenavModule,
     MatButtonModule,
     MatListModule,
+    MatCardModule,
+    MatGridListModule,
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule,
   ],
   providers: [
     DataService,

@@ -15,3 +15,11 @@ table {
 .mat-drawer-content {
   min-height: 100vh;
 }
+
+.detail {
+  width: 100%;
+  padding: 0 15px;
+  &__field-100 {
+    width: 100%;
+  }
+}
