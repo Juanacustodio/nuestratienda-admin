@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/firestore';
 import { ActivatedRoute } from '@angular/router';
 import { Producto } from '../models/producto';
 import { DataService } from '../data/DataService';
@@ -9,10 +10,11 @@ import { DataService } from '../data/DataService';
   styleUrls: ['./producto.component.scss']
 })
 export class ProductoComponent implements OnInit {
-
+  desktop: boolean;
   producto: Producto;
   id: string;
-  constructor(private activatedRoute: ActivatedRoute, private dataService: DataService) {
+
+  constructor(private activatedRoute: ActivatedRoute, private dataService: DataService, private firestore: AngularFirestore) {
     this.id = '';
     this.producto = {
       id: '',
@@ -35,6 +37,13 @@ export class ProductoComponent implements OnInit {
         this.producto = producto;
       }
     });
+
+    this.desktop = window.screen.width >= 360;
+  }
+
+  guardarProducto(): void {
+    const {id, ...producto} = this.producto;
+    this.firestore.collection('Productos').doc(id).set(producto);
   }
 
 }
