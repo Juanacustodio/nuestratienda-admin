@@ -59,4 +59,10 @@ export class ProductoComponent implements OnInit {
     }
   }
 
+  eliminarProducto(): void {
+    const {id, ...producto} = this.producto;
+
+    this.firestore.collection('Productos').doc(id).delete();
+  }
+
 }
