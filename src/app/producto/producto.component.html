@@ -14,7 +14,7 @@
           </mat-form-field>
           <br>
           <mat-form-field appearance="fill" class="detail__field-100">
-            <mat-label>Descripción</mat-label><textarea matInput value="{{ producto.descripcion }}"></textarea>
+            <mat-label>Descripción</mat-label><textarea matInput value="{{ producto.descripcion }}" [(ngModel)]="producto.descripcion"></textarea>
           </mat-form-field>
           <br>
           <mat-form-field appearance="fill" class="detail__field-100">
@@ -26,11 +26,11 @@
           </mat-form-field>
           <br>
           <mat-form-field appearance="fill" class="detail__field-100">
-            <mat-label>Marca</mat-label><input matInput value="{{ producto.marca }}">
+            <mat-label>Marca</mat-label><input matInput value="{{ producto.marca }}" [(ngModel)]="producto.marca">
           </mat-form-field>
           <br>
           <mat-form-field appearance="fill" class="detail__field-100">
-            <mat-label>Categoría</mat-label><input matInput value="{{ producto.categoria }}">
+            <mat-label>Categoría</mat-label><input matInput value="{{ producto.categoria }}" [(ngModel)]="producto.categoria">
           </mat-form-field>
         </div>
       </mat-grid-tile>
@@ -42,6 +42,6 @@
     </mat-grid-list>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-button color="primary" (click)="guardarProducto()">GUARDAR</button>
+    <button mat-button color="primary" (click)="guardarProducto()">{{ btnText }}</button>
   </mat-card-actions>
 </mat-card>
