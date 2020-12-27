@@ -3,6 +3,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { ActivatedRoute } from '@angular/router';
 import { Producto } from '../models/producto';
 import { DataService } from '../data/DataService';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-producto',
@@ -14,6 +15,7 @@ export class ProductoComponent implements OnInit {
   producto: Producto;
   id: string;
   btnText: string;
+  categorias: any;
 
   constructor(private activatedRoute: ActivatedRoute, private dataService: DataService, private firestore: AngularFirestore) {
     this.desktop = true;
@@ -45,7 +47,11 @@ export class ProductoComponent implements OnInit {
       }
     });
 
-    this.desktop = window.screen.width >= 360;
+    const categorias = this.firestore.collection('Categorias').valueChanges({idField: 'id'});
+    categorias.subscribe(params => {
+      [{'Categorias': this.categorias}] = params;
+    });
+
   }
 
   guardarProducto(): void {
