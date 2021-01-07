@@ -21,15 +21,7 @@ export class ProductoComponent implements OnInit {
     this.desktop = true;
     this.id = '';
     this.btnText = 'GUARDAR';
-    this.producto = {
-      id: '',
-      nombre: '',
-      urlImg: '',
-      descripcion: '',
-      precio: 0,
-      marca: '',
-      categoria: '',
-    };
+    this.producto = {} as Producto;
     this.activatedRoute.params.subscribe(params => {
       this.id = params.id;
     });
