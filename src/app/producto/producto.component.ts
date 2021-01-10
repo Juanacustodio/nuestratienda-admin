@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ActivatedRoute } from '@angular/router';
 import { Producto } from '../models/producto';
-import { DataService } from '../data/DataService';
-import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-producto',
@@ -17,7 +15,7 @@ export class ProductoComponent implements OnInit {
   btnText: string;
   categorias: any;
 
-  constructor(private activatedRoute: ActivatedRoute, private dataService: DataService, private firestore: AngularFirestore) {
+  constructor(private activatedRoute: ActivatedRoute, private firestore: AngularFirestore) {
     this.desktop = true;
     this.id = '';
     this.btnText = 'GUARDAR';
@@ -32,11 +30,9 @@ export class ProductoComponent implements OnInit {
       this.btnText = 'AGREGAR';
     }
 
-    const productos = this.dataService.productos;
-    productos.forEach((producto) => {
-      if (producto.id === this.id) {
-        this.producto = producto;
-      }
+    const producto = this.firestore.collection('Productos').doc(this.id).valueChanges();
+    producto.subscribe(params => {
+      this.producto = params as Producto;
     });
 
     const categorias = this.firestore.collection('Categorias').valueChanges({idField: 'id'});

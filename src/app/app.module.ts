@@ -16,7 +16,6 @@ import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
 import { ProductoComponent } from './producto/producto.component';
 
-import { DataService } from './data/DataService';
 import {MatCardModule} from '@angular/material/card';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -47,9 +46,7 @@ import { HomeComponent } from './home/home.component';
     MatInputModule,
     FormsModule,
   ],
-  providers: [
-    DataService,
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
