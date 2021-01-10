@@ -1,0 +1,119 @@
+header {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: 15px 30px;
+}
+.menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  &__logo {
+    width: 100px;
+    @media (min-width: 768px) {
+      width: 150px;
+    }
+  }
+  .btn {
+    border-radius: 36px;
+    background: white;
+    min-width: 100px;
+  }
+}
+.intro {
+  background-image: url("../../assets/images/shop.jpg");
+  background-size: cover;
+  padding: 15px;
+  text-align: right;
+  @media (min-width: 768px) {
+    padding: 30px;
+  }
+  &::before {
+    content: "";
+    display: block;
+    padding-top: 20%;
+  }
+  &::after {
+    content: "";
+    display: block;
+    padding-top: 20%;
+  }
+  &__text {
+    font-size: 18px;
+    margin-bottom: 45px;
+    line-height: normal;
+    display: inline-block;
+    @media (min-width: 768px) {
+      width: 50%;
+      font-size: 48px;
+    }
+  }
+}
+.about {
+  position: relative;
+  background: white;
+  @media (min-width: 768px) {
+    margin-top: -50px;
+
+    &::before {
+      content: "";
+      display: block;
+      height: 70px;
+      background: linear-gradient(to bottom right, transparent 0%, transparent 50%, #fff 50%, #fff 100%);
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: -70px;
+    }
+  }
+  .row {
+    max-width: 950px;
+    margin: auto;
+    &::before {
+      content: "";
+      display: block;
+      height: 70px;
+      background: linear-gradient(to bottom right, transparent 0%, transparent 50%, #88304E 50%, #88304E 100%);
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -1px;
+    }
+  }
+  &__title {
+    padding-top: 10%;
+    max-width: 350px;
+    margin: auto;
+    padding-bottom: 30px;
+    font-size: 36px;
+  }
+  &__body {
+    max-width: 400px;
+    margin: auto;
+    margin-bottom: 30px;
+  }
+}
+.register {
+  background-color: #88304E;
+  color: white;
+  padding: 8% 15px;
+  &__content {
+    max-width: 470px;
+    margin: auto;
+  }
+  &__call {
+    font-size: 18px;
+    margin-bottom: 30px;
+    text-align: center;
+    line-height: normal;
+    @media (min-width: 768px) {
+      font-size: 36px;
+    }
+  }
+  &__form {
+    background-color: white;
+    color: black;
+    padding: 30px;
+    border-radius: 8px;
+  }
+}

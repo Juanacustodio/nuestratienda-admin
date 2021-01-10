@@ -1,4 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+$primary:       #88304E;
+@import "node_modules/bootstrap/scss/bootstrap";
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
@@ -7,9 +9,6 @@ table {
 }
 
 .container {
-  max-width: 1000px;
-  margin: auto;
-  padding: 0 30px;
   position: relative;
 }
 
