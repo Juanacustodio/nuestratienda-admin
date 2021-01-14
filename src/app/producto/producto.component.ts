@@ -49,14 +49,14 @@ export class ProductoComponent implements OnInit {
       this.firestore.collection('Productos').add(producto);
     }
     else {
-      this.firestore.collection('Productos').doc(id).set(producto);
+      this.firestore.collection('Productos').doc(this.id).set(producto);
     }
   }
 
   eliminarProducto(): void {
     const {id, ...producto} = this.producto;
 
-    this.firestore.collection('Productos').doc(id).delete();
+    this.firestore.collection('Productos').doc(this.id).delete();
   }
 
 }
