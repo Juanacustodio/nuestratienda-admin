@@ -1,0 +1,14 @@
+<h1>
+  <mat-icon>shopping_bag</mat-icon> Categorías
+</h1>
+<button mat-fab color="accent" (click)="addCategory();">
+  <mat-icon>add</mat-icon>
+</button>
+<div class="mb-5"></div>
+<div class="input-group mb-3" *ngFor="let cat of categorias">
+  <input type="text" class="form-control" [(ngModel)]="cat.nombre" value="{{ cat.nombre }}">
+  <div class="input-group-append">
+    <button class="btn btn-outline-danger" type="button" (click)="deleteCategory(cat);">Eliminar</button>
+  </div>
+</div>
+<button class="btn btn-outline-success" type="button" (click)="saveCategories();">Guardar</button>

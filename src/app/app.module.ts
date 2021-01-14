@@ -22,13 +22,15 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {FormsModule} from '@angular/forms';
 import { HomeComponent } from './home/home.component';
+import { CategoriasComponent } from './categorias/categorias.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductosComponent,
     ProductoComponent,
-    HomeComponent
+    HomeComponent,
+    CategoriasComponent
   ],
   imports: [
     BrowserModule,
