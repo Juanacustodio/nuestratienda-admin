@@ -5,10 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProductosComponent } from './productos/productos.component';
 
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatTableModule } from '@angular/material/table';
-import {MatIconModule} from '@angular/material/icon';
-
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
 
@@ -31,9 +27,6 @@ import { CategoriasComponent } from './categorias/categorias.component';
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebase),
     AppRoutingModule,
-    BrowserAnimationsModule,
-    MatTableModule,
-    MatIconModule,
     MatCardModule,
     FormsModule,
   ],
