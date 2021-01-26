@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import {Producto} from '../models/producto';
 
 @Component({
   selector: 'app-productos',
@@ -9,13 +10,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./productos.component.scss']
 })
 export class ProductosComponent implements OnInit {
-  displayedColumns: string[] = ['nombre', 'marca', 'precio', 'id'];
-
-  productos: Observable<any[]>;
-  dataProductos: any;
-  constructor(private router: Router, firestore: AngularFirestore) {
-    this.productos = firestore.collection('Productos').valueChanges({idField: 'id'});
-    this.productos.subscribe(productos => this.dataProductos = productos);
+  productos: any;
+  constructor(private router: Router, private firestore: AngularFirestore) {
+    this.productos = firestore.collection('Productos').valueChanges({idField: 'id'})
+      .subscribe(productos => this.productos = productos);
   }
 
   ngOnInit(): void {

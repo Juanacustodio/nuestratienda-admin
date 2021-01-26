@@ -4,28 +4,27 @@
 <button mat-fab color="accent" (click)="toProductDetail('nuevo');">
   <mat-icon>add</mat-icon>
 </button>
-<div></div>
-<table mat-table [dataSource]="productos" class="mat-elevation-z8">
-  <ng-container matColumnDef="nombre">
-    <th mat-header-cell *matHeaderCellDef> Nombre </th>
-    <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
-  </ng-container>
-  <ng-container matColumnDef="marca">
-    <th mat-header-cell *matHeaderCellDef> Marca </th>
-    <td mat-cell *matCellDef="let element"> {{element.marca}} </td>
-  </ng-container>
-  <ng-container matColumnDef="precio">
-    <th mat-header-cell *matHeaderCellDef> Precio </th>
-    <td mat-cell *matCellDef="let element"> {{element.precio}} </td>
-  </ng-container>
-  <ng-container matColumnDef="id">
-    <th mat-header-cell *matHeaderCellDef> detalle </th>
-    <td mat-cell *matCellDef="let element">
-      <button mat-icon-button (click)="toProductDetail(element.id);">
-        <mat-icon>chevron_right</mat-icon>
-      </button>
-     </td>
-  </ng-container>
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
+<div class="table-responsive">
+  <table class="table table-hover">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">Nombre</th>
+        <th scope="col">Marca</th>
+        <th scope="col">Precio</th>
+        <th scope="col">Detalle</th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let producto of productos">
+      <td>{{producto.nombre}}</td>
+      <td>{{producto.marca}}</td>
+      <td>{{producto.precio}}</td>
+      <td>
+        <button class="btn btn-info" (click)="toProductDetail(producto.id)">
+          <i class="fas fa-edit"></i>
+        </button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
