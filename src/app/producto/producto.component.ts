@@ -18,7 +18,7 @@ export class ProductoComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute, private firestore: AngularFirestore) {
     this.desktop = true;
     this.id = '';
-    this.btnText = 'GUARDAR';
+    this.btnText = 'Guardar';
     this.producto = {} as Producto;
     this.activatedRoute.params.subscribe(params => {
       this.id = params.id;

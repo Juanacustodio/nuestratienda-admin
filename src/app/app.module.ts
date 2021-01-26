@@ -8,8 +8,7 @@ import { ProductosComponent } from './productos/productos.component';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
 
-import {MatCardModule} from '@angular/material/card';
-import {FormsModule} from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 import { HomeComponent } from './home/home.component';
 import { ProductoComponent } from './producto/producto.component';
@@ -27,7 +26,6 @@ import { CategoriasComponent } from './categorias/categorias.component';
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebase),
     AppRoutingModule,
-    MatCardModule,
     FormsModule,
   ],
   providers: [],
