@@ -9,14 +9,14 @@ import { AngularFirestore } from '@angular/fire/firestore';
 export class CategoriasComponent implements OnInit {
 
   categorias: any;
-  id: string;
+  id: any;
 
   constructor(private firestore: AngularFirestore) { }
 
   ngOnInit(): void {
     const categorias = this.firestore.collection('Categorias').valueChanges({idField: 'id'});
     categorias.subscribe(params => {
-      [{'Categorias': this.categorias, id: this.id}] = params;
+      [{'Categorias': this.categorias, id: this.id}] = params as Array<{id: string, Categorias: any}>;
     });
   }
 

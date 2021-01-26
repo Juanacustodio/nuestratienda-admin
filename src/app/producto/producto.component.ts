@@ -35,9 +35,9 @@ export class ProductoComponent implements OnInit {
       this.producto = params as Producto;
     });
 
-    const categorias = this.firestore.collection('Categorias').valueChanges({idField: 'id'});
+    const categorias = this.firestore.collection('Categorias').valueChanges();
     categorias.subscribe(params => {
-      [{'Categorias': this.categorias}] = params;
+      [{'Categorias': this.categorias}] = params as Array<{Categorias: any}>;
     });
 
   }
