@@ -1,26 +1,29 @@
-<mat-drawer-container autosize>
-  <mat-drawer #drawer class="sidenav" mode="side">
-    <p>
-      <mat-toolbar>
-        <img src="assets/images/logo.png">
-      </mat-toolbar>
-    </p>
-    <button  mat-button color="primary">
-      <mat-icon mat-list-icon>shopping_bag</mat-icon> Productos
-    </button>
-    <button mat-button color="primary">
-      <mat-icon mat-list-icon>shopping_cart</mat-icon> Pedidos
-    </button>
-  </mat-drawer>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">
+    <img src="assets/images/logo.png">
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-  <div class="sidenav-content">
-    <button color="accent" type="button" mat-icon-button (click)="drawer.toggle()">
-      <mat-icon>menu</mat-icon>
-    </button>
-    <div class="container">
-      <router-outlet></router-outlet>
-    </div>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="#">Mi tienda</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Categorías</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Productos</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Salir</button>
+    </form>
   </div>
-
-</mat-drawer-container>
+</nav>
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
 

@@ -9,8 +9,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule } from '@angular/material/table';
 import {MatIconModule} from '@angular/material/icon';
 import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatSidenavModule} from '@angular/material/sidenav';
-import {MatButtonModule} from '@angular/material/button';
 
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
@@ -40,8 +38,6 @@ import { CategoriasComponent } from './categorias/categorias.component';
     MatTableModule,
     MatIconModule,
     MatToolbarModule,
-    MatSidenavModule,
-    MatButtonModule,
     MatCardModule,
     MatGridListModule,
     MatFormFieldModule,
