@@ -8,18 +8,15 @@ import { ProductosComponent } from './productos/productos.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule } from '@angular/material/table';
 import {MatIconModule} from '@angular/material/icon';
-import {MatToolbarModule} from '@angular/material/toolbar';
 
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
-import { ProductoComponent } from './producto/producto.component';
 
 import {MatCardModule} from '@angular/material/card';
-import {MatGridListModule} from '@angular/material/grid-list';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
 import {FormsModule} from '@angular/forms';
+
 import { HomeComponent } from './home/home.component';
+import { ProductoComponent } from './producto/producto.component';
 import { CategoriasComponent } from './categorias/categorias.component';
 
 @NgModule({
@@ -37,11 +34,7 @@ import { CategoriasComponent } from './categorias/categorias.component';
     BrowserAnimationsModule,
     MatTableModule,
     MatIconModule,
-    MatToolbarModule,
     MatCardModule,
-    MatGridListModule,
-    MatFormFieldModule,
-    MatInputModule,
     FormsModule,
   ],
   providers: [],
