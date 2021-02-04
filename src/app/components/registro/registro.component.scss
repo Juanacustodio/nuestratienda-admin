@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    padding-top: 100px;
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    max-width: 800px;
+    border-radius: 20px;
+}
+
+.card {
+    border-radius: 20px;
+    border: none;
+    overflow: hidden;
+    box-shadow: 0 5px 20px #414141;
+    z-index: 0;
+    box-sizing: border-box;
+}
+
+.myHed {
+    margin-top: 30px;
+    font-size: 25px;
+    margin-top: -10px;
+    font-weight: 600;
+    background: #89304E;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+.far {
+    font-size: 40px;
+}
+
+.fas {
+    position: relative;
+    display: block;
+    left: -127px;
+    top: 30px;
+    color: #9E6EC4;
+}
+
+.button {
+    width: 250px;
+    border-radius: 5px;
+    background: #9E6EC4;
+    color: #fff;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.myInput {
+    width: 270px;
+    padding: 8px;
+    padding-left: 30px;
+    background: #fff;
+    color: #a6a2a8;
+    border: none;
+    border-bottom: 1px solid #a6a2a8;
+    display: block;
+}
+
+.myInput::placeholder {
+    color: #44394d;
+    opacity: 0.6;
+}
+
+.myInput:focus {
+    border-bottom: 1px solid #440e9b;
+    outline: none;
+}
+
+.check_1 {
+    font-weight: 500;
+    color: rgb(85, 85, 85);
+    font-size: 12px;
+    margin: 15px auto;
+    cursor: pointer;
+}
+
+.msj {
+    color: rgb(85, 85, 85);
+    font-size: 12px;
+    font-weight: normal;
+    margin-top: -10px;
+    margin-bottom: 10px;
+}
+
+.msj2 {
+    color: rgb(85, 85, 85);
+    font-size: 11px;
+    font-weight: normal;
+}
+
+.msj3 {
+    padding-top: 20px;
+    margin-bottom: -10px;
+    text-align: left;
+}
+
+@media (min-width:320px) {
+    .card {
+        height: 800px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        max-width: 100%;
+    }
+}
+
+@media(min-width:1024px) {
+    .card {
+        height: 500px;
+    }
+}
+
+.text {
+    color: #9E6EC4;
+}
+
+.derecha {
+    left: 250px;
+}
+
+.centrar {
+    margin: auto 0;
+    display: block;
+    text-align: center;
+}
+
+.centrar2 {
+    margin: auto 0;
+    display: block;
+    align-items: center;
+}
+
+.izquierda {
+    padding-left: 50px;
+}
+
+.alert-danger {
+    width: 270px;
+    font-size: 10px;
+    color: #721c24;
+    background: #f8d7da;
+    border-color: #f5c6cb;
+    margin-bottom: 5px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.container-error-message {
+    padding: 3px;
+}
+
+.izquierda2 {
+    margin-left: -1px;
+    text-align: center;
+}

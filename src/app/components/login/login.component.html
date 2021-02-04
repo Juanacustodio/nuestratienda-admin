@@ -1,0 +1,71 @@
+<app-navbar></app-navbar>
+
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-body">
+                <header class="myHed text-center">
+                    <img class="logo" src="assets/img/logo.jpeg" alt="">
+                    <p>Nuestra Tienda</p>
+                </header>
+                <form class="main-form text-center" [formGroup]="usuario" (submit)="login()">
+                    <div class="form-group my-0">
+                        <label class="my-0">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" class="myInput"  formControlName="correo" placeholder="correo eléctronico"  > 
+                        </label>
+                        <!-- Validar campos -->
+                        <div class="alert-danger" *ngIf="correo!.invalid && (correo!.dirty || correo!.touched)">
+                            <div class="container-error-message" *ngIf="correo!.errors!.required">
+                                Ingrese su correo eléctronico
+                            </div>
+                            <div class="container-error-message" *ngIf="(correo!.dirty || correo!.touched) && correo!.invalid && correo!.errors!.pattern">
+                                Ingrese un correo válido
+                            </div>
+                        </div>
+
+                        <!-- Validar campos -->
+                    </div>
+                    <div class="form-group my-0 mb-2">
+                        <label class="my-0">
+                        <i class="fas fa-lock"></i>
+                        <input class="myInput" type="password" placeholder="contraseña" formControlName="password" > 
+                    </label>
+                        <!-- Validar campos -->
+                        <div class="alert-danger" *ngIf="password!.invalid && (password!.dirty || password!.touched)">
+                            <div class="container-error-message" *ngIf="password!.errors!.required">
+                                Ingrese su contraseña
+                            </div>
+                            <div class="container-error-message" *ngIf="password!.errors!.minlength">
+                                La contraseña requiere 6 o mas caracteres
+                            </div>
+
+                        </div>
+
+                        <!-- Validar campos -->
+
+                    </div>
+                    <label></label>
+
+                    <a class="check_2">¿Olvidaste tu contraseña?</a>
+
+                    <div class="form-group mt-2">
+                        <label> 
+                        <input type="submit" class="form-control button" value="Ingresar" > 
+                    </label>
+                    </div>
+                    <label class="check_1">
+                        <span class="check_1">¿No tienes cuenta?</span>
+                        <br>
+                        <a class="check_2" [routerLink]="['/registro']">
+                            Registrate
+                        </a>
+                   </label>
+
+
+
+                </form>
+            </div>
+        </div>
+    </div>
+</body>

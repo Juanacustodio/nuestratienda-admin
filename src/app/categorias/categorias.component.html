@@ -1,14 +1,15 @@
+<app-menu-admin></app-menu-admin>
 <h1 class="text-primary">
-  <i class="fas fa-list-ul"></i> Categorías
+    <i class="fas fa-list-ul"></i> Categorías
 </h1>
 <button class="btn btn-primary rounded-circle btn-plus" (click)="addCategory();">
   <i class="fas fa-plus"></i>
 </button>
 <div class="mb-5"></div>
 <div class="input-group mb-3" *ngFor="let cat of categorias">
-  <input type="text" class="form-control" [(ngModel)]="cat.nombre" value="{{ cat.nombre }}">
-  <div class="input-group-append">
-    <button class="btn btn-outline-danger" type="button" (click)="deleteCategory(cat);">Eliminar</button>
-  </div>
+    <input type="text" class="form-control" [(ngModel)]="cat.nombre" value="{{ cat.nombre }}">
+    <div class="input-group-append">
+        <button class="btn btn-outline-danger" type="button" (click)="deleteCategory(cat);">Eliminar</button>
+    </div>
 </div>
 <button class="btn btn-outline-success" type="button" (click)="saveCategories();">Guardar</button>
