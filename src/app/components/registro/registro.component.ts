@@ -2,9 +2,10 @@ import {Component, OnInit} from '@angular/core';
 import {FormGroup, FormControl, Validators} from '@angular/forms';
 import {HttpClient} from '@angular/common/http';
 import {HttpHeaders} from '@angular/common/http';
-import {Vendedor, Culqui} from '../../models';
+import {Vendedor, TarjetaCulqui} from '../../models';
 import {Router} from '@angular/router';
 import Swal from 'sweetalert2';
+import {CulquiService} from '../../services/culqui.service';
 
 @Component({
   selector: 'app-registro',
@@ -13,7 +14,7 @@ import Swal from 'sweetalert2';
 })
 export class RegistroComponent implements OnInit {
 
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(private http: HttpClient, private router: Router, private culquiService: CulquiService) {
   }
 
   correoFormat = '[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$';
@@ -45,7 +46,7 @@ export class RegistroComponent implements OnInit {
       headers = headers.set('Authorization', 'Bearer pk_test_Kd3gwqwwXEHBBj9r');
       //fin Header de json
       //tarjeta json
-      let tarjeta: Culqui = {
+      const tarjeta: TarjetaCulqui = {
         card_number: this.usuario.value.card_number,
         cvv: this.usuario.value.cvv,
         expiration_month: this.usuario.value.expiration_month,
@@ -54,7 +55,7 @@ export class RegistroComponent implements OnInit {
       };
       console.log(tarjeta);
       //inicio Generar Token
-      this.http.post(' https://secure.culqi.com/v2/tokens', tarjeta, {'headers': headers})
+      this.culquiService.generarToken(tarjeta)
         .subscribe((result: any) => {
             //captura de token
             let token = result.id;
@@ -111,7 +112,7 @@ export class RegistroComponent implements OnInit {
                 });
                 console.log(err);
               });
-          }, (err) => {
+          }, (err: any) => {
             //mensaje de Bienvenida
             Swal.fire({
               icon: 'error',
