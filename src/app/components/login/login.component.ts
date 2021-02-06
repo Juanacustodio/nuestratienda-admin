@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {FormGroup, FormControl, Validators} from '@angular/forms';
-import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
 import {Usuario} from '../../models/usuario';
 import Swal from 'sweetalert2';
@@ -17,7 +16,7 @@ export class LoginComponent implements OnInit {
 
   correoFormat = '[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$';
 
-  constructor(private apiService: ApiService, private http: HttpClient, private router: Router, private cookies: CookieService) {
+  constructor(private apiService: ApiService, private router: Router, private cookies: CookieService) {
   }
 
   public usuario: FormGroup = new FormGroup({
@@ -39,7 +38,8 @@ export class LoginComponent implements OnInit {
         correo: this.usuario.value.correo,
       };
 
-      this.apiService.login(user)
+      this.apiService
+        .login(user)
         .subscribe((result: Session) => {
           Swal.fire({
             icon: 'success',
