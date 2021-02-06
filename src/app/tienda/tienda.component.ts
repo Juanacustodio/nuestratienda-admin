@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
-import { CookieService } from "ngx-cookie-service";
+import { CookieService } from 'ngx-cookie-service';
 import { HttpClient } from '@angular/common/http';
 import {Tienda} from '../models/tienda';
-import Swal from "sweetalert2";
+import Swal from 'sweetalert2';
+import { ApiService } from '../services';
 
 @Component({
   selector: 'app-tienda',
@@ -15,7 +16,7 @@ export class TiendaComponent implements OnInit {
   tiendaId: number;
   token: string;
   tienda: Tienda;
-  constructor(private cookies: CookieService, private http: HttpClient) {
+  constructor(private apiService: ApiService, private cookies: CookieService, private http: HttpClient) {
     this.tiendaId = parseInt(this.cookies.get("tiendaId"));
     this.token = this.cookies.get('token');
     this.tienda = {} as Tienda;
@@ -30,7 +31,7 @@ export class TiendaComponent implements OnInit {
         }
       }
     ).subscribe(result => {
-      this.tienda = result;
+      this.tienda = result as Tienda;
     });
   }
 
