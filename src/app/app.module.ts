@@ -16,6 +16,8 @@ import { FormsModule } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
 import { ApiService, CulquiService } from './services';
 
+import { ColorPickerModule } from 'ngx-color-picker';
+
 // import { HomeComponent } from './home/home.component';
 import { ProductoComponent } from './producto/producto.component';
 import { CategoriasComponent } from './categorias/categorias.component';
@@ -58,6 +60,7 @@ import { MenuAdminComponent } from './components/shared/menu-admin/menu-admin.co
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
+    ColorPickerModule,
   ],
   providers: [
     ApiService,
