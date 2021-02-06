@@ -14,7 +14,7 @@ import { environment } from '../environments/environment';
 import { FormsModule } from '@angular/forms';
 
 import { CookieService } from 'ngx-cookie-service';
-import { ApiService } from './services';
+import { ApiService, CulquiService } from './services';
 
 // import { HomeComponent } from './home/home.component';
 import { ProductoComponent } from './producto/producto.component';
@@ -61,6 +61,7 @@ import { MenuAdminComponent } from './components/shared/menu-admin/menu-admin.co
   ],
   providers: [
     ApiService,
+    CulquiService,
     CookieService
   ],
   bootstrap: [AppComponent]

@@ -15,7 +15,6 @@ export class MenuAdminComponent implements OnInit {
     'Productos'
   ];
 
-
   constructor(private cookies: CookieService, private router: Router) { }
 
   ngOnInit(): void {
