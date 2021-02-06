@@ -13,7 +13,8 @@ import {ApiService} from '../../services';
 })
 export class RegistroComponent implements OnInit {
 
-  constructor(private router: Router, private culquiService: CulquiService, private apiService: ApiService) {}
+  constructor(private router: Router, private culquiService: CulquiService, private apiService: ApiService) {
+  }
 
   correoFormat = '[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$';
   numeroFormat = '[0-9]{16}';
@@ -31,12 +32,11 @@ export class RegistroComponent implements OnInit {
     precio: new FormControl('', [Validators.required]),
   });
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
   guardar() {
     if (this.usuario.valid) {
-      //fin Header de json
-      //tarjeta json
       const tarjeta: TarjetaCulqui = {
         card_number: this.usuario.value.card_number,
         cvv: this.usuario.value.cvv,
