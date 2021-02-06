@@ -1,10 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import {ReactiveFormsModule} from '@angular/forms'
-import{HttpClientModule} from '@angular/common/http'
-
-
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,6 +12,8 @@ import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
 
 import { FormsModule } from '@angular/forms';
+
+import { CookieService } from 'ngx-cookie-service';
 
 // import { HomeComponent } from './home/home.component';
 import { ProductoComponent } from './producto/producto.component';
@@ -41,7 +41,6 @@ import { MenuAdminComponent } from './components/shared/menu-admin/menu-admin.co
     CategoriasComponent,
     TiendaComponent,
     NavbarComponent,
-    
     FooterComponent,
     RegistroComponent,
     PreciosComponent,
@@ -49,7 +48,6 @@ import { MenuAdminComponent } from './components/shared/menu-admin/menu-admin.co
     FuncionaComponent,
     ElegirComponent,
     EjemplosComponent,
-    
     MenuAdminComponent
   ],
   imports: [
@@ -60,7 +58,9 @@ import { MenuAdminComponent } from './components/shared/menu-admin/menu-admin.co
     AppRoutingModule,
     FormsModule,
   ],
-  providers: [],
+  providers: [
+    CookieService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

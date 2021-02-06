@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Usuario } from '../../models/usuario';
 import Swal from 'sweetalert2';
+import { CookieService } from "ngx-cookie-service";
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,7 @@ import Swal from 'sweetalert2';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router, private cookies: CookieService) { }
 
   correoFormat="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$";
   public usuario: FormGroup = new FormGroup({
@@ -29,18 +30,21 @@ export class LoginComponent implements OnInit {
       password: this.usuario.value.password,
       correo: this.usuario.value.correo,
     };
-    console.log(user);
+
     this.http.post('https://nta-admin.herokuapp.com/api/vendedor/login', user)
-        .subscribe((enviado) => {
+        .subscribe(enviado => {
+          console.log(enviado)
           Swal.fire({
             icon: 'success',
             title: 'Bienvenido a mi Tienda',
             showConfirmButton: false,
             timer: 1500
-          })
-      console.log(enviado);
+          });
 
-       this.router.navigate(['/productos']);
+          this.cookies.set("tiendaId", enviado.UserID);
+          this.cookies.set("token", enviado.token);
+
+          this.router.navigate(['/productos']);
         },(err) => {
           Swal.fire({
             icon: 'error',
