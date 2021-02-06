@@ -1,11 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {FormGroup, FormControl, Validators} from '@angular/forms';
-import {HttpClient} from '@angular/common/http';
-import {HttpHeaders} from '@angular/common/http';
 import {Vendedor, TarjetaCulqui} from '../../models';
 import {Router} from '@angular/router';
 import Swal from 'sweetalert2';
 import {CulquiService} from '../../services/culqui.service';
+import {ApiService} from '../../services';
 
 @Component({
   selector: 'app-registro',
@@ -14,8 +13,7 @@ import {CulquiService} from '../../services/culqui.service';
 })
 export class RegistroComponent implements OnInit {
 
-  constructor(private http: HttpClient, private router: Router, private culquiService: CulquiService) {
-  }
+  constructor(private router: Router, private culquiService: CulquiService, private apiService: ApiService) {}
 
   correoFormat = '[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$';
   numeroFormat = '[0-9]{16}';
@@ -33,17 +31,10 @@ export class RegistroComponent implements OnInit {
     precio: new FormControl('', [Validators.required]),
   });
 
-  ngOnInit() {
-
-  }
+  ngOnInit() {}
 
   guardar() {
     if (this.usuario.valid) {
-
-      //inicio Header de json
-      let headers = new HttpHeaders();
-      headers = headers.set('Content-type', 'application/json');
-      headers = headers.set('Authorization', 'Bearer pk_test_Kd3gwqwwXEHBBj9r');
       //fin Header de json
       //tarjeta json
       const tarjeta: TarjetaCulqui = {
@@ -87,9 +78,9 @@ export class RegistroComponent implements OnInit {
             };
             console.log(vendedor);
             //Registro de Vendedor
-            this.http.post('https://nta-admin.herokuapp.com/api/vendedor/registro', vendedor)
-              .subscribe((enviado) => {
-                console.log('Sse registro con el ID ', enviado);
+            this.apiService.registrarVendedor(vendedor)
+              .subscribe((enviado: any) => {
+                console.log('Se registro con el ID ', enviado);
                 //mensaje de Bienvenida
                 Swal.fire({
                   icon: 'success',
@@ -100,7 +91,7 @@ export class RegistroComponent implements OnInit {
                   timer: 1500
                 });
                 this.router.navigate(['/productos']);
-              }, (err) => {
+              }, (err: any) => {
                 //mensaje de Bienvenida
                 Swal.fire({
                   icon: 'error',

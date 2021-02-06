@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {CookieService} from 'ngx-cookie-service';
-import { Usuario, Tienda } from '../models';
+import {Usuario, Tienda, Vendedor} from '../models';
 
 @Injectable()
 export class ApiService {
@@ -38,6 +38,12 @@ export class ApiService {
       tienda,
       this.getOptions()
     );
+  }
+
+  registrarVendedor(vendedor: Vendedor): any {
+    return this.http.post(
+      `${this.endpoint}/api/vendedor/registro`,
+      vendedor);
   }
 
 }
