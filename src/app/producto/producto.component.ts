@@ -49,7 +49,7 @@ export class ProductoComponent implements OnInit {
       this.firestore.collection('Productos').add(producto);
     }
     else {
-      this.firestore.collection('Productos').doc(this.id).set(producto);
+      this.firestore.collection('Productos').doc(this.id).set(producto as Producto);
     }
   }
 

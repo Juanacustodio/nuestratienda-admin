@@ -12,7 +12,7 @@ import Swal from 'sweetalert2';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private http:HttpClient,private router:Router) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   correoFormat="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$";
   public usuario: FormGroup = new FormGroup({
@@ -22,23 +22,23 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
   login(){
-    if(this.usuario.valid){
-    let user: Usuario= {
-      password:this.usuario.value.password,
-      correo:this.usuario.value.correo,
-    }
+    if (this.usuario.valid) {
+    const user: Usuario = {
+      password: this.usuario.value.password,
+      correo: this.usuario.value.correo,
+    };
     console.log(user);
-    this.http.post('https://nta-admin.herokuapp.com/api/vendedor/login',user)
-        .subscribe((enviado)=>{
+    this.http.post('https://nta-admin.herokuapp.com/api/vendedor/login', user)
+        .subscribe((enviado) => {
           Swal.fire({
             icon: 'success',
             title: 'Bienvenido a mi Tienda',
             showConfirmButton: false,
             timer: 1500
           })
-       console.log("usuario logueado" + enviado);
-
+      console.log(enviado);
 
        this.router.navigate(['/productos']);
         },(err) => {
@@ -48,18 +48,18 @@ export class LoginComponent implements OnInit {
             showConfirmButton: false,
             timer: 1500
           })
-        
         });
-      }else{
-        Swal.fire({
-          icon: 'error',
-          title: 'datos invalidos',
-          showConfirmButton: false,
-          timer: 1500
-        })
-
-      }
+    }
+    else{
+      Swal.fire({
+        icon: 'error',
+        title: 'datos invalidos',
+        showConfirmButton: false,
+        timer: 1500
+      });
+    }
   }
+
   //variables para validar
   get correo(){return this.usuario.get('correo')};
   get password(){return this.usuario.get('password')};
