@@ -10,9 +10,18 @@ import {Router} from '@angular/router';
 export class MenuAdminComponent implements OnInit {
   title = 'admin';
   menu = [
-    'Mi tienda',
-    'Categorías',
-    'Productos'
+    {
+      nombre: 'Mi tienda',
+      route: '/tienda'
+    },
+    {
+      nombre: 'Categorías',
+      route: '/categorias'
+    },
+    {
+      nombre: 'Productos',
+      route: '/productos'
+    },
   ];
 
   constructor(private cookies: CookieService, private router: Router) { }
