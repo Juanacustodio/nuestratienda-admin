@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
-import { HttpHeaders } from '@angular/common/http';
-import { Vendedor, Culqui } from '../../models';
-import { Router } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {FormGroup, FormControl, Validators} from '@angular/forms';
+import {HttpClient} from '@angular/common/http';
+import {HttpHeaders} from '@angular/common/http';
+import {Vendedor, Culqui} from '../../models';
+import {Router} from '@angular/router';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -11,143 +11,167 @@ import Swal from 'sweetalert2';
   templateUrl: './registro.component.html',
   styleUrls: ['./registro.component.scss']
 })
-export class RegistroComponent implements OnInit  {
+export class RegistroComponent implements OnInit {
 
-     constructor(private http:HttpClient,private router:Router) {  }
-     correoFormat="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$";
-     numeroFormat="[0-9]{16}";
-     cvvFormat="[0-9]{3}";
+  constructor(private http: HttpClient, private router: Router) {
+  }
 
-     public usuario: FormGroup = new FormGroup({
-      nombres: new FormControl('',[Validators.required]),
-      apellidos: new FormControl('',[Validators.required]),
-      password: new FormControl('',[Validators.required,Validators.minLength(6)]),
-      email: new FormControl('',[Validators.required,Validators.pattern(this.correoFormat)]),
-      card_number: new FormControl('',[Validators.required,Validators.pattern(this.numeroFormat)]),
-      cvv: new FormControl('',[Validators.required,Validators.pattern(this.cvvFormat)]),
-      expiration_month: new FormControl('',[Validators.required]),
-      expiration_year: new FormControl('',[Validators.required]),
-      precio: new FormControl('',[Validators.required]),
-       });
-  ngOnInit(  ){
+  correoFormat = '[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$';
+  numeroFormat = '[0-9]{16}';
+  cvvFormat = '[0-9]{3}';
+
+  public usuario: FormGroup = new FormGroup({
+    nombres: new FormControl('', [Validators.required]),
+    apellidos: new FormControl('', [Validators.required]),
+    password: new FormControl('', [Validators.required, Validators.minLength(6)]),
+    email: new FormControl('', [Validators.required, Validators.pattern(this.correoFormat)]),
+    card_number: new FormControl('', [Validators.required, Validators.pattern(this.numeroFormat)]),
+    cvv: new FormControl('', [Validators.required, Validators.pattern(this.cvvFormat)]),
+    expiration_month: new FormControl('', [Validators.required]),
+    expiration_year: new FormControl('', [Validators.required]),
+    precio: new FormControl('', [Validators.required]),
+  });
+
+  ngOnInit() {
 
   }
 
-  guardar(){
-    if(this.usuario.valid){
+  guardar() {
+    if (this.usuario.valid) {
 
       //inicio Header de json
-    let headers= new HttpHeaders()
-    headers=headers.set('Content-type', 'application/json')
-    headers=headers.set('Authorization', 'Bearer pk_test_Kd3gwqwwXEHBBj9r');
-    //fin Header de json
-    //tarjeta json
-    let tarjeta:Culqui = {
-            card_number: this.usuario.value.card_number,
-            cvv: this.usuario.value.cvv,
-            expiration_month: this.usuario.value.expiration_month,
-            expiration_year: this.usuario.value.expiration_year,
-            email: this.usuario.value.email,
-    }
-    console.log(tarjeta)
-    //inicio Generar Token
-      this.http.post(' https://secure.culqi.com/v2/tokens',tarjeta,{ 'headers': headers })
-        .subscribe((result:any)=>{
-        //captura de token
-        let token = result.id;
-        //mensaje de Bienvenida
-        Swal.fire({
-          icon: 'success',
-          width:400,
-          title: 'Datos de tarjeta aprobados',
-          text: 'Generando Usuario',
-          showConfirmButton: false,
-          timer: 1500
-        })
-        //captura de token
-        console.log("El token generado es " + token)
-        //Captura de fecha
-        let date: Date = new Date();
-        let fecha=date.getFullYear() + "-" + "0"+date.getMonth() +"-" +"0"+date.getDate();
+      let headers = new HttpHeaders();
+      headers = headers.set('Content-type', 'application/json');
+      headers = headers.set('Authorization', 'Bearer pk_test_Kd3gwqwwXEHBBj9r');
+      //fin Header de json
+      //tarjeta json
+      let tarjeta: Culqui = {
+        card_number: this.usuario.value.card_number,
+        cvv: this.usuario.value.cvv,
+        expiration_month: this.usuario.value.expiration_month,
+        expiration_year: this.usuario.value.expiration_year,
+        email: this.usuario.value.email,
+      };
+      console.log(tarjeta);
+      //inicio Generar Token
+      this.http.post(' https://secure.culqi.com/v2/tokens', tarjeta, {'headers': headers})
+        .subscribe((result: any) => {
+            //captura de token
+            let token = result.id;
+            //mensaje de Bienvenida
+            Swal.fire({
+              icon: 'success',
+              width: 400,
+              title: 'Datos de tarjeta aprobados',
+              text: 'Generando Usuario',
+              showConfirmButton: false,
+              timer: 1500
+            });
+            //captura de token
+            console.log('El token generado es ' + token);
+            //Captura de fecha
+            let date: Date = new Date();
+            let fecha = date.getFullYear() + '-' + '0' + date.getMonth() + '-' + '0' + date.getDate();
 
-        //Vendedor Json
-        let vendedor: Vendedor= {
-                nombres:this.usuario.value.nombres,
-                apellidos:this.usuario.value.apellidos,
-                password:this.usuario.value.password,
-                correo:this.usuario.value.email,
-                suscripcion: {
-                  token: token,
-                  fechaInicio: fecha.toString()
-            }
-        }
-        console.log(vendedor);
-        //Registro de Vendedor
-        this.http.post('https://nta-admin.herokuapp.com/api/vendedor/registro',vendedor)
-        .subscribe((enviado)=>{
-       console.log("Sse registro con el ID ",enviado);
-       //mensaje de Bienvenida
-       Swal.fire({
-        icon: 'success',
-        width:400,
-        title: 'Usuario creado',
-        text: 'Correctamente',
-        showConfirmButton: false,
-        timer: 1500
-      })
-       this.router.navigate(['/productos']);
-        },(err) => {
-           //mensaje de Bienvenida
-   Swal.fire({
-    icon: 'error',
-    width:400,
-    title: 'Usuario no creado',
-    text: err,
-    showConfirmButton: false,
-    timer: 1500
-  })
-        console.log(err)
-  });
- },(err) => {
-   //mensaje de Bienvenida
-   Swal.fire({
-    icon: 'error',
-    width:400,
-    title: 'Pago denegado',
-    text: 'Hubo un problema con su pago',
-    showConfirmButton: false,
-    timer: 1500
-  })
-  console.log(err)
-            console.log("Datos de tarjeta invalidos")
+            //Vendedor Json
+            let vendedor: Vendedor = {
+              nombres: this.usuario.value.nombres,
+              apellidos: this.usuario.value.apellidos,
+              password: this.usuario.value.password,
+              correo: this.usuario.value.email,
+              suscripcion: {
+                token: token,
+                fechaInicio: fecha.toString()
+              }
+            };
+            console.log(vendedor);
+            //Registro de Vendedor
+            this.http.post('https://nta-admin.herokuapp.com/api/vendedor/registro', vendedor)
+              .subscribe((enviado) => {
+                console.log('Sse registro con el ID ', enviado);
+                //mensaje de Bienvenida
+                Swal.fire({
+                  icon: 'success',
+                  width: 400,
+                  title: 'Usuario creado',
+                  text: 'Correctamente',
+                  showConfirmButton: false,
+                  timer: 1500
+                });
+                this.router.navigate(['/productos']);
+              }, (err) => {
+                //mensaje de Bienvenida
+                Swal.fire({
+                  icon: 'error',
+                  width: 400,
+                  title: 'Usuario no creado',
+                  text: err,
+                  showConfirmButton: false,
+                  timer: 1500
+                });
+                console.log(err);
+              });
+          }, (err) => {
+            //mensaje de Bienvenida
+            Swal.fire({
+              icon: 'error',
+              width: 400,
+              title: 'Pago denegado',
+              text: 'Hubo un problema con su pago',
+              showConfirmButton: false,
+              timer: 1500
+            });
+            console.log(err);
+            console.log('Datos de tarjeta invalidos');
 
-      }
-      );
-    }else{
+          }
+        );
+    } else {
       Swal.fire({
         icon: 'error',
         title: 'datos invalidos',
         showConfirmButton: false,
         timer: 1500
-      })
+      });
 
     }
-    }
-    //variables para validar
-  get nombres(){return this.usuario.get('nombres')};
-  get apellidos(){return this.usuario.get('apellidos')};
-  get email(){return this.usuario.get('email')};
-  get password(){return this.usuario.get('password')};
-  get card_number(){return this.usuario.get('card_number')};
-  get expiration_month(){return this.usuario.get('expiration_month')};
-  get expiration_year(){return this.usuario.get('expiration_year')};
-  get cvv(){return this.usuario.get('cvv')};
-  get precio(){return this.usuario.get('precio')};
+  }
 
+  //variables para validar
+  get nombres() {
+    return this.usuario.get('nombres');
+  };
+
+  get apellidos() {
+    return this.usuario.get('apellidos');
+  };
+
+  get email() {
+    return this.usuario.get('email');
+  };
+
+  get password() {
+    return this.usuario.get('password');
+  };
+
+  get card_number() {
+    return this.usuario.get('card_number');
+  };
+
+  get expiration_month() {
+    return this.usuario.get('expiration_month');
+  };
+
+  get expiration_year() {
+    return this.usuario.get('expiration_year');
+  };
+
+  get cvv() {
+    return this.usuario.get('cvv');
+  };
+
+  get precio() {
+    return this.usuario.get('precio');
+  };
 
 }
-
-
-
-
-
