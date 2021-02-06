@@ -1,8 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 
 import {CookieService} from 'ngx-cookie-service';
-import {HttpClient} from '@angular/common/http';
-import {Tienda} from '../models/tienda';
+import {Tienda} from '../models';
 import Swal from 'sweetalert2';
 import {ApiService} from '../services';
 

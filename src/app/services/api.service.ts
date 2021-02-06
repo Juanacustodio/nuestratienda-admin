@@ -1,8 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Usuario} from '../models/usuario';
 import {CookieService} from 'ngx-cookie-service';
-import {Tienda} from '../models/tienda';
+import { Usuario, Tienda } from '../models';
 
 @Injectable()
 export class ApiService {
@@ -14,6 +13,14 @@ export class ApiService {
     this.token = this.cookies.get('token');
   }
 
+  private getOptions(): any {
+    return {
+      headers: {
+        'Authorization': `Bearer ${this.token}`
+      }
+    };
+  }
+
   login(user: Usuario): any {
     return this.http.post(`${this.endpoint}/api/vendedor/login`, user);
   }
@@ -21,11 +28,7 @@ export class ApiService {
   getTienda(tiendaId: number): any {
     return this.http.get(
       `${this.endpoint}/api/tienda/${tiendaId}`,
-      {
-        headers: {
-          'Authorization': `Bearer ${this.token}`
-        }
-      }
+      this.getOptions()
     );
   }
 
@@ -33,11 +36,7 @@ export class ApiService {
     return this.http.post(
       `${this.endpoint}/api/tienda/actualizar`,
       tienda,
-      {
-        headers: {
-          'Authorization': `Bearer ${this.token}`
-        }
-      }
+      this.getOptions()
     );
   }
 

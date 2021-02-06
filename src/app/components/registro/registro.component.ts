@@ -2,12 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
-import { Vendedor } from '../../models/Vendedor';
-import { Culqui } from 'src/app/models/culqui';
+import { Vendedor, Culqui } from '../../models';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
-
-
 
 @Component({
   selector: 'app-registro',
@@ -16,13 +13,10 @@ import Swal from 'sweetalert2';
 })
 export class RegistroComponent implements OnInit  {
 
- 
- 
      constructor(private http:HttpClient,private router:Router) {  }
      correoFormat="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$";
-     numeroFormat="[0-9]{16}"
-     cvvFormat="[0-9]{3}"
-
+     numeroFormat="[0-9]{16}";
+     cvvFormat="[0-9]{3}";
 
      public usuario: FormGroup = new FormGroup({
       nombres: new FormControl('',[Validators.required]),
@@ -36,17 +30,17 @@ export class RegistroComponent implements OnInit  {
       precio: new FormControl('',[Validators.required]),
        });
   ngOnInit(  ){
-    
+
   }
-    
+
   guardar(){
     if(this.usuario.valid){
-      
-      //inicio Header de json   
+
+      //inicio Header de json
     let headers= new HttpHeaders()
     headers=headers.set('Content-type', 'application/json')
     headers=headers.set('Authorization', 'Bearer pk_test_Kd3gwqwwXEHBBj9r');
-    //fin Header de json 
+    //fin Header de json
     //tarjeta json
     let tarjeta:Culqui = {
             card_number: this.usuario.value.card_number,
@@ -56,7 +50,7 @@ export class RegistroComponent implements OnInit  {
             email: this.usuario.value.email,
     }
     console.log(tarjeta)
-    //inicio Generar Token  
+    //inicio Generar Token
       this.http.post(' https://secure.culqi.com/v2/tokens',tarjeta,{ 'headers': headers })
         .subscribe((result:any)=>{
         //captura de token
@@ -75,7 +69,7 @@ export class RegistroComponent implements OnInit  {
         //Captura de fecha
         let date: Date = new Date();
         let fecha=date.getFullYear() + "-" + "0"+date.getMonth() +"-" +"0"+date.getDate();
-        
+
         //Vendedor Json
         let vendedor: Vendedor= {
                 nombres:this.usuario.value.nombres,
@@ -83,7 +77,7 @@ export class RegistroComponent implements OnInit  {
                 password:this.usuario.value.password,
                 correo:this.usuario.value.email,
                 suscripcion: {
-                  token: token,   
+                  token: token,
                   fechaInicio: fecha.toString()
             }
         }
@@ -126,7 +120,7 @@ export class RegistroComponent implements OnInit  {
   })
   console.log(err)
             console.log("Datos de tarjeta invalidos")
-        
+
       }
       );
     }else{
@@ -149,8 +143,8 @@ export class RegistroComponent implements OnInit  {
   get expiration_year(){return this.usuario.get('expiration_year')};
   get cvv(){return this.usuario.get('cvv')};
   get precio(){return this.usuario.get('precio')};
- 
-     
+
+
 }
 
 

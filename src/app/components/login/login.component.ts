@@ -1,11 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {FormGroup, FormControl, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
-import {Usuario} from '../../models/usuario';
+import {Usuario, Session} from '../../models';
 import Swal from 'sweetalert2';
 import {CookieService} from 'ngx-cookie-service';
 import {ApiService} from '../../services';
-import {Session} from '../../models/session';
 
 @Component({
   selector: 'app-login',
