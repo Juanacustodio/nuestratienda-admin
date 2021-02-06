@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { CookieService } from "ngx-cookie-service";
 import { HttpClient } from '@angular/common/http';
+import {Tienda} from '../models/tienda';
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-tienda',
@@ -12,11 +14,11 @@ export class TiendaComponent implements OnInit {
 
   tiendaId: number;
   token: string;
-  tienda: any;
+  tienda: Tienda;
   constructor(private cookies: CookieService, private http: HttpClient) {
     this.tiendaId = parseInt(this.cookies.get("tiendaId"));
     this.token = this.cookies.get('token');
-    this.tienda = {}
+    this.tienda = {} as Tienda;
   }
 
   ngOnInit(): void {
@@ -27,16 +29,12 @@ export class TiendaComponent implements OnInit {
           'Authorization': `Bearer ${this.token}`
         }
       }
-    ).toPromise();
-    response.then(result => {
-      console.log(result)
-      this.tienda = result
+    ).subscribe(result => {
+      this.tienda = result;
     });
-    console.log(this.tienda)
   }
 
   guardarTienda(): void {
-    console.log(this.tienda)
     const response = this.http.post(
       `https://nta-admin.herokuapp.com/api/tienda/actualizar`,
       this.tienda,
@@ -46,8 +44,13 @@ export class TiendaComponent implements OnInit {
         }
       }
     ).subscribe(result => {
-      console.log(result)
-    })
+      Swal.fire({
+        icon: 'success',
+        title: 'Actualización exitosa',
+        showConfirmButton: false,
+        timer: 1500
+      });
+    });
   }
 
 }
