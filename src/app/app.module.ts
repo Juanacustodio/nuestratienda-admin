@@ -14,7 +14,7 @@ import { environment } from '../environments/environment';
 import { FormsModule } from '@angular/forms';
 
 import { CookieService } from 'ngx-cookie-service';
-import { ApiService, CulquiService } from './services';
+import {ApiService, CulquiService, SessionService} from './services';
 
 import { ColorPickerModule } from 'ngx-color-picker';
 
@@ -63,9 +63,10 @@ import { MenuAdminComponent } from './components/shared/menu-admin/menu-admin.co
     ColorPickerModule,
   ],
   providers: [
+    CookieService,
     ApiService,
     CulquiService,
-    CookieService
+    SessionService
   ],
   bootstrap: [AppComponent]
 })

@@ -4,7 +4,7 @@ import {Router} from '@angular/router';
 import {Usuario, Session} from '../../models';
 import Swal from 'sweetalert2';
 import {CookieService} from 'ngx-cookie-service';
-import {ApiService} from '../../services';
+import {ApiService, SessionService} from '../../services';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
 
   correoFormat = '[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$';
 
-  constructor(private apiService: ApiService, private router: Router, private cookies: CookieService) {
+  constructor(private apiService: ApiService, private router: Router, private cookies: CookieService, private sessionService: SessionService) {
   }
 
   public usuario: FormGroup = new FormGroup({
@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
           });
 
           this.cookies.set('tiendaId', result.UserID);
-          this.cookies.set('token', result.token);
+          this.sessionService.setSessionToken(result.token);
 
           this.router.navigate(['/productos']);
         }, (err: any) => {

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {CookieService} from 'ngx-cookie-service';
 import {Router} from '@angular/router';
+import {SessionService} from '../../../services';
 
 @Component({
   selector: 'app-menu-admin',
@@ -8,7 +8,6 @@ import {Router} from '@angular/router';
   styleUrls: ['./menu-admin.component.scss']
 })
 export class MenuAdminComponent implements OnInit {
-  title = 'admin';
   menu = [
     {
       nombre: 'Mi tienda',
@@ -24,13 +23,13 @@ export class MenuAdminComponent implements OnInit {
     },
   ];
 
-  constructor(private cookies: CookieService, private router: Router) { }
+  constructor(private router: Router, private sessionService: SessionService) { }
 
   ngOnInit(): void {
   }
 
-  logout() {
-    this.cookies.delete("token");
+  logout(): void {
+    this.sessionService.deleteSession();
     this.router.navigate(['/login']);
   }
 
