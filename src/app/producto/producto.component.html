@@ -1,32 +1,42 @@
 <div class="container">
-  <h1 class="text-primary">Producto: {{ producto.nombre }}</h1>
-  <div class="row">
-    <div class="col-sm-8">
-      <label for="nombre" class="form-label">Nombre</label>
-      <input type="text" class="form-control mb-3" id="nombre" value="{{ producto.nombre }}" [(ngModel)]="producto.nombre">
+  <div class="card mb-3">
+    <div class="row">
+      <div class="col-md-3"><img src="{{ producto.urlImg }}"></div>
+      <div class="col-md-9">
+        <div class="card-body">
+          <h5 class="card-title text-primary">Producto: {{ producto.nombre }}</h5>
+          <label for="nombre" class="form-label">Nombre</label>
+          <input type="text" class="form-control mb-3" id="nombre" value="{{ producto.nombre }}" [(ngModel)]="producto.nombre">
 
-      <label for="descripcion" class="form-label">Descripcion</label>
-      <input type="text" class="form-control mb-3" id="descripcion" value="{{ producto.descripcion }}" [(ngModel)]="producto.descripcion">
+          <div class="form-group">
+            <label for="descripcion" class="form-label">Descripcion</label>
+            <textarea class="form-control" id="descripcion" rows="3" value="{{ producto.descripcion }}" [(ngModel)]="producto.descripcion"></textarea>
+          </div>
 
-      <label for="urlImg" class="form-label">Imagen</label>
-      <input type="text" class="form-control mb-3" id="urlImg" value="{{ producto.urlImg }}" [(ngModel)]="producto.urlImg">
+          <label for="urlImg" class="form-label">Imagen</label>
+          <input type="text" class="form-control mb-3" id="urlImg" value="{{ producto.urlImg }}" [(ngModel)]="producto.urlImg">
 
-      <label for="precio" class="form-label">Precio</label>
-      <input type="number" class="form-control mb-3" id="precio" value="{{ producto.precio }}" [(ngModel)]="producto.precio">
+          <label for="precio" class="form-label">Precio</label>
+          <input type="number" class="form-control mb-3" id="precio" value="{{ producto.precio }}" [(ngModel)]="producto.precio">
 
-      <label for="marca" class="form-label">Marca</label>
-      <input type="text" class="form-control mb-3" id="marca" value="{{ producto.marca }}" [(ngModel)]="producto.marca">
-
-      <label for="categoria" class="form-label">Categoria</label>
-      <select class="form-control mb-3" id="categoria" value="{{ producto.categoria }}" [(ngModel)]="producto.categoria">
-        <option *ngFor="let cat of categorias" value="{{ cat.nombre }}"> {{ cat.nombre }} </option>
-      </select>
-    </div>
-    <div class="col-sm-4">
-      <img class="w-100" src="{{ producto.urlImg }}">
+          <div class="row">
+            <div class="col-sm-6">
+              <label for="marca" class="form-label">Marca</label>
+              <input type="text" class="form-control mb-3" id="marca" value="{{ producto.marca }}" [(ngModel)]="producto.marca">
+            </div>
+            <div class="col-sm-6">
+              <label for="categoria" class="form-label">Categoria</label>
+              <select class="form-control mb-3" id="categoria" value="{{ producto.categoria }}" [(ngModel)]="producto.categoria">
+                <option *ngFor="let cat of categorias" value="{{ cat.nombre }}"> {{ cat.nombre }} </option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer bg-transparent border-success">
+          <button class="btn btn-success mr-2" (click)="guardarProducto()">{{ btnText }}</button>
+          <button class="btn btn-outline-danger" (click)="eliminarProducto()">Eliminar</button>
+        </div>
+      </div>
     </div>
   </div>
-
-  <button class="btn btn-success mr-2" (click)="guardarProducto()">{{ btnText }}</button>
-  <button class="btn btn-outline-danger" (click)="eliminarProducto()">Eliminar</button>
 </div>
