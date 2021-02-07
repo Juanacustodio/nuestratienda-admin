@@ -1,10 +1,12 @@
 <div class="container">
+  <h2 class="text-primary">
+    Producto: {{ producto.nombre }}
+  </h2>
   <div class="card mb-3">
     <div class="row">
       <div class="col-md-3"><img src="{{ producto.urlImg }}"></div>
       <div class="col-md-9">
         <div class="card-body">
-          <h5 class="card-title text-primary">Producto: {{ producto.nombre }}</h5>
           <label for="nombre" class="form-label">Nombre</label>
           <input type="text" class="form-control mb-3" id="nombre" value="{{ producto.nombre }}" [(ngModel)]="producto.nombre">
 
