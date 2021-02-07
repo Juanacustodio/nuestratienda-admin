@@ -1,30 +1,34 @@
 <div class="container">
-  <h1 class="text-primary">
-    <i class="fas fa-mobile-alt"></i> Mi tienda
-  </h1>
-  <form>
-    <div class="form-group">
-      <label for="nombre">Nombre de mi tienda</label>
-      <input type="text" class="form-control" id="nombre" name="nombre" value="{{ tienda.nombre }}" [(ngModel)]="tienda.nombre">
-    </div>
-    <div class="form-group">
-      <label for="detalle">Detalle</label>
-      <input type="text" class="form-control" id="detalle" name="detalle" value="{{ tienda.detalle }}" [(ngModel)]="tienda.detalle">
-    </div>
-    <div class="form-group">
-      <label for="direccion">Dirección</label>
-      <input type="text" class="form-control" id="direccion" name="direccion" value="{{ tienda.direccion }}" [(ngModel)]="tienda.direccion">
-    </div>
-    <div class="row">
-      <div class="form-group col-md-3">
-        <label for="color1">Color principal</label>
-        <input type="text" class="form-control" id="color1" name="color1" value="{{ tienda.color1 }}" [(ngModel)]="tienda.color1" [(colorPicker)]="tienda.color1" [style.background]="tienda.color1">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title text-primary">
+        <i class="fas fa-mobile-alt"></i> Mi tienda
+      </h5>
+      <div class="form-group">
+        <label for="nombre">Nombre de mi tienda</label>
+        <input type="text" class="form-control" id="nombre" name="nombre" value="{{ tienda.nombre }}" [(ngModel)]="tienda.nombre">
       </div>
-      <div class="form-group col-md-3">
-        <label for="color2">Color secundario</label>
-        <input type="text" class="form-control" id="color2" name="color2" value="{{ tienda.color2 }}" [(ngModel)]="tienda.color2" [(colorPicker)]="tienda.color2" [style.background]="tienda.color2">
+      <div class="form-group">
+        <label for="detalle">Detalle</label>
+        <input type="text" class="form-control" id="detalle" name="detalle" value="{{ tienda.detalle }}" [(ngModel)]="tienda.detalle">
+      </div>
+      <div class="form-group">
+        <label for="direccion">Dirección</label>
+        <input type="text" class="form-control" id="direccion" name="direccion" value="{{ tienda.direccion }}" [(ngModel)]="tienda.direccion">
+      </div>
+      <div class="row">
+        <div class="form-group col-md-3">
+          <label for="color1">Color principal</label>
+          <input type="text" class="form-control" id="color1" name="color1" value="{{ tienda.color1 }}" [(ngModel)]="tienda.color1" [(colorPicker)]="tienda.color1" [style.background]="tienda.color1">
+        </div>
+        <div class="form-group col-md-3">
+          <label for="color2">Color secundario</label>
+          <input type="text" class="form-control" id="color2" name="color2" value="{{ tienda.color2 }}" [(ngModel)]="tienda.color2" [(colorPicker)]="tienda.color2" [style.background]="tienda.color2">
+        </div>
+      </div>
+      <div class="card-footer bg-transparent border-success">
+        <button type="submit" class="btn btn-success" (click)="guardarTienda()">Guardar</button>
       </div>
     </div>
-    <button type="submit" class="btn btn-success" (click)="guardarTienda()">Guardar</button>
-  </form>
+  </div>
 </div>
