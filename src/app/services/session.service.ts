@@ -12,7 +12,9 @@ export class SessionService {
   }
 
   setSessionToken(token: string): void {
-    this.cookies.set('session-token', token);
+    if (_.isEmpty(this.getSessionToken())) {
+      this.cookies.set('session-token', token);
+    }
   }
 
   getSessionToken(): string {
@@ -23,6 +25,6 @@ export class SessionService {
   }
 
   deleteSession(): void {
-    this.cookies.delete('session-token');
+    this.cookies.deleteAll('/');
   }
 }

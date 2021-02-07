@@ -11,15 +11,15 @@ export class MenuAdminComponent implements OnInit {
   menu = [
     {
       nombre: 'Mi tienda',
-      route: '/tienda'
+      route: '/admin/tienda'
     },
     {
       nombre: 'Categorías',
-      route: '/categorias'
+      route: '/admin/categorias'
     },
     {
       nombre: 'Productos',
-      route: '/productos'
+      route: '/admin/productos'
     },
   ];
 

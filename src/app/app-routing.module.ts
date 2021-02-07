@@ -14,13 +14,10 @@ import {LoginComponent} from './components/login/login.component';
 
 import {HomeComponent} from './components/home/home.component';
 import {AuthGuard} from './auth/auth.guard';
+import {AdminComponent} from './admin/admin.component';
 
 const routes: Routes = [
   // { path: '', component: HomeComponent },
-  {path: 'productos', component: ProductosComponent},
-  {path: 'productos/:id', component: ProductoComponent},
-  {path: 'categorias', component: CategoriasComponent},
-  {path: 'tienda', component: TiendaComponent, canActivate: [AuthGuard]},
   {path: 'home', component: HomeComponent},
   {path: 'precios', component: PreciosComponent},
   {path: 'elegir', component: ElegirComponent},
@@ -28,7 +25,23 @@ const routes: Routes = [
   {path: 'funciona', component: FuncionaComponent},
   {path: 'registro', component: RegistroComponent},
   {path: 'login', component: LoginComponent},
-
+  {
+    path: 'admin',
+    component: AdminComponent,
+    canActivate: [AuthGuard],
+    children: [
+      {
+        path: '',
+        children: [
+          { path: '', component: ProductosComponent },
+          { path: 'tienda', component: TiendaComponent },
+          { path: 'categorias', component: CategoriasComponent },
+          { path: 'productos', component: ProductosComponent },
+          { path: 'productos/:id', component: ProductoComponent },
+        ],
+      }
+    ]
+  },
   {path: '**', pathMatch: 'full', redirectTo: 'home'}
 ];
 

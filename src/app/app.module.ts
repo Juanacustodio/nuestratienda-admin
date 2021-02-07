@@ -34,6 +34,7 @@ import { EjemplosComponent } from './components/ejemplos/ejemplos.component';
 
 import { HomeComponent } from './components/home/home.component';
 import { MenuAdminComponent } from './components/shared/menu-admin/menu-admin.component';
+import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { MenuAdminComponent } from './components/shared/menu-admin/menu-admin.co
     FuncionaComponent,
     ElegirComponent,
     EjemplosComponent,
-    MenuAdminComponent
+    MenuAdminComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,

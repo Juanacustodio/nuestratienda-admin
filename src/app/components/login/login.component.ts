@@ -50,7 +50,7 @@ export class LoginComponent implements OnInit {
           this.cookies.set('tiendaId', result.UserID);
           this.sessionService.setSessionToken(result.token);
 
-          this.router.navigate(['/productos']);
+          this.router.navigate(['/admin/productos']);
         }, (err: any) => {
           Swal.fire({
             icon: 'error',
