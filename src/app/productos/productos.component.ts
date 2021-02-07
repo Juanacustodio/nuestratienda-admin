@@ -20,7 +20,7 @@ export class ProductosComponent implements OnInit {
   }
 
   toProductDetail(id: string): void {
-    this.router.navigate(['/productos/' + id]);
+    this.router.navigate(['/admin/productos/' + id]);
   }
 
 }
