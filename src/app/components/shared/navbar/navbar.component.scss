@@ -26,21 +26,6 @@ $navbar-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.035);
   box-shadow: $navbar-shadow;
   background-color: $navbar-body-color;
 
-  .container {
-    @media (min-width: 576px) {
-      max-width: 540px;
-    }
-    @media (min-width: 768px) {
-      max-width: 720px;
-    }
-    @media (min-width: 992px) {
-      max-width: 960px;
-    }
-    @media (min-width: 1200px) {
-      max-width: 1140px;
-    }
-  }
-
   .navbar-header {
     display: flex;
     align-items: center;
