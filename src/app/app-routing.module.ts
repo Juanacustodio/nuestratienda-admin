@@ -5,7 +5,6 @@ import {ProductosComponent} from './productos/productos.component';
 import {ProductoComponent} from './producto/producto.component';
 import {CategoriasComponent} from './categorias/categorias.component';
 import {TiendaComponent} from './tienda/tienda.component';
-import {PreciosComponent} from './components/precios/precios.component';
 import {ElegirComponent} from './components/elegir/elegir.component';
 import {EjemplosComponent} from './components/ejemplos/ejemplos.component';
 import {FuncionaComponent} from './components/funciona/funciona.component';
@@ -19,7 +18,6 @@ import {AdminComponent} from './admin/admin.component';
 const routes: Routes = [
   // { path: '', component: HomeComponent },
   {path: 'home', component: HomeComponent},
-  {path: 'precios', component: PreciosComponent},
   {path: 'elegir', component: ElegirComponent},
   {path: 'ejemplos', component: EjemplosComponent},
   {path: 'funciona', component: FuncionaComponent},

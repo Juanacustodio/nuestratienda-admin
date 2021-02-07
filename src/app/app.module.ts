@@ -23,10 +23,8 @@ import { ProductoComponent } from './producto/producto.component';
 import { CategoriasComponent } from './categorias/categorias.component';
 import { TiendaComponent } from './tienda/tienda.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
-
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { RegistroComponent } from './components/registro/registro.component';
-import { PreciosComponent } from './components/precios/precios.component';
 import { LoginComponent } from './components/login/login.component';
 import { FuncionaComponent } from './components/funciona/funciona.component';
 import { ElegirComponent } from './components/elegir/elegir.component';
@@ -47,7 +45,6 @@ import { AdminComponent } from './admin/admin.component';
     NavbarComponent,
     FooterComponent,
     RegistroComponent,
-    PreciosComponent,
     LoginComponent,
     FuncionaComponent,
     ElegirComponent,
