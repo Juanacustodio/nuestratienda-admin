@@ -2,3 +2,143 @@
     background: #8D3754;
     color: white;
 }
+
+
+// cards
+.card { 
+
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0px 10px 10px rgba(34, 35, 58, 0.25);
+    display: flex;
+    flex-direction: row;
+    border-radius: 25px;
+    position: relative;
+  }
+  .card h2 {
+    margin: 0;
+    padding: 0 1rem;
+  }
+  .card .title {
+    padding: 1rem;
+    text-align: right;
+    color: #8D3754;
+    font-weight: bold;
+    font-size: 12px;
+  }
+  .card .desc {
+    padding: 0.5rem 1rem;
+    font-size: 14px;
+  }
+
+  
+  .card-text {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+  }
+  
+  .title-total {
+    padding: 2.5em 1.5em 1.5em 1.5em;
+  }
+  .img-portada {
+    width: 100%;
+  }
+  
+  .portada {
+    min-width: 10em ;
+    width: 100%;
+    height: 100%;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    background-image: url("./../../../assets/img/h1.jpg");
+    background-position: bottom center;
+    background-size: cover;
+  }
+
+  .portada2 {
+    min-width: 10em ;
+    width: 100%;
+    height: 100%;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    background-image: url("./../../../assets/img/h2.jpg");
+    background-position: bottom center;
+    background-size: cover;
+  }
+
+  a{
+   background-color: #8D3754 ;
+   border: 0px;
+  }
+
+  a:hover{
+    background-color: #c2647c;
+  }
+
+
+  // testimonials
+
+  #test-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    margin: 1.5rem auto;
+    width: 75%;
+    max-width: 1200px;
+    section {
+      width: 264px;
+      .top-box {
+        background-color: #DFDBD5;
+        width: 263px;
+        height: 103px;
+        position: absolute;
+        z-index: 1;
+      }
+      
+      img {
+        background-color: gray;
+        border-radius: 100%;
+        border: 3px soild #D4D4D4;
+        width: 133px;
+        height: 133px;
+        object-fit: cover;
+        position: relative;
+        display: block;
+        margin: auto;
+        top: 15px;
+        z-index: 5;
+      }
+      
+      .bottom-box {
+        box-shadow: 2px 3px 6px rgba(0,0,0,0.16);
+        width: 263px;
+        height: 238px;
+        transform: translateY(-50px);
+        blockquote {
+          margin: 0 auto;
+          padding: 0;
+          width: 210px;
+          p {
+            margin-top: 30px;
+            font-style: italic;
+            font-size: 16px;
+            line-height: 21px;
+            padding-top: 60px;
+          }
+        }
+        
+        .test-details {
+          text-align: center;
+          span {
+            font-size: 18px;
+            font-weight: 500;
+          }
+        }
+        
+      }
+      
+    }
+    
+  }
+  
