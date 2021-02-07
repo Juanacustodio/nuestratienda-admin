@@ -1,32 +1,26 @@
-<nav class="navbar navbar-expand-lg navbar-dark myNav fixed-top ">
-    <a [routerLink]="['home']">
-      <img src="assets/img/logo01.png" height="50" class="d-inline-block align-top logo">
-      <span class="nombre text-white"> </span>
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item c-white">
-                <a class="nav-link text-white" [routerLink]="['/funciona']">Cómo funciona </a>
-            </li>
-            <li class="nav-item ">
-                <a class="nav-link text-white" [routerLink]="['/elegir']">Por qué elegirnos </a>
-            </li>
-            <li class="nav-item ">
-                <a class="nav-link text-white" [routerLink]="['/ejemplos']">Asociados </a>
-            </li>
-            <li class="nav-item ">
-                <a class="nav-link text-white" [routerLink]="['/precios']">Precios</a>
-            </li>
-        </ul>
-        <li class="nav-item navbar-nav ">
-            <a class="nav-link border border-light rounded p-2 text-white" [routerLink]="['/login']">Ingresar </a>
-        </li>
-
-
-
+<nav class="navbar">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggler" data-toggle="open-navbar1">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <a [routerLink]="['home']">
+        <img src="assets/img/logo.png" class="logo">
+      </a>
     </div>
+    <div class="navbar-menu open-navbar1" id="open-navbar1">
+      <ul class="navbar-nav">
+        <li class="active"><a [routerLink]="['/funciona']">Cómo funciona</a></li>
+        <li><a [routerLink]="['/elegir']">Por qué elegirnos</a></li>
+        <li><a [routerLink]="['/ejemplos']">Asociados</a></li>
+        <li><a [routerLink]="['/precios']">Precios</a></li>
+        <li class="nav-user">
+          <a class="register" [routerLink]="['/registro']">Registrar</a>
+          <a [routerLink]="['/login']">Ingresar</a>
+        </li>
+      </ul>
+    </div>
+  </div>
 </nav>

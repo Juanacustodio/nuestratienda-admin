@@ -1,13 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
+
+$font-family: 'Roboto', sans-serif;
 $primary:       #88304E;
 @import "node_modules/bootstrap/scss/bootstrap";
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-table {
-  width: 100%;
-}
-
-.container {
-  position: relative;
+body {
+  font-family: $font-family;
 }
