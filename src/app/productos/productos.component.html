@@ -1,37 +1,35 @@
 <app-menu-admin></app-menu-admin>
 
-<div class="contenedor  header">
+<div class="container header">
+  <h1 class="text-primary ">
+    <i class="fas fa-shopping-bag"></i> Productos
+  </h1>
+  <button class="btn btn-primary rounded-circle btn-plus " (click)="toProductDetail('nuevo');">
+    <i class="fas fa-plus "></i>
+  </button>
 
-    <h1 class="text-primary ">
-        <i class="fas fa-shopping-bag"></i> Productos
-    </h1>
-
-    <button class="btn btn-primary rounded-circle btn-plus " (click)="toProductDetail('nuevo');">
-  <i class="fas fa-plus "></i>
-</button>
-
-    <div class="table-responsive">
-        <table class="table table-hover">
-            <thead class="thead-light">
-                <tr>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Marca</th>
-                    <th scope="col">Precio</th>
-                    <th scope="col">Detalle</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let producto of productos">
-                    <td>{{producto.nombre}}</td>
-                    <td>{{producto.marca}}</td>
-                    <td>{{producto.precio}}</td>
-                    <td>
-                        <button class="btn btn-info" (click)="toProductDetail(producto.id)">
-          <i class="fas fa-edit"></i>
-        </button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+  <div class="table-responsive">
+    <table class="table table-hover">
+      <thead class="thead-light">
+      <tr>
+        <th scope="col">Nombre</th>
+        <th scope="col">Marca</th>
+        <th scope="col">Precio</th>
+        <th scope="col">Detalle</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let producto of productos">
+        <td>{{producto.nombre}}</td>
+        <td>{{producto.marca}}</td>
+        <td>{{producto.precio}}</td>
+        <td>
+          <button class="btn btn-info" (click)="toProductDetail(producto.id)">
+            <i class="fas fa-edit"></i>
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
