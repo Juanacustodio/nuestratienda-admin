@@ -27,7 +27,6 @@ import { FooterComponent } from './components/shared/footer/footer.component';
 import { RegistroComponent } from './components/registro/registro.component';
 import { LoginComponent } from './components/login/login.component';
 import { FuncionaComponent } from './components/funciona/funciona.component';
-import { ElegirComponent } from './components/elegir/elegir.component';
 import { EjemplosComponent } from './components/ejemplos/ejemplos.component';
 
 import { HomeComponent } from './components/home/home.component';
@@ -47,7 +46,6 @@ import { AdminComponent } from './admin/admin.component';
     RegistroComponent,
     LoginComponent,
     FuncionaComponent,
-    ElegirComponent,
     EjemplosComponent,
     MenuAdminComponent,
     AdminComponent
