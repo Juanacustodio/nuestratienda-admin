@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
 
 
 @Component({
@@ -8,11 +9,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  private fragment: string;
 
-  ngOnInit(): void {
+  constructor(private route: ActivatedRoute) {
+    this.fragment = '';
   }
 
- 
+  ngOnInit(): void {
+    this.route.fragment.subscribe(fragment => { this.fragment = fragment; });
+  }
+
+  ngAfterViewInit(): void {
+    try {
+      const el = document.querySelector('#' + this.fragment);
+      if (el) {
+        el.scrollIntoView();
+      }
+    } catch (e) { }
+  }
 
 }

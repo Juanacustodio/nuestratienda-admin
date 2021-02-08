@@ -1,22 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    padding-top: 100px;
-    font-family: 'Poppins', sans-serif;
+.registro {
+    padding-top: 80px;
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.container {
-    max-width: 800px;
-    border-radius: 20px;
 }
 
 .card {
@@ -29,9 +16,7 @@ body {
 }
 
 .myHed {
-    margin-top: 30px;
     font-size: 25px;
-    margin-top: -10px;
     font-weight: 600;
     background: #89304E;
     color: transparent;

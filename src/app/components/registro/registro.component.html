@@ -1,204 +1,202 @@
 <app-navbar></app-navbar>
 
-<body>
-    <div class="container">
-        <div class="card">
-            <div class="card-body">
-                <header class="myHed text-center mt-2">
-                    <p>Registrate en NuestraTienda</p>
-                    <p class="msj mt-2">Crea tu cuenta y empieza a vender por aplicación movil Yá!</p>
-                </header>
-
-                <form class="main-form " [formGroup]="usuario" (submit)="guardar()">
-                    <div class="row">
-                        <div class="col-md-6 text-center">
-                            <div class="form-group my-0">
-                                <label class="my-0">
-                                    <small> <strong class="text">Datos de usuario</strong></small>
-                                <i class="fas fa-user"></i>
-                                <input type="text" class="myInput"  name="nombres" placeholder="Nombres" formControlName="nombres">  
-                                </label>
-                                <!-- Validar campos -->
-                                <div class="alert-danger" *ngIf="nombres!.invalid && (nombres!.dirty || nombres!.touched)">
-                                    <div class="container-error-message" *ngIf="nombres!.errors!.required">
-                                        Ingrese su nombre
-                                    </div>
-                                </div>
-                                <!-- Validar campos -->
-                            </div>
-                            <div class="form-group my-0">
-                                <label class="my-0">
-                                <i class="fas fa-user-friends"></i>
-                                 <input type="text" class="myInput"  name="apellidos" placeholder="Apellidos" formControlName="apellidos" > 
-                                </label>
-                                <!-- Validar campos -->
-                                <div class="alert-danger" *ngIf="apellidos!.invalid && (apellidos!.dirty || apellidos!.touched)">
-                                    <div class="container-error-message" *ngIf="apellidos!.errors!.required">
-                                        Ingrese sus apellidos
-                                    </div>
-                                </div>
-                                <!-- Validar campos -->
-                            </div>
-                            <div class="form-group my-0">
-                                <label class="my-0">
-                                <i class="fas fa-envelope"></i>
-                                <input type="email" class="myInput"  name="email"  placeholder="Correo eléctronico" formControlName="email"> 
-                                </label>
-                                <!-- Validar campos -->
-                                <div class="alert-danger" *ngIf="email!.invalid && (email!.dirty || email!.touched)">
-                                    <div class="container-error-message" *ngIf="email!.errors!.required">
-                                        Ingrese su correo electrónico
-                                    </div>
-                                    <div class="container-error-message" *ngIf="(email!.dirty || email!.touched) && email!.invalid && email!.errors!.pattern">
-                                        Ingrese un correo válido
-                                    </div>
-                                </div>
-
-                                <!-- Validar campos -->
-                            </div>
-                            <div class="form-group my-0">
-                                <label class="my-0">
-                                <i class="fas fa-lock"></i>
-                                <input type="password" class="myInput" ngModel name="password" placeholder="Contraseña" formControlName="password"> 
-                                </label>
-                                <!-- Validar campos -->
-                                <div class="alert-danger" *ngIf="password!.invalid && (password!.dirty || password!.touched)">
-                                    <div class="container-error-message" *ngIf="password!.errors!.required">
-                                        Ingrese su contraseña
-                                    </div>
-                                    <div class="container-error-message" *ngIf="password!.errors!.minlength">
-                                        La contraseña requiere 6 o mas caracteres
-                                    </div>
-
-                                </div>
-
-                                <!-- Validar campos -->
-                            </div>
-
-                        </div>
-                        <div class="col-md-6 izquierda">
-
-                            <div class="form-group my-0">
-                                <label class="my-0">
-                                <small> <strong class="text">Número de la tarjeta</strong></small>
-                                <i class="fas fa-credit-card text-muted derecha"></i>
-                                <input type="number" class="myInput"  name="card_number" placeholder="1234456745431685"  formControlName="card_number"> 
-                                </label>
-                                <!-- Validar campos -->
-                                <div class="alert-danger izquierda2" *ngIf="card_number!.invalid && (card_number!.dirty || card_number!.touched)">
-                                    <div class="container-error-message" *ngIf="card_number!.errors!.required">
-                                        Ingrese su tarjeta de crédito o devito
-                                    </div>
-                                    <div class="container-error-message" *ngIf="(card_number!.dirty || card_number!.touched) && card_number!.invalid && card_number!.errors!.pattern">
-                                        Ingrese los 16 digitos de su tarjeta
-                                    </div>
-
-                                </div>
-
-                                <!-- Validar campos -->
-                            </div>
-                            <div class="form-group my-0">
-                                <label class="my-0">
-                                <small> <strong class="text">Fecha de Expiración</strong></small>
-                                </label>
-                                <div class="form-group row">
-                                    <select class="myInput col-4 ml-3" name="expiration_month" formControlName="expiration_month">
-                                        <option>01</option>
-                                        <option>02</option>
-                                        <option>03</option>
-                                        <option>04</option>
-                                        <option>05</option>
-                                        <option>06</option>
-                                        <option>07</option>
-                                        <option>08</option>
-                                        <option>09</option>
-                                        <option>10</option>
-                                        <option>11</option>
-                                        <option>12</option>
-                                    </select>
-                                    <!-- Validar campos -->
-                                    <div class="alert-danger izquierda2 " *ngIf="expiration_month!.invalid && (expiration_month!.dirty || expiration_month!.touched)">
-                                        <div class="container-error-message" *ngIf="expiration_month!.errors!.required">
-                                            Seleccione el mes
-                                        </div>
-                                    </div>
-                                    <!-- Validar campos -->
-                                    <select class="myInput col-4 ml-3" name="expiration_year" formControlName="expiration_year">
-                                        <option>2021</option>
-                                        <option>2022</option>
-                                        <option>2023</option>
-                                        <option>2024</option>
-                                        <option>2025</option>
-                                    </select>
-                                    <!-- Validar campos -->
-                                    <div class="alert-danger izquierda2" *ngIf="expiration_year!.invalid && (expiration_year!.dirty || expiration_year!.touched)">
-                                        <div class="container-error-message" *ngIf="expiration_year!.errors!.required">
-                                            Seleccione el año
-                                        </div>
-                                    </div>
-                                    <!-- Validar campos -->
-                                </div>
-                            </div>
-                            <!-- Parte 4 -->
-                            <div class="form-group my-0 row">
-                                <!-- Caja CVV -->
-                                <div class="col-4">
-                                    <label class="my-0">
-                                    <small><strong class="text">CVV</strong></small>
-                                    <input type="number" class="myInput col-5 text-center"  name="cvv"  placeholder="123"  formControlName="cvv">  
-                                  </label>
-                                    <!-- Validar campos -->
-                                    <div class="alert-danger" *ngIf="cvv!.invalid && (cvv!.dirty || cvv!.touched)">
-                                        <div class="container-error-message" *ngIf="cvv!.errors!.required">
-                                            Ingrese sel CVV tarjeta de crédito o devito
-                                        </div>
-                                        <div class="container-error-message" *ngIf="(cvv!.dirty || cvv!.touched) && cvv!.invalid && cvv!.errors!.pattern">
-                                            Ingrese los 3 digitos CVV de su tarjeta
-                                        </div>
-
-                                    </div>
-
-                                    <!-- Validar campos -->
-                                </div>
-                                <!-- Caja CVV -->
-                                <!-- Combo planes -->
-                                <div class="col-4">
-                                    <label class="my-0">
-                                            <small><strong class="text">PLAN</strong></small>
-                                            <select class="myInput col-6 ml-2"  name="plan" formControlName="precio" >
-                                                <option>S/.299</option>
-                                                <option>S/.499</option>
-                                                <option>S/.899</option>
-                                                <option>S/.1999</option>
-                                            </select>
-                                    </label>
-                                    <!-- Validar campos -->
-                                    <div class="alert-danger" *ngIf="precio!.invalid && (precio!.dirty || precio!.touched)">
-                                        <div class="container-error-message" *ngIf="precio!.errors!.required">
-                                            Elija el plan
-                                        </div>
-                                    </div>
-                                    <!-- Validar campos -->
-                                </div>
-                                <!-- Combo planes -->
-                            </div>
-                            <!-- Parte 4 -->
-                        </div>
-                    </div>
-                    <div class="col-md-12 centrar">
-                        <label class="check_1 ">
-                            <input type="checkbox" checked >Acepto los  <a href="">términos y condiciones</a>
-                        </label>
-
-                        <div class="form-group ">
-                            <label> 
-                            <input type="submit" class="form-control button" value="Crear cuenta" > 
-                            </label>
-                            <p class="msj2 mt-3">Al ingresar tu correo electrónico, acepta recibir correos electrónicos de marketing de NuestraTienda.</p>
-                        </div>
-                    </div>
-                </form>
+<div class="container registro">
+  <div class="card">
+    <div class="card-body">
+      <header class="myHed text-center mt-2">
+        <p>Registrate en NuestraTienda</p>
+        <p class="msj mt-2">Crea tu cuenta y empieza a vender por aplicación movil Yá!</p>
+      </header>
+      <form class="main-form " [formGroup]="usuario" (submit)="guardar()">
+        <div class="row">
+          <div class="col-md-6 text-center">
+            <div class="form-group my-0">
+              <label class="my-0">
+                <small> <strong class="text">Datos de usuario</strong></small>
+                <i class="fas fa-user"></i>
+                <input type="text" class="myInput" name="nombres" placeholder="Nombres" formControlName="nombres">
+              </label>
+              <!-- Validar campos -->
+              <div class="alert-danger" *ngIf="nombres!.invalid && (nombres!.dirty || nombres!.touched)">
+                <div class="container-error-message" *ngIf="nombres!.errors!.required">
+                  Ingrese su nombre
+                </div>
+              </div>
+              <!-- Validar campos -->
             </div>
+            <div class="form-group my-0">
+              <label class="my-0">
+                <i class="fas fa-user-friends"></i>
+                <input type="text" class="myInput" name="apellidos" placeholder="Apellidos" formControlName="apellidos">
+              </label>
+              <!-- Validar campos -->
+              <div class="alert-danger" *ngIf="apellidos!.invalid && (apellidos!.dirty || apellidos!.touched)">
+                <div class="container-error-message" *ngIf="apellidos!.errors!.required">
+                  Ingrese sus apellidos
+                </div>
+              </div>
+              <!-- Validar campos -->
+            </div>
+            <div class="form-group my-0">
+              <label class="my-0">
+                <i class="fas fa-envelope"></i>
+                <input type="email" class="myInput" name="email" placeholder="Correo eléctronico"
+                       formControlName="email">
+              </label>
+              <!-- Validar campos -->
+              <div class="alert-danger" *ngIf="email!.invalid && (email!.dirty || email!.touched)">
+                <div class="container-error-message" *ngIf="email!.errors!.required">
+                  Ingrese su correo electrónico
+                </div>
+                <div class="container-error-message"
+                     *ngIf="(email!.dirty || email!.touched) && email!.invalid && email!.errors!.pattern">
+                  Ingrese un correo válido
+                </div>
+              </div>
+              <!-- Validar campos -->
+            </div>
+            <div class="form-group my-0">
+              <label class="my-0">
+                <i class="fas fa-lock"></i>
+                <input type="password" class="myInput" ngModel name="password" placeholder="Contraseña"
+                       formControlName="password">
+              </label>
+              <!-- Validar campos -->
+              <div class="alert-danger" *ngIf="password!.invalid && (password!.dirty || password!.touched)">
+                <div class="container-error-message" *ngIf="password!.errors!.required">
+                  Ingrese su contraseña
+                </div>
+                <div class="container-error-message" *ngIf="password!.errors!.minlength">
+                  La contraseña requiere 6 o mas caracteres
+                </div>
+              </div>
+              <!-- Validar campos -->
+            </div>
+          </div>
+          <div class="col-md-6 izquierda">
+            <div class="form-group my-0">
+              <label class="my-0">
+                <small> <strong class="text">Número de la tarjeta</strong></small>
+                <i class="fas fa-credit-card text-muted derecha"></i>
+                <input type="number" class="myInput" name="card_number" placeholder="1234456745431685"
+                       formControlName="card_number">
+              </label>
+              <!-- Validar campos -->
+              <div class="alert-danger izquierda2"
+                   *ngIf="card_number!.invalid && (card_number!.dirty || card_number!.touched)">
+                <div class="container-error-message" *ngIf="card_number!.errors!.required">
+                  Ingrese su tarjeta de crédito o devito
+                </div>
+                <div class="container-error-message"
+                     *ngIf="(card_number!.dirty || card_number!.touched) && card_number!.invalid && card_number!.errors!.pattern">
+                  Ingrese los 16 digitos de su tarjeta
+                </div>
+              </div>
+              <!-- Validar campos -->
+            </div>
+            <div class="form-group my-0">
+              <label class="my-0">
+                <small> <strong class="text">Fecha de Expiración</strong></small>
+              </label>
+              <div class="form-group row">
+                <select class="myInput col-4 ml-3" name="expiration_month" formControlName="expiration_month">
+                  <option>01</option>
+                  <option>02</option>
+                  <option>03</option>
+                  <option>04</option>
+                  <option>05</option>
+                  <option>06</option>
+                  <option>07</option>
+                  <option>08</option>
+                  <option>09</option>
+                  <option>10</option>
+                  <option>11</option>
+                  <option>12</option>
+                </select>
+                <!-- Validar campos -->
+                <div class="alert-danger izquierda2 "
+                     *ngIf="expiration_month!.invalid && (expiration_month!.dirty || expiration_month!.touched)">
+                  <div class="container-error-message" *ngIf="expiration_month!.errors!.required">
+                    Seleccione el mes
+                  </div>
+                </div>
+                <!-- Validar campos -->
+                <select class="myInput col-4 ml-3" name="expiration_year" formControlName="expiration_year">
+                  <option>2021</option>
+                  <option>2022</option>
+                  <option>2023</option>
+                  <option>2024</option>
+                  <option>2025</option>
+                </select>
+                <!-- Validar campos -->
+                <div class="alert-danger izquierda2"
+                     *ngIf="expiration_year!.invalid && (expiration_year!.dirty || expiration_year!.touched)">
+                  <div class="container-error-message" *ngIf="expiration_year!.errors!.required">
+                    Seleccione el año
+                  </div>
+                </div>
+                <!-- Validar campos -->
+              </div>
+            </div>
+            <!-- Parte 4 -->
+            <div class="form-group my-0 row">
+              <!-- Caja CVV -->
+              <div class="col-4">
+                <label class="my-0">
+                  <small><strong class="text">CVV</strong></small>
+                  <input type="number" class="myInput col-5 text-center" name="cvv" placeholder="123"
+                         formControlName="cvv">
+                </label>
+                <!-- Validar campos -->
+                <div class="alert-danger" *ngIf="cvv!.invalid && (cvv!.dirty || cvv!.touched)">
+                  <div class="container-error-message" *ngIf="cvv!.errors!.required">
+                    Ingrese sel CVV tarjeta de crédito o devito
+                  </div>
+                  <div class="container-error-message"
+                       *ngIf="(cvv!.dirty || cvv!.touched) && cvv!.invalid && cvv!.errors!.pattern">
+                    Ingrese los 3 digitos CVV de su tarjeta
+                  </div>
+                </div>
+                <!-- Validar campos -->
+              </div>
+              <!-- Caja CVV -->
+              <!-- Combo planes -->
+              <div class="col-4">
+                <label class="my-0">
+                  <small><strong class="text">PLAN</strong></small>
+                  <select class="myInput col-6 ml-2" name="plan" formControlName="precio">
+                    <option>S/.299</option>
+                    <option>S/.499</option>
+                    <option>S/.899</option>
+                    <option>S/.1999</option>
+                  </select>
+                </label>
+                <!-- Validar campos -->
+                <div class="alert-danger" *ngIf="precio!.invalid && (precio!.dirty || precio!.touched)">
+                  <div class="container-error-message" *ngIf="precio!.errors!.required">
+                    Elija el plan
+                  </div>
+                </div>
+                <!-- Validar campos -->
+              </div>
+              <!-- Combo planes -->
+            </div>
+            <!-- Parte 4 -->
+          </div>
         </div>
+        <div class="col-md-12 centrar">
+          <label class="check_1 ">
+            <input type="checkbox" checked>Acepto los <a href="">términos y condiciones</a>
+          </label>
+          <div class="form-group ">
+            <label>
+              <input type="submit" class="form-control button" value="Crear cuenta">
+            </label>
+            <p class="msj2 mt-3">Al ingresar tu correo electrónico, acepta recibir correos electrónicos de marketing de
+              NuestraTienda.</p>
+          </div>
+        </div>
+      </form>
     </div>
-</body>
+  </div>
+</div>
