@@ -26,6 +26,7 @@ import { EjemplosComponent } from './components/ejemplos/ejemplos.component';
 import { HomeComponent } from './components/home/home.component';
 import { MenuAdminComponent } from './components/shared/menu-admin/menu-admin.component';
 import { AdminComponent } from './admin/admin.component';
+import { CardFuncionComponent } from './components/card-funcion/card-funcion.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { AdminComponent } from './admin/admin.component';
     FuncionaComponent,
     EjemplosComponent,
     MenuAdminComponent,
-    AdminComponent
+    AdminComponent,
+    CardFuncionComponent
   ],
   imports: [
     BrowserModule,

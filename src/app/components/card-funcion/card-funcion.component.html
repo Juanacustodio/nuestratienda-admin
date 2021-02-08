@@ -1,0 +1,9 @@
+<div class="card-columns">
+    <div class="card animated fadeIn" *ngFor="let funcion of funcionalidades">
+        <img class="card-img-top" src={{funcion.imgUrl}} alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">{{funcion.titulo}}</h5>
+          <p class="card-text"> {{funcion.desc}}</p>
+        </div>
+      </div>
+</div>
