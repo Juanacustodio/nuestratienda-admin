@@ -27,6 +27,7 @@ import { HomeComponent } from './components/home/home.component';
 import { MenuAdminComponent } from './components/shared/menu-admin/menu-admin.component';
 import { AdminComponent } from './admin/admin.component';
 import { CardFuncionComponent } from './components/card-funcion/card-funcion.component';
+import { PedidosComponent } from './pedidos/pedidos.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { CardFuncionComponent } from './components/card-funcion/card-funcion.com
     EjemplosComponent,
     MenuAdminComponent,
     AdminComponent,
-    CardFuncionComponent
+    CardFuncionComponent,
+    PedidosComponent
   ],
   imports: [
     BrowserModule,
