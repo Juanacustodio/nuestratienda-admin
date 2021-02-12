@@ -37,10 +37,9 @@ export class PedidoComponent implements OnInit {
     const pedido = this.firestore.collection('Pedidos').doc(this.id).valueChanges({idField: 'id'});
     pedido.subscribe(params => {
       const pedido = params as Pedido;
-      console.log(params.pedido);
       this.pedido = {
         id: pedido.id,
-        fecha: (new Date(params.fecha.toDate())).toLocaleString(),
+        fecha: (new Date(pedido.fecha.toDate())).toLocaleString(),
         estado: this.estados[pedido.estado],
         estadoColor: this.estadosColor[pedido.estado],
         total: pedido.total,
