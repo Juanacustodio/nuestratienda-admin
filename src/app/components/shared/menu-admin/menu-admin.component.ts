@@ -21,6 +21,10 @@ export class MenuAdminComponent implements OnInit {
       nombre: 'Productos',
       route: '/admin/productos'
     },
+    {
+      nombre: 'Pedidos',
+      route: '/admin/pedidos'
+    },
   ];
 
   constructor(private router: Router, private sessionService: SessionService) { }
