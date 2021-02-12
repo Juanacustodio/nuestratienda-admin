@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {AngularFirestore} from '@angular/fire/firestore';
 import * as _ from 'lodash';
+import {Pedido} from '../models/pedido';
 
 @Component({
   selector: 'app-pedidos',
@@ -26,7 +27,8 @@ export class PedidosComponent implements OnInit {
     };
     firestore.collection('Pedidos').valueChanges({idField: 'id'})
       .subscribe(pedidos => {
-        _.forEach(pedidos, (pedido) => {
+        _.forEach(pedidos, (p) => {
+          const pedido = p as Pedido;
           const newPedido = {
             id: pedido.id,
             fecha: (new Date(pedido.fecha.seconds)).toLocaleString(),
