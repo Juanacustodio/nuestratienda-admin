@@ -31,7 +31,7 @@ export class PedidosComponent implements OnInit {
           const pedido = p as Pedido;
           const newPedido = {
             id: pedido.id,
-            fecha: (new Date(pedido.fecha.seconds)).toLocaleString(),
+            fecha: (new Date(pedido.fecha.toDate())).toLocaleString(),
             estado: this.estados[pedido.estado],
             estadoColor: this.estadosColor[pedido.estado],
             total: pedido.total,
