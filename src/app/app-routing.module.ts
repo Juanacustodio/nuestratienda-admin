@@ -14,6 +14,7 @@ import {HomeComponent} from './components/home/home.component';
 import {AuthGuard} from './auth/auth.guard';
 import {AdminComponent} from './admin/admin.component';
 import {PedidosComponent} from './pedidos/pedidos.component';
+import {PedidoComponent} from './pedido/pedido.component';
 
 const routes: Routes = [
   // { path: '', component: HomeComponent },
@@ -36,6 +37,7 @@ const routes: Routes = [
           { path: 'productos', component: ProductosComponent },
           { path: 'productos/:id', component: ProductoComponent },
           { path: 'pedidos', component: PedidosComponent },
+          { path: 'pedidos/:id', component: PedidoComponent },
         ],
       }
     ]

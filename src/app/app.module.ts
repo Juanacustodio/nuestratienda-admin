@@ -28,6 +28,7 @@ import { MenuAdminComponent } from './components/shared/menu-admin/menu-admin.co
 import { AdminComponent } from './admin/admin.component';
 import { CardFuncionComponent } from './components/card-funcion/card-funcion.component';
 import { PedidosComponent } from './pedidos/pedidos.component';
+import { PedidoComponent } from './pedido/pedido.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { PedidosComponent } from './pedidos/pedidos.component';
     MenuAdminComponent,
     AdminComponent,
     CardFuncionComponent,
-    PedidosComponent
+    PedidosComponent,
+    PedidoComponent
   ],
   imports: [
     BrowserModule,
