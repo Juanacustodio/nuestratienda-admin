@@ -28,6 +28,8 @@ import { MenuAdminComponent } from './components/shared/menu-admin/menu-admin.co
 import { AdminComponent } from './admin/admin.component';
 import { CardFuncionComponent } from './components/card-funcion/card-funcion.component';
 import { CardProductoComponent } from './components/card-producto/card-producto.component';
+import { PedidosComponent } from './pedidos/pedidos.component';
+import { PedidoComponent } from './pedido/pedido.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,9 @@ import { CardProductoComponent } from './components/card-producto/card-producto.
     MenuAdminComponent,
     AdminComponent,
     CardFuncionComponent,
-    CardProductoComponent
+    CardProductoComponent,
+    PedidosComponent,
+    PedidoComponent
   ],
   imports: [
     BrowserModule,
