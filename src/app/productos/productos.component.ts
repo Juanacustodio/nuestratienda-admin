@@ -20,31 +20,49 @@ export class ProductosComponent implements OnInit {
   constructor(private router: Router, private firestore: AngularFirestore) {
     this.productos = firestore.collection('Productos').valueChanges({ idField: 'id' })
       .subscribe(productos => this.productos = productos);
-    this.btnText = 'Guardar'
+    this.btnText = 'GUARDAR'
     this.modalTitle = 'Detalles del producto'
     this.id = ''
   }
 
   ngOnInit(): void {
+
     const categorias = this.firestore.collection('Categorias').valueChanges();
     categorias.subscribe(params => {
       [{ 'Categorias': this.categorias }] = params as Array<{ Categorias: any }>;
     });
   }
 
+  guardarProducto() {
+  
+    const {id, ...producto} = this.producto;
+    if (this.id === 'nuevo') {
+      
+      this.firestore.collection('Productos').add(producto);
+      console.log(this.producto)
+    } else {
+      this.firestore.collection('Productos').doc(this.id).set(producto as Producto)
+      console.log(this.producto)
+    }
+  }
   // toProductDetail(id: string): void {
   //this.router.navigate(['/admin/productos/' + id]);
   // }
   productDetail(id: string) {
-    if (this.id === 'nuevo') {
-    //TODO Revisar por que no funciona
+    if (id === 'nuevo') {
+      this.id = id
       this.btnText = 'AGREGAR'
       this.modalTitle = 'Nuevo producto'
+      this.producto = {} as Producto      
+    } else {
+      this.btnText = 'GUARDAR'
+      this.modalTitle = 'Detalles del producto'      
+      this.productos.forEach((p: Producto) => {
+        if (p.id == id) {
+          this.id = p.id
+          this.producto = p
+        }
+      })
     }
-    this.productos.forEach((p: Producto) => {
-      if (p.id == id) {
-        this.producto = p
-      }
-    });
   }
 }

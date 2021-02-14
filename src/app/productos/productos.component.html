@@ -92,34 +92,30 @@
           </div>  
 
           <div class="row">
-            <div class="col-sm"><label for="urlImg" class="form-label">  <small><strong> Imagen: </strong></small> </label>
-              <input type="text" class="form-control mb-3" id="urlImg" value="{{ producto.urlImg }}"
-                [(ngModel)]="producto.urlImg">
+            <div class="col-sm">
+              <label for="precio" class="form-label">  <small><strong> Precio S/: </strong></small> </label>
+              <input type="number" class="form-control mb-3" id="precio" value="{{ producto.precio }}"
+                [(ngModel)]="producto.precio">
 
-                <label for="precio" class="form-label">  <small><strong> Precio S/: </strong></small> </label>
-                <input type="number" class="form-control mb-3" id="precio" value="{{ producto.precio }}"
-                  [(ngModel)]="producto.precio">
+
+              <label for="urlImg" class="form-label">  <small><strong> Imagen: </strong></small> </label>
+              <input type="text" class="form-control mb-3" id="urlImg" value="{{ producto.urlImg }}"
+                [(ngModel)]="producto.urlImg">             
               
               </div>
-            <div class="col-4">
+            <div class="col-sm-12 text-center">
               <img src="{{ producto.urlImg }}" style="height: 12rem; width: auto;">
             </div>
-          </div>
-
-          
-
-         
-
-
-
-          
+          </div>          
           <!-- <button class="btn btn-success mr-2" (click)="guardarProducto()">{{ btnText }}</button>
                 <button class="btn btn-outline-danger" (click)="eliminarProducto()">Eliminar</button> -->
       </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-outline-primary bg-white" >Eliminar</button>
+        <button type="button" class="btn btn-primary mr-2" (click)="guardarProducto()"> {{btnText}} </button>      
+      </div>
     </div>
-    <div class="modal-footer">
-      <button class="btn btn-outline-primary bg-white">Eliminar</button>
-      <button class="btn btn-primary mr-2"> {{btnText}} </button>      
-    </div>
+ 
   </div>
 </div>
