@@ -3,58 +3,24 @@
     <i class="fas fa-shopping-bag"></i> Productos
   </h2>
   <div class="text-right">
-    <!-- <button class="btn btn-primary" (click)="toProductDetail('nuevo');"> -->
     <button class="btn btn-primary" (click)="productDetail('nuevo');" data-toggle="modal" data-target="#exampleModal">
       <i class="fas fa-plus "></i> Agregar producto
     </button>
   </div>
-
-  <!-- <div class="table-responsive">
-    <table class="table table-hover">
-      <thead class="thead-light">
-      <tr>
-        <th scope="col">Nombre</th>
-        <th scope="col">Marca</th>
-        <th scope="col">Precio</th>
-        <th scope="col">Detalle</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr *ngFor="let producto of productos">
-        <td>{{producto.nombre}}</td>
-        <td>{{producto.marca}}</td>
-        <td>{{producto.precio}}</td>
-        <td>
-          <button class="btn btn-info" (click)="toProductDetail(producto.id)">
-            <i class="fas fa-edit"></i>
-          </button>
-        </td>
-      </tr>
-      </tbody>
-    </table>
-  </div> -->
-
-
   <div class="card-columns mt-5">
     <div class="card text-center mb-4" *ngFor="let producto of productos">
       <img class="card-img-top" src="{{producto.urlImg}}" alt="Card image cap" style="width: 50%; height: auto;">
       <div class="card-body">
         <h5 class="card-title">{{producto.nombre}}</h5>
         <p class="card-text">{{producto.marca}}</p>
-
-
         <button type="button" class="btn btn-primary" (click)="productDetail(producto.id)" data-toggle="modal"
           data-target="#exampleModal">
           Ver detalle
         </button>
-
       </div>
     </div>
   </div>
 </div>
-
-
-
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
   aria-hidden="true" *ngIf="producto">
   <div class="modal-dialog" role="document">
@@ -66,17 +32,14 @@
         </button>
       </div>
       <div class="modal-body p-4">
-
           <label for="nombre" class="form-label"> <small><strong> Nombre: </strong></small>  </label>
           <input type="text" class="form-control mb-3" id="nombre" value="{{ producto.nombre }}"
             [(ngModel)]="producto.nombre">
-
           <div class="form-group">
             <label for="descripcion" class="form-label"> <small><strong> Descripcion: </strong></small></label>
             <textarea class="form-control" id="descripcion" rows="3" value="{{ producto.descripcion }}"
               [(ngModel)]="producto.descripcion"></textarea>
           </div>
-
           <div class="row">
             <div class="col-sm-6">
               <label for="marca" class="form-label">  <small><strong> Marca: </strong></small> </label>
@@ -86,36 +49,28 @@
             <div class="col-sm-6">
               <label for="categoria" class="form-label">  <small><strong> Categoria: </strong></small> </label>
                <select class="form-control mb-3" id="categoria" value="{{ producto.categoria }}" [(ngModel)]="producto.categoria">
-                      <option *ngFor="let cat of categorias" value="{{ cat.nombre }}"> {{ cat.nombre }} </option>
-                    </select> 
+                  <option *ngFor="let cat of categorias" value="{{ cat.nombre }}"> {{ cat.nombre }} </option>
+                </select>
             </div>
-          </div>  
-
+          </div>
           <div class="row">
             <div class="col-sm">
               <label for="precio" class="form-label">  <small><strong> Precio S/: </strong></small> </label>
               <input type="number" class="form-control mb-3" id="precio" value="{{ producto.precio }}"
                 [(ngModel)]="producto.precio">
-
-
               <label for="urlImg" class="form-label">  <small><strong> Imagen: </strong></small> </label>
               <input type="text" class="form-control mb-3" id="urlImg" value="{{ producto.urlImg }}"
-                [(ngModel)]="producto.urlImg">             
-              
+                [(ngModel)]="producto.urlImg">
               </div>
             <div class="col-sm-12 text-center">
               <img src="{{ producto.urlImg }}" style="height: 12rem; width: auto;">
             </div>
-          </div>          
-          <!-- <button class="btn btn-success mr-2" (click)="guardarProducto()">{{ btnText }}</button>
-                <button class="btn btn-outline-danger" (click)="eliminarProducto()">Eliminar</button> -->
+          </div>
       </div>
-
       <div class="modal-footer">
         <button class="btn btn-outline-primary bg-white" >Eliminar</button>
-        <button type="button" class="btn btn-primary mr-2" (click)="guardarProducto()"> {{btnText}} </button>      
+        <button type="button" class="btn btn-primary mr-2" (click)="guardarProducto()"> {{btnText}} </button>
       </div>
     </div>
- 
   </div>
 </div>
