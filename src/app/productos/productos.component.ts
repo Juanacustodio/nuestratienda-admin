@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
-import { Router } from '@angular/router';
-import { Producto } from '../models/producto';
+import {Component, OnInit} from '@angular/core';
+import {AngularFirestore} from '@angular/fire/firestore';
+import {Router} from '@angular/router';
+import {Producto} from '../models';
 
 @Component({
   selector: 'app-productos',
@@ -11,58 +10,53 @@ import { Producto } from '../models/producto';
 })
 export class ProductosComponent implements OnInit {
   productos: any;
-  producto = {} as Producto
-  btnText: string
-  modalTitle: String
+  producto = {} as Producto;
+  btnText: string;
+  modalTitle: string;
   id: string;
   categorias: any;
 
   constructor(private router: Router, private firestore: AngularFirestore) {
-    this.productos = firestore.collection('Productos').valueChanges({ idField: 'id' })
+    this.productos = firestore.collection('Productos').valueChanges({idField: 'id'})
       .subscribe(productos => this.productos = productos);
-    this.btnText = 'GUARDAR'
-    this.modalTitle = 'Detalles del producto'
-    this.id = ''
+    this.btnText = 'GUARDAR';
+    this.modalTitle = 'Detalles del producto';
+    this.id = '';
   }
 
   ngOnInit(): void {
-
     const categorias = this.firestore.collection('Categorias').valueChanges();
     categorias.subscribe(params => {
-      [{ 'Categorias': this.categorias }] = params as Array<{ Categorias: any }>;
+      [{'Categorias': this.categorias}] = params as Array<{ Categorias: any }>;
     });
   }
 
   guardarProducto() {
-  
     const {id, ...producto} = this.producto;
     if (this.id === 'nuevo') {
-      
       this.firestore.collection('Productos').add(producto);
-      console.log(this.producto)
+      console.log(this.producto);
     } else {
-      this.firestore.collection('Productos').doc(this.id).set(producto as Producto)
-      console.log(this.producto)
+      this.firestore.collection('Productos').doc(this.id).set(producto as Producto);
+      console.log(this.producto);
     }
   }
-  // toProductDetail(id: string): void {
-  //this.router.navigate(['/admin/productos/' + id]);
-  // }
-  productDetail(id: string) {
+
+  productDetail(id: string): void {
     if (id === 'nuevo') {
-      this.id = id
-      this.btnText = 'AGREGAR'
-      this.modalTitle = 'Nuevo producto'
-      this.producto = {} as Producto      
+      this.id = id;
+      this.btnText = 'AGREGAR';
+      this.modalTitle = 'Nuevo producto';
+      this.producto = {} as Producto;
     } else {
-      this.btnText = 'GUARDAR'
-      this.modalTitle = 'Detalles del producto'      
+      this.btnText = 'GUARDAR';
+      this.modalTitle = 'Detalles del producto';
       this.productos.forEach((p: Producto) => {
-        if (p.id == id) {
-          this.id = p.id
-          this.producto = p
+        if (p.id === id) {
+          this.id = p.id;
+          this.producto = p;
         }
-      })
+      });
     }
   }
 }
