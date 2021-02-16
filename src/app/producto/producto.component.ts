@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ActivatedRoute } from '@angular/router';
-import { Producto } from '../models/producto';
+import { Producto } from '../models';
 
 @Component({
   selector: 'app-producto',
@@ -9,14 +9,12 @@ import { Producto } from '../models/producto';
   styleUrls: ['./producto.component.scss']
 })
 export class ProductoComponent implements OnInit {
-  desktop: boolean;
   producto: Producto;
   id: string;
   btnText: string;
   categorias: any;
 
   constructor(private activatedRoute: ActivatedRoute, private firestore: AngularFirestore) {
-    this.desktop = true;
     this.id = '';
     this.btnText = 'Guardar';
     this.producto = {} as Producto;
