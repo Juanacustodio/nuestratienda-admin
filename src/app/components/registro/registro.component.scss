@@ -1,6 +1,6 @@
 .registro {
     padding-top: 80px;
-    min-height: 100vh;
+    padding-bottom: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -10,7 +10,7 @@
     border-radius: 20px;
     border: none;
     overflow: hidden;
-    box-shadow: 0 5px 20px #414141;
+    box-shadow: 0 5px 20px #efefef;
     z-index: 0;
     box-sizing: border-box;
 }

@@ -6,17 +6,20 @@
     <div class="card-body">
       <div class="form-group">
         <label for="nombre">Nombre de mi tienda</label>
-        <input type="text" class="form-control" id="nombre" name="nombre" value="{{ tienda.nombre }}" [(ngModel)]="tienda.nombre">
+        <input type="text" class="form-control" id="nombre" name="nombre" value="{{ tienda.nombre }}"
+          [(ngModel)]="tienda.nombre">
       </div>
       <div class="form-group">
         <label for="detalle">Detalle</label>
-        <input type="text" class="form-control" id="detalle" name="detalle" value="{{ tienda.detalle }}" [(ngModel)]="tienda.detalle">
+        <input type="text" class="form-control" id="detalle" name="detalle" value="{{ tienda.detalle }}"
+          [(ngModel)]="tienda.detalle">
       </div>
       <div class="form-group">
         <label for="direccion">Dirección</label>
-        <input type="text" class="form-control" id="direccion" name="direccion" value="{{ tienda.direccion }}" [(ngModel)]="tienda.direccion">
+        <input type="text" class="form-control" id="direccion" name="direccion" value="{{ tienda.direccion }}"
+          [(ngModel)]="tienda.direccion">
       </div>
-      <div class="row">
+      <!-- <div class="row">
         <div class="form-group col-md-3">
           <label for="logo">Logo</label>
           <input type="file" class="form-control-file" id="logo" [(ngModel)]="tienda.logoUrl">
@@ -24,19 +27,34 @@
         <div class="form-group col-md-3">
           <img class="logo" src="{{ tienda.logoUrl }}">
         </div>
-      </div>
+      </div> -->
+
       <div class="row">
+        <div class="form-group col-md-4">
+          <label for="logo">Logo</label>
+          <input #file type="file" accept='image/*' (change)="preview(file.files)" id="logo" />
+        </div>
+        <div class="col">        
+          <img class="logo" [src]="imgURL" height="200" *ngIf="imgURL">
+          <img class="logo" src="{{ tienda.logoUrl }}" *ngIf="!imgURL">
+        </div>
+      </div>
+
+
+      <div class="row mt-3">
         <div class="form-group col-md-3">
           <label for="color1">Color principal</label>
-          <input type="text" class="form-control" id="color1" name="color1" value="{{ tienda.color1 }}" [(ngModel)]="tienda.color1" [(colorPicker)]="tienda.color1" [style.background]="tienda.color1">
+          <input type="text" class="form-control" id="color1" name="color1" value="{{ tienda.color1 }}"
+            [(ngModel)]="tienda.color1" [(colorPicker)]="tienda.color1" [style.background]="tienda.color1">
         </div>
         <div class="form-group col-md-3">
           <label for="color2">Color secundario</label>
-          <input type="text" class="form-control" id="color2" name="color2" value="{{ tienda.color2 }}" [(ngModel)]="tienda.color2" [(colorPicker)]="tienda.color2" [style.background]="tienda.color2">
+          <input type="text" class="form-control" id="color2" name="color2" value="{{ tienda.color2 }}"
+            [(ngModel)]="tienda.color2" [(colorPicker)]="tienda.color2" [style.background]="tienda.color2">
         </div>
       </div>
-      <div class="card-footer bg-transparent border-success">
-        <button type="submit" class="btn btn-success" (click)="guardarTienda()">Guardar</button>
+      <div class="card-footer bg-transparent border-primary">
+        <button type="submit" class="btn btn-primary" (click)="guardarTienda()">Guardar</button>
       </div>
     </div>
   </div>
