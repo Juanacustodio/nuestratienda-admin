@@ -15,4 +15,11 @@ $(document).ready(function () {
   }
 
   handleSmallScreens()
+
+  $('#logo').change( function(event) {
+    var img = $('.logo')[0];
+    var url = URL.createObjectURL(event.target.files[0]);
+    img.src = url;
+  })
 });
+
