@@ -29,23 +29,27 @@ export class TiendaComponent implements OnInit {
       });
   }
 
-  guardarTienda(): void {
-    const logo = document.getElementById("logo").files[0];
-    const referencia = this.firestorage.ref('logo');
-    this.firestorage.upload('logo', logo);
-    referencia.getDownloadURL().subscribe((URL) => {
-      this.tienda.logoUrl = URL;
-      this.apiService
-        .updateTienda(this.tienda)
-        .subscribe((result: any) => {
-          Swal.fire({
-            icon: 'success',
-            title: 'Actualización exitosa',
-            showConfirmButton: false,
-            timer: 1500
-          });
-        });
-    });
+  guardarTienda(){
+    
   }
+
+  // guardarTienda(): void {
+  //   const logo = document.getElementById("logo").files[0];
+  //   const referencia = this.firestorage.ref('logo');
+  //   this.firestorage.upload('logo', logo);
+  //   referencia.getDownloadURL().subscribe((URL) => {
+  //     this.tienda.logoUrl = URL;
+  //     this.apiService
+  //       .updateTienda(this.tienda)
+  //       .subscribe((result: any) => {
+  //         Swal.fire({
+  //           icon: 'success',
+  //           title: 'Actualización exitosa',
+  //           showConfirmButton: false,
+  //           timer: 1500
+  //         });
+  //       });
+  //   });
+  // }
 
 }

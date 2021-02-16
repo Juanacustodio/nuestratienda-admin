@@ -9,7 +9,7 @@
 	</div>
 	<div class="card-columns mt-5">
 		<div class="card text-center mb-4" *ngFor="let producto of productos">
-			<img class="card-img-top" src="{{producto.urlImg}}" alt="Card image cap" style="width: 50%; height: auto;">
+			<img class="card-img-top" src="{{producto.urlImg}}" alt="Card image cap" >
 			<div class="card-body">
 				<h5 class="card-title">{{producto.nombre}}</h5>
 				<p class="card-text">{{producto.marca}}</p>
@@ -17,10 +17,16 @@
 								data-target="#exampleModal">
 					Ver detalle
 				</button>
+
+				<button class="btn btn-primary ml-3" data-toggle="modal" data-target="#deleteModal" (click)="setIdToDelete(producto.id)">
+					<i class="fa fa-trash-alt"></i>
+				</button>
 			</div>
 		</div>
 	</div>
 </div>
+
+<!--MODAL AGREGAR/ELIMINAR PRODUCTO-->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
 		 aria-hidden="true" *ngIf="producto">
 	<div class="modal-dialog" role="document">
@@ -75,3 +81,26 @@
 		</div>
 	</div>
 </div>
+
+<!-- MODAL ELIMINAR PRODUCTO-->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <h5 class="modal-title" id="exampleModalLabel">Eliminar producto</h5>
+		  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		  </button>
+		</div>
+		<div class="modal-body">
+		  Confirma que desea eliminar el producto?
+		</div>
+		<div class="modal-footer">
+		  <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+		  <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="eliminarProducto()">Si</button>
+		</div>
+	  </div>
+	</div>
+  </div>
+
+

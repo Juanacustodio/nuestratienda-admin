@@ -42,6 +42,14 @@ export class ProductosComponent implements OnInit {
     }
   }
 
+  setIdToDelete(id: string) {
+    this.id = id
+  }
+
+  eliminarProducto() {
+    this.firestore.collection('Productos').doc(this.id).delete();
+  }
+
   productDetail(id: string): void {
     if (id === 'nuevo') {
       this.id = id;
