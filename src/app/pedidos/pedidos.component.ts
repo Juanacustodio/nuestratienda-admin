@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {AngularFirestore} from '@angular/fire/firestore';
 import * as _ from 'lodash';
-import {Pedido} from '../models/pedido';
+import {Pedido} from '../models';
 
 @Component({
   selector: 'app-pedidos',
