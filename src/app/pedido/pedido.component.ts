@@ -39,7 +39,6 @@ export class PedidoComponent implements OnInit {
       const pedido = params as Pedido;
       const cliente = this.firestore.collection('Usuarios').doc(pedido.clienteID).valueChanges();
       cliente.subscribe(c => {
-        console.log(c);
         this.pedido = {
           id: pedido.id,
           fecha: (new Date(pedido.fecha.toDate())).toLocaleString(),
