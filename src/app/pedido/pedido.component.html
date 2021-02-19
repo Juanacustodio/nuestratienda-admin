@@ -53,7 +53,7 @@
                   <th scope="row">1</th>
                   <td>Costo de envío</td>
                   <td>10% del total</td>
-                  <td>--</td>
+                  <td>{{pedido.envio}}</td>
                 </tr>
                 <tr>
                   <td colspan="3">Total</td>
@@ -69,9 +69,29 @@
     <div class="col-md-4">
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title">Usuario</h5>
-          <p class="card-text">Información de usuario</p>
-          <a href="#" class="btn btn-primary">Notificar</a>
+          <h5 class="card-title"><i class="fas fa-user"></i> Usuario</h5>
+          <div class="card-text">
+            <p><span class="font-weight-bold">Nombre:</span>  {{pedido.cliente.nombreCompleto}}</p>
+            <p><span class="font-weight-bold">Celular:</span>  {{pedido.cliente.celular}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="mt-4 mb-4"></div>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"><i class="fas fa-bus"></i> Envío</h5>
+          <div class="card-text">
+            <p>
+              <span class="font-weight-bold">Dirección:</span>
+              Calle {{pedido.cliente.direccion.calle}} {{pedido.cliente.direccion.numero}}
+              <br>
+              {{pedido.cliente.direccion.distrito}}, {{pedido.cliente.direccion.provincia}}, {{pedido.cliente.direccion.departamento}}
+            </p>
+            <p><span class="font-weight-bold">Referencia:</span>  {{pedido.cliente.direccion.referencia}}</p>
+          </div>
+          <a href="#" class="btn btn-primary">
+            <i class="fas fa-bell"></i> Pedido en camino
+          </a>
         </div>
       </div>
     </div>

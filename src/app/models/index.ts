@@ -3,6 +3,7 @@ export {Tienda} from './tienda';
 export {Usuario} from './usuario';
 export {Vendedor} from './Vendedor';
 export {Pedido} from './pedido';
+export {Cliente} from './cliente';
 
 export {TarjetaCulqui} from './culqui';
 

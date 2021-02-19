@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AngularFirestore} from '@angular/fire/firestore';
-import {Pedido} from '../models';
+import {Pedido, Cliente} from '../models';
 import {ActivatedRoute} from '@angular/router';
 
 @Component({
@@ -37,14 +37,21 @@ export class PedidoComponent implements OnInit {
     const pedido = this.firestore.collection('Pedidos').doc(this.id).valueChanges({idField: 'id'});
     pedido.subscribe(params => {
       const pedido = params as Pedido;
-      this.pedido = {
-        id: pedido.id,
-        fecha: (new Date(pedido.fecha.toDate())).toLocaleString(),
-        estado: this.estados[pedido.estado],
-        estadoColor: this.estadosColor[pedido.estado],
-        total: pedido.total,
-        pedido: pedido.pedido,
-      };
+      const cliente = this.firestore.collection('Usuarios').doc(pedido.clienteID).valueChanges();
+      cliente.subscribe(c => {
+        console.log(c);
+        this.pedido = {
+          id: pedido.id,
+          fecha: (new Date(pedido.fecha.toDate())).toLocaleString(),
+          estado: this.estados[pedido.estado],
+          estadoColor: this.estadosColor[pedido.estado],
+          envio: pedido.envio,
+          total: pedido.total,
+          pedido: pedido.pedido,
+          clienteID: pedido.clienteID,
+          cliente: c as Cliente,
+        };
+      });
     });
   }
 
