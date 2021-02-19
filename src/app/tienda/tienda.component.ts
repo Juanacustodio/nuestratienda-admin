@@ -19,28 +19,24 @@ export class TiendaComponent implements OnInit {
   //
   public imagePath: any;
   imgURL: any;
-  public message = "";
+  public message = '';
 
   preview(files: any) {
-    if (files.length === 0)
+    if (files.length === 0) {
       return;
- 
-    var mimeType = files[0].type;
+    }
+    const mimeType = files[0].type;
     if (mimeType.match(/image\/*/) == null) {
-      this.message = "Solo archivos de imagen validos son soportados";
+      this.message = 'Solo archivos de imagen validos son soportados';
       return;
     }
- 
-    var reader = new FileReader();
+    const reader = new FileReader();
     this.imagePath = files;
-    reader.readAsDataURL(files[0]); 
-    reader.onload = (_event) => { 
-      this.imgURL = reader.result; 
-    }
+    reader.readAsDataURL(files[0]);
+    reader.onload = (_event) => {
+      this.imgURL = reader.result;
+    };
   }
-
-  //
-
 
   constructor(private apiService: ApiService, private cookies: CookieService, private firestorage: AngularFireStorage) {
     this.tiendaId = parseInt(this.cookies.get('tiendaId'));
@@ -55,10 +51,8 @@ export class TiendaComponent implements OnInit {
       });
   }
 
-
   guardarTienda(): void {
-    //const logo: any  = document.getElementById("logo").files[0];
-    const logo  = (<HTMLInputElement>document.getElementById("logo")).files?.item(0);
+    const logo  = (<HTMLInputElement>document.getElementById('logo')).files?.item(0);
     const referencia = this.firestorage.ref('logo');
     this.firestorage.upload('logo', logo);
     referencia.getDownloadURL().subscribe((URL) => {
