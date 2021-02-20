@@ -3,6 +3,7 @@ import {AngularFirestore} from '@angular/fire/firestore';
 import {Pedido, Cliente} from '../models';
 import {ActivatedRoute} from '@angular/router';
 import {PusherService} from '../services';
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-pedido',
@@ -57,6 +58,12 @@ export class PedidoComponent implements OnInit {
 
   sendNotification(): void {
     this.pusherService.trigger('pedido', 'enviado-' + this.pedido.id);
+    Swal.fire({
+      icon: 'success',
+      title: 'Notificación enviada',
+      showConfirmButton: false,
+      timer: 1500
+    });
   }
 
 }
