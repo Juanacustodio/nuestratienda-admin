@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {AngularFirestore} from '@angular/fire/firestore';
 import {Pedido, Cliente} from '../models';
 import {ActivatedRoute} from '@angular/router';
+import {PusherService} from '../services';
 
 @Component({
   selector: 'app-pedido',
@@ -15,7 +16,7 @@ export class PedidoComponent implements OnInit {
   estados: any;
   estadosColor: any;
 
-  constructor(private activatedRoute: ActivatedRoute, private firestore: AngularFirestore) {
+  constructor(private activatedRoute: ActivatedRoute, private firestore: AngularFirestore, private pusherService: PusherService) {
     this.id = '';
     this.pedido = {} as Pedido;
     this.estados = {
@@ -52,6 +53,10 @@ export class PedidoComponent implements OnInit {
         };
       });
     });
+  }
+
+  sendNotification(): void {
+    this.pusherService.trigger('pedido', 'enviado-' + this.pedido.id);
   }
 
 }
