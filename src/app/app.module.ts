@@ -11,7 +11,7 @@ import { ColorPickerModule } from 'ngx-color-picker';
 import { AngularFireModule } from '@angular/fire';
 
 import { CookieService } from 'ngx-cookie-service';
-import {ApiService, CulquiService, SessionService} from './services';
+import {ApiService, CulquiService, SessionService, PusherService} from './services';
 
 import { ProductosComponent } from './productos/productos.component';
 import { ProductoComponent } from './producto/producto.component';
@@ -65,7 +65,8 @@ import { PedidoComponent } from './pedido/pedido.component';
     CookieService,
     ApiService,
     CulquiService,
-    SessionService
+    SessionService,
+    PusherService,
   ],
   bootstrap: [AppComponent]
 })
