@@ -6,6 +6,7 @@ import Swal from 'sweetalert2';
 import {CulquiService} from '../../services/culqui.service';
 import {ApiService} from '../../services';
 import {DatePipe} from '@angular/common';
+import {PopupHelper} from '../../helpers/popup.helper';
 
 @Component({
   selector: 'app-registro',
@@ -13,6 +14,8 @@ import {DatePipe} from '@angular/common';
   styleUrls: ['./registro.component.scss']
 })
 export class RegistroComponent implements OnInit {
+
+  popup = new PopupHelper();
 
   constructor(private router: Router, private culquiService: CulquiService, private apiService: ApiService) {
   }
@@ -121,13 +124,7 @@ export class RegistroComponent implements OnInit {
           }
         );
     } else {
-      Swal.fire({
-        icon: 'error',
-        title: 'datos invalidos',
-        showConfirmButton: false,
-        timer: 1500
-      });
-
+      this.popup.showErrorPopup('datos invalidos');
     }
   }
 

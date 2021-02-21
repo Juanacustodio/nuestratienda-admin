@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {CookieService} from 'ngx-cookie-service';
 import {Tienda} from '../models';
-import Swal from 'sweetalert2';
 import {ApiService} from '../services';
 import { AngularFireStorage } from '@angular/fire/storage';
+import {PopupHelper} from '../helpers/popup.helper';
 
 @Component({
   selector: 'app-tienda',
@@ -18,6 +18,7 @@ export class TiendaComponent implements OnInit {
   public imagePath: any;
   imgURL: any;
   public message = '';
+  popup = new PopupHelper();
 
   constructor(private apiService: ApiService, private cookies: CookieService, private firestorage: AngularFireStorage) {
     this.tiendaId = parseInt(this.cookies.get('tiendaId'));
@@ -60,12 +61,7 @@ export class TiendaComponent implements OnInit {
       this.apiService
         .updateTienda(this.tienda)
         .subscribe((result: any) => {
-          Swal.fire({
-            icon: 'success',
-            title: 'Actualización exitosa',
-            showConfirmButton: false,
-            timer: 1500
-          });
+          this.popup.showSuccessPopup('Actualización exitosa');
         });
     });
   }

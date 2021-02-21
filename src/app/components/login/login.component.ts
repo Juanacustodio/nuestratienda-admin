@@ -2,9 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {FormGroup, FormControl, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {Usuario, Session} from '../../models';
-import Swal from 'sweetalert2';
 import {CookieService} from 'ngx-cookie-service';
 import {ApiService, SessionService} from '../../services';
+import {PopupHelper} from '../../helpers/popup.helper';
 
 @Component({
   selector: 'app-login',
@@ -14,6 +14,7 @@ import {ApiService, SessionService} from '../../services';
 export class LoginComponent implements OnInit {
 
   correoFormat = '[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$';
+  popup = new PopupHelper();
 
   constructor(private apiService: ApiService, private router: Router, private cookies: CookieService, private sessionService: SessionService) {
   }
@@ -40,32 +41,17 @@ export class LoginComponent implements OnInit {
       this.apiService
         .login(user)
         .subscribe((result: Session) => {
-          Swal.fire({
-            icon: 'success',
-            title: 'Bienvenido a mi Tienda',
-            showConfirmButton: false,
-            timer: 1500
-          });
+          this.popup.showSuccessPopup('Bienvenido a mi Tienda');
 
           this.cookies.set('tiendaId', result.UserID);
           this.sessionService.setSessionToken(result.token);
 
           this.router.navigate(['/admin/productos']);
         }, (err: any) => {
-          Swal.fire({
-            icon: 'error',
-            title: 'correo o contraseña incorrectos',
-            showConfirmButton: false,
-            timer: 1500
-          });
+          this.popup.showErrorPopup('correo o contraseña incorrectos');
         });
     } else {
-      Swal.fire({
-        icon: 'error',
-        title: 'datos invalidos',
-        showConfirmButton: false,
-        timer: 1500
-      });
+      this.popup.showErrorPopup('datos invalidos');
     }
   }
 

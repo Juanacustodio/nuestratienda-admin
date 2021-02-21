@@ -3,7 +3,7 @@ import {AngularFirestore} from '@angular/fire/firestore';
 import {Pedido, Cliente} from '../models';
 import {ActivatedRoute} from '@angular/router';
 import {PusherService} from '../services';
-import Swal from 'sweetalert2';
+import {PopupHelper} from '../helpers/popup.helper';
 
 @Component({
   selector: 'app-pedido',
@@ -17,6 +17,7 @@ export class PedidoComponent implements OnInit {
   estados: any;
   estadosColor: any;
   load: boolean;
+  popup = new PopupHelper();
 
   constructor(private activatedRoute: ActivatedRoute, private firestore: AngularFirestore, private pusherService: PusherService) {
     this.id = '';
@@ -61,12 +62,7 @@ export class PedidoComponent implements OnInit {
 
   sendNotification(): void {
     this.pusherService.trigger('pedido', 'enviado-' + this.pedido.id);
-    Swal.fire({
-      icon: 'success',
-      title: 'Notificación enviada',
-      showConfirmButton: false,
-      timer: 1500
-    });
+    this.popup.showSuccessPopup('Notificación enviada');
   }
 
 }
