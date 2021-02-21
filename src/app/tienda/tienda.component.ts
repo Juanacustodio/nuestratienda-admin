@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-
 import {CookieService} from 'ngx-cookie-service';
 import {Tienda} from '../models';
 import Swal from 'sweetalert2';
@@ -16,28 +15,9 @@ export class TiendaComponent implements OnInit {
   load: boolean;
   tiendaId: number;
   tienda: Tienda;
-
-  //
   public imagePath: any;
   imgURL: any;
   public message = '';
-
-  preview(files: any) {
-    if (files.length === 0) {
-      return;
-    }
-    const mimeType = files[0].type;
-    if (mimeType.match(/image\/*/) == null) {
-      this.message = 'Solo archivos de imagen validos son soportados';
-      return;
-    }
-    const reader = new FileReader();
-    this.imagePath = files;
-    reader.readAsDataURL(files[0]);
-    reader.onload = (_event) => {
-      this.imgURL = reader.result;
-    };
-  }
 
   constructor(private apiService: ApiService, private cookies: CookieService, private firestorage: AngularFireStorage) {
     this.tiendaId = parseInt(this.cookies.get('tiendaId'));
@@ -52,6 +32,23 @@ export class TiendaComponent implements OnInit {
         this.tienda = result as Tienda;
         this.load = false;
       });
+  }
+
+  preview(files: any): void {
+    if (files.length === 0) {
+      return;
+    }
+    const mimeType = files[0].type;
+    if (mimeType.match(/image\/*/) == null) {
+      this.message = 'Solo archivos de imagen validos son soportados';
+      return;
+    }
+    const reader = new FileReader();
+    this.imagePath = files;
+    reader.readAsDataURL(files[0]);
+    reader.onload = (event) => {
+      this.imgURL = reader.result;
+    };
   }
 
   guardarTienda(): void {
@@ -72,5 +69,4 @@ export class TiendaComponent implements OnInit {
         });
     });
   }
-
 }

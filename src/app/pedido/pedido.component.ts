@@ -3,7 +3,7 @@ import {AngularFirestore} from '@angular/fire/firestore';
 import {Pedido, Cliente} from '../models';
 import {ActivatedRoute} from '@angular/router';
 import {PusherService} from '../services';
-import Swal from "sweetalert2";
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-pedido',
