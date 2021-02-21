@@ -8,7 +8,8 @@
         <div class="card">
           <div class="card-header" id="headingOne">
             <h2 class="mb-0">
-              <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse"
+                      data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                 Detalle
               </button>
             </h2>
@@ -32,7 +33,8 @@
             <ng-template #detail>
               <div class="card-body">
                 <p><span class="font-weight-bold">ID: </span><span>{{pedido.id}}</span></p>
-                <p><span class="font-weight-bold">Estado:</span> <span class="badge badge-{{pedido.estadoColor}}">{{pedido.estado}}</span></p>
+                <p><span class="font-weight-bold">Estado:</span> <span
+                  class="badge badge-{{pedido.estadoColor}}">{{pedido.estado}}</span></p>
                 <p><span class="font-weight-bold">Fecha:</span> {{pedido.fecha}}</p>
                 <p><span class="font-weight-bold">Total:</span> {{pedido.total}}</p>
               </div>
@@ -42,7 +44,8 @@
         <div class="card">
           <div class="card-header" id="headingTwo">
             <h2 class="mb-0">
-              <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+              <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse"
+                      data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                 Productos
               </button>
             </h2>
@@ -85,24 +88,24 @@
     <div class="col-md-4">
       <div class="card">
         <div *ngIf="load; else client" class="ph-item">
-        <div class="ph-col-12">
-          <div class="ph-row">
-            <h5 class="card-title"><i class="fas fa-user"></i> Usuario</h5>
-            <div class="ph-col-10 big"></div>
-            <div class="ph-col-2 empty big"></div>
-            <div class="ph-col-10 big"></div>
-            <div class="ph-col-2 empty big"></div>
+          <div class="ph-col-12">
+            <div class="ph-row">
+              <h5 class="card-title"><i class="fas fa-user"></i> Usuario</h5>
+              <div class="ph-col-10 big"></div>
+              <div class="ph-col-2 empty big"></div>
+              <div class="ph-col-10 big"></div>
+              <div class="ph-col-2 empty big"></div>
+            </div>
           </div>
         </div>
-      </div>
         <ng-template #client>
-            <div class="card-body">
-              <h5 class="card-title"><i class="fas fa-user"></i> Usuario</h5>
-                <div class="card-text">
-                  <p><span class="font-weight-bold">Nombre:</span>  {{pedido.cliente.nombreCompleto}}</p>
-                  <p><span class="font-weight-bold">Celular:</span>  {{pedido.cliente.celular}}</p>
-                </div>
+          <div class="card-body">
+            <h5 class="card-title"><i class="fas fa-user"></i> Usuario</h5>
+            <div class="card-text">
+              <p><span class="font-weight-bold">Nombre:</span>  {{pedido.cliente.nombreCompleto}}</p>
+              <p><span class="font-weight-bold">Celular:</span>  {{pedido.cliente.celular}}</p>
             </div>
+          </div>
         </ng-template>
       </div>
       <div class="mt-4 mb-4"></div>
@@ -126,7 +129,8 @@
                 <span class="font-weight-bold">Dirección:</span>
                 Calle {{pedido.cliente.direccion.calle}} {{pedido.cliente.direccion.numero}}
                 <br>
-                {{pedido.cliente.direccion.distrito}}, {{pedido.cliente.direccion.provincia}}, {{pedido.cliente.direccion.departamento}}
+                {{pedido.cliente.direccion.distrito}}, {{pedido.cliente.direccion.provincia}}
+                , {{pedido.cliente.direccion.departamento}}
               </p>
               <p><span class="font-weight-bold">Referencia:</span>  {{pedido.cliente.direccion.referencia}}</p>
             </div>
