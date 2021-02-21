@@ -4,7 +4,7 @@ import {Vendedor, TarjetaCulqui} from '../../models';
 import {Router} from '@angular/router';
 import {CulquiService, ApiService} from '../../services';
 import {DatePipe} from '@angular/common';
-import {PopupHelper} from '../../helpers/popup.helper';
+import {PopupHelper} from '../../helpers';
 
 @Component({
   selector: 'app-registro',

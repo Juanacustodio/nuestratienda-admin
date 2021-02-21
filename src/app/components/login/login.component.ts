@@ -4,7 +4,7 @@ import {Router} from '@angular/router';
 import {Usuario, Session} from '../../models';
 import {CookieService} from 'ngx-cookie-service';
 import {ApiService, SessionService} from '../../services';
-import {PopupHelper} from '../../helpers/popup.helper';
+import {PopupHelper} from '../../helpers';
 
 @Component({
   selector: 'app-login',

@@ -3,7 +3,7 @@ import {CookieService} from 'ngx-cookie-service';
 import {Tienda} from '../models';
 import {ApiService} from '../services';
 import { AngularFireStorage } from '@angular/fire/storage';
-import {PopupHelper} from '../helpers/popup.helper';
+import {PopupHelper} from '../helpers';
 
 @Component({
   selector: 'app-tienda',

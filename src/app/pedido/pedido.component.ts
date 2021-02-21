@@ -3,7 +3,7 @@ import {AngularFirestore} from '@angular/fire/firestore';
 import {Pedido, Cliente} from '../models';
 import {ActivatedRoute} from '@angular/router';
 import {PusherService} from '../services';
-import {PopupHelper} from '../helpers/popup.helper';
+import {PopupHelper} from '../helpers';
 
 @Component({
   selector: 'app-pedido',
