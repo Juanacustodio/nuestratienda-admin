@@ -13,6 +13,7 @@ import { AngularFireStorage } from '@angular/fire/storage';
 })
 export class TiendaComponent implements OnInit {
 
+  load: boolean;
   tiendaId: number;
   tienda: Tienda;
 
@@ -41,6 +42,7 @@ export class TiendaComponent implements OnInit {
   constructor(private apiService: ApiService, private cookies: CookieService, private firestorage: AngularFireStorage) {
     this.tiendaId = parseInt(this.cookies.get('tiendaId'));
     this.tienda = {} as Tienda;
+    this.load = true;
   }
 
   ngOnInit(): void {
@@ -48,6 +50,7 @@ export class TiendaComponent implements OnInit {
       .getTienda(this.tiendaId)
       .subscribe((result: Tienda) => {
         this.tienda = result as Tienda;
+        this.load = false;
       });
   }
 
