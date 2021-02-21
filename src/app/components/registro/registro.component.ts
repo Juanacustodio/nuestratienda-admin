@@ -3,8 +3,7 @@ import {FormGroup, FormControl, Validators} from '@angular/forms';
 import {Vendedor, TarjetaCulqui} from '../../models';
 import {Router} from '@angular/router';
 import Swal from 'sweetalert2';
-import {CulquiService} from '../../services/culqui.service';
-import {ApiService} from '../../services';
+import {CulquiService, ApiService} from '../../services';
 import {DatePipe} from '@angular/common';
 import {PopupHelper} from '../../helpers/popup.helper';
 
@@ -39,7 +38,7 @@ export class RegistroComponent implements OnInit {
   ngOnInit() {
   }
 
-  guardar() {
+  guardar(): void {
     if (this.usuario.valid) {
       const tarjeta: TarjetaCulqui = {
         card_number: this.usuario.value.card_number,
@@ -49,7 +48,7 @@ export class RegistroComponent implements OnInit {
         email: this.usuario.value.email,
       };
       console.log(tarjeta);
-      //inicio Generar Token
+      // inicio Generar Token
       this.culquiService.generarToken(tarjeta)
         .subscribe((result: any) => {
             //captura de token
@@ -109,7 +108,7 @@ export class RegistroComponent implements OnInit {
                 console.log(err);
               });
           }, (err: any) => {
-            //mensaje de Bienvenida
+            // mensaje de Bienvenida
             Swal.fire({
               icon: 'error',
               width: 400,
@@ -120,7 +119,6 @@ export class RegistroComponent implements OnInit {
             });
             console.log(err);
             console.log('Datos de tarjeta invalidos');
-
           }
         );
     } else {
@@ -131,38 +129,38 @@ export class RegistroComponent implements OnInit {
   //variables para validar
   get nombres() {
     return this.usuario.get('nombres');
-  };
+  }
 
   get apellidos() {
     return this.usuario.get('apellidos');
-  };
+  }
 
   get email() {
     return this.usuario.get('email');
-  };
+  }
 
   get password() {
     return this.usuario.get('password');
-  };
+  }
 
   get card_number() {
     return this.usuario.get('card_number');
-  };
+  }
 
   get expiration_month() {
     return this.usuario.get('expiration_month');
-  };
+  }
 
   get expiration_year() {
     return this.usuario.get('expiration_year');
-  };
+  }
 
   get cvv() {
     return this.usuario.get('cvv');
-  };
+  }
 
   get precio() {
     return this.usuario.get('precio');
-  };
+  }
 
 }
