@@ -16,9 +16,11 @@ export class PedidoComponent implements OnInit {
   pedido: Pedido;
   estados: any;
   estadosColor: any;
+  load: boolean;
 
   constructor(private activatedRoute: ActivatedRoute, private firestore: AngularFirestore, private pusherService: PusherService) {
     this.id = '';
+    this.load = true;
     this.pedido = {} as Pedido;
     this.estados = {
       1: 'Pendiente',
@@ -52,6 +54,7 @@ export class PedidoComponent implements OnInit {
           clienteID: pedido.clienteID,
           cliente: c as Cliente,
         };
+        this.load = false;
       });
     });
   }

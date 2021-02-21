@@ -15,12 +15,28 @@
           </div>
 
           <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-            <div class="card-body">
-              <p><span class="font-weight-bold">ID:</span>  {{pedido.id}}</p>
-              <p><span class="font-weight-bold">Estado:</span> <span class="badge badge-{{pedido.estadoColor}}">{{pedido.estado}}</span></p>
-              <p><span class="font-weight-bold">Fecha:</span> {{pedido.fecha}}</p>
-              <p><span class="font-weight-bold">Total:</span> {{pedido.total}}</p>
+            <div *ngIf="load; else detail" class="ph-item">
+              <div class="ph-col-12">
+                <div class="ph-row">
+                  <div class="ph-col-4 big"></div>
+                  <div class="ph-col-8 empty big"></div>
+                  <div class="ph-col-2 big"></div>
+                  <div class="ph-col-10 empty big"></div>
+                  <div class="ph-col-4 big"></div>
+                  <div class="ph-col-8 empty big"></div>
+                  <div class="ph-col-2 big"></div>
+                  <div class="ph-col-10 empty big"></div>
+                </div>
+              </div>
             </div>
+            <ng-template #detail>
+              <div class="card-body">
+                <p><span class="font-weight-bold">ID: </span><span>{{pedido.id}}</span></p>
+                <p><span class="font-weight-bold">Estado:</span> <span class="badge badge-{{pedido.estadoColor}}">{{pedido.estado}}</span></p>
+                <p><span class="font-weight-bold">Fecha:</span> {{pedido.fecha}}</p>
+                <p><span class="font-weight-bold">Total:</span> {{pedido.total}}</p>
+              </div>
+            </ng-template>
           </div>
         </div>
         <div class="card">
@@ -68,32 +84,58 @@
     </div>
     <div class="col-md-4">
       <div class="card">
-        <div class="card-body">
-          <h5 class="card-title"><i class="fas fa-user"></i> Usuario</h5>
-          <div class="card-text">
-            <p><span class="font-weight-bold">Nombre:</span>  {{pedido.cliente.nombreCompleto}}</p>
-            <p><span class="font-weight-bold">Celular:</span>  {{pedido.cliente.celular}}</p>
+        <div *ngIf="load; else client" class="ph-item">
+        <div class="ph-col-12">
+          <div class="ph-row">
+            <h5 class="card-title"><i class="fas fa-user"></i> Usuario</h5>
+            <div class="ph-col-10 big"></div>
+            <div class="ph-col-2 empty big"></div>
+            <div class="ph-col-10 big"></div>
+            <div class="ph-col-2 empty big"></div>
           </div>
         </div>
+      </div>
+        <ng-template #client>
+            <div class="card-body">
+              <h5 class="card-title"><i class="fas fa-user"></i> Usuario</h5>
+                <div class="card-text">
+                  <p><span class="font-weight-bold">Nombre:</span>  {{pedido.cliente.nombreCompleto}}</p>
+                  <p><span class="font-weight-bold">Celular:</span>  {{pedido.cliente.celular}}</p>
+                </div>
+            </div>
+        </ng-template>
       </div>
       <div class="mt-4 mb-4"></div>
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title"><i class="fas fa-bus"></i> Envío</h5>
-          <div class="card-text">
-            <p>
-              <span class="font-weight-bold">Dirección:</span>
-              Calle {{pedido.cliente.direccion.calle}} {{pedido.cliente.direccion.numero}}
-              <br>
-              {{pedido.cliente.direccion.distrito}}, {{pedido.cliente.direccion.provincia}}, {{pedido.cliente.direccion.departamento}}
-            </p>
-            <p><span class="font-weight-bold">Referencia:</span>  {{pedido.cliente.direccion.referencia}}</p>
+      <div *ngIf="load; else envio" class="ph-item">
+        <div class="ph-col-12">
+          <div class="ph-row">
+            <h5 class="card-title"><i class="fas fa-bus"></i> Envío</h5>
+            <div class="ph-col-10 big"></div>
+            <div class="ph-col-2 empty big"></div>
+            <div class="ph-col-10 big"></div>
+            <div class="ph-col-2 empty big"></div>
           </div>
-          <button *ngIf="pedido.estado!='Cancelado'" class="btn btn-primary" (click)="sendNotification()">
-            <i class="fas fa-bell"></i> Pedido en camino
-          </button>
         </div>
       </div>
+      <ng-template #envio>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><i class="fas fa-bus"></i> Envío</h5>
+            <div class="card-text">
+              <p>
+                <span class="font-weight-bold">Dirección:</span>
+                Calle {{pedido.cliente.direccion.calle}} {{pedido.cliente.direccion.numero}}
+                <br>
+                {{pedido.cliente.direccion.distrito}}, {{pedido.cliente.direccion.provincia}}, {{pedido.cliente.direccion.departamento}}
+              </p>
+              <p><span class="font-weight-bold">Referencia:</span>  {{pedido.cliente.direccion.referencia}}</p>
+            </div>
+            <button *ngIf="pedido.estado!='Cancelado'" class="btn btn-primary" (click)="sendNotification()">
+              <i class="fas fa-bell"></i> Pedido en camino
+            </button>
+          </div>
+        </div>
+      </ng-template>
     </div>
   </div>
 </div>
