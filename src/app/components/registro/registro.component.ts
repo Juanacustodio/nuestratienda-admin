@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {FormGroup, FormControl, Validators} from '@angular/forms';
 import {Vendedor, TarjetaCulqui} from '../../models';
 import {Router} from '@angular/router';
-import Swal from 'sweetalert2';
 import {CulquiService, ApiService} from '../../services';
 import {DatePipe} from '@angular/common';
 import {PopupHelper} from '../../helpers/popup.helper';
@@ -51,25 +50,18 @@ export class RegistroComponent implements OnInit {
       // inicio Generar Token
       this.culquiService.generarToken(tarjeta)
         .subscribe((result: any) => {
-            //captura de token
-            let token = result.id;
-            //mensaje de Bienvenida
-            Swal.fire({
-              icon: 'success',
-              width: 400,
-              title: 'Datos de tarjeta aprobados',
-              text: 'Generando Usuario',
-              showConfirmButton: false,
-              timer: 1500
-            });
-            //captura de token
+            // captura de token
+            const token = result.id;
+            // mensaje de Bienvenida
+            this.popup.showSuccessPopup('Datos de tarjeta aprobados', 'Generando Usuario');
+            // captura de token
             console.log('El token generado es ' + token);
-            //Captura de fecha
-            let date: Date = new Date();
+            // Captura de fecha
+            const date: Date = new Date();
             const pipe = new DatePipe('en-US');
             const myFormattedDate = pipe.transform(date, 'YYYY-mm-dd');
 
-            //Vendedor Json
+            // Vendedor Json
             let vendedor: Vendedor = {
               nombres: this.usuario.value.nombres,
               apellidos: this.usuario.value.apellidos,
@@ -81,42 +73,18 @@ export class RegistroComponent implements OnInit {
               }
             };
             console.log(vendedor);
-            //Registro de Vendedor
+            // Registro de Vendedor
             this.apiService.registrarVendedor(vendedor)
               .subscribe((enviado: any) => {
                 console.log('Se registro con el ID ', enviado);
-                //mensaje de Bienvenida
-                Swal.fire({
-                  icon: 'success',
-                  width: 400,
-                  title: 'Usuario creado',
-                  text: 'Correctamente',
-                  showConfirmButton: false,
-                  timer: 1500
-                });
+                this.popup.showSuccessPopup('Usuario creado', 'Correctamente');
                 this.router.navigate(['/productos']);
               }, (err: any) => {
-                //mensaje de Bienvenida
-                Swal.fire({
-                  icon: 'error',
-                  width: 400,
-                  title: 'Usuario no creado',
-                  text: err,
-                  showConfirmButton: false,
-                  timer: 1500
-                });
+                this.popup.showErrorPopup('Usuario no creado', err);
                 console.log(err);
               });
           }, (err: any) => {
-            // mensaje de Bienvenida
-            Swal.fire({
-              icon: 'error',
-              width: 400,
-              title: 'Pago denegado',
-              text: 'Hubo un problema con su pago',
-              showConfirmButton: false,
-              timer: 1500
-            });
+            this.popup.showErrorPopup('Pago denegado', 'Hubo un problema con su pago');
             console.log(err);
             console.log('Datos de tarjeta invalidos');
           }
@@ -126,7 +94,7 @@ export class RegistroComponent implements OnInit {
     }
   }
 
-  //variables para validar
+  // variables para validar
   get nombres() {
     return this.usuario.get('nombres');
   }
