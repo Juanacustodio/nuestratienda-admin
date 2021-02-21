@@ -5,6 +5,7 @@ import {Router} from '@angular/router';
 import Swal from 'sweetalert2';
 import {CulquiService} from '../../services/culqui.service';
 import {ApiService} from '../../services';
+import {DatePipe} from '@angular/common';
 
 @Component({
   selector: 'app-registro',
@@ -63,7 +64,8 @@ export class RegistroComponent implements OnInit {
             console.log('El token generado es ' + token);
             //Captura de fecha
             let date: Date = new Date();
-            let fecha = date.getFullYear() + '-' + '0' + date.getMonth() + '-' + '0' + date.getDate();
+            const pipe = new DatePipe('en-US');
+            const myFormattedDate = pipe.transform(date, 'YYYY-mm-dd');
 
             //Vendedor Json
             let vendedor: Vendedor = {
@@ -73,7 +75,7 @@ export class RegistroComponent implements OnInit {
               correo: this.usuario.value.email,
               suscripcion: {
                 token: token,
-                fechaInicio: fecha.toString()
+                fechaInicio: myFormattedDate || ''
               }
             };
             console.log(vendedor);
