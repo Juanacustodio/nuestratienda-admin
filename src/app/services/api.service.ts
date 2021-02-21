@@ -1,4 +1,5 @@
 import {Injectable} from '@angular/core';
+import { environment } from '../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import {Usuario, Tienda, Vendedor} from '../models';
 import {SessionService} from './session.service';
@@ -6,7 +7,7 @@ import {SessionService} from './session.service';
 @Injectable()
 export class ApiService {
 
-  endpoint = 'https://nta-admin.herokuapp.com';
+  endpoint = environment.ntApiEndpoint;
 
   constructor(private http: HttpClient, private sessionService: SessionService) {
   }
