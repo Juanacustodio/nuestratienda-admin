@@ -31,8 +31,8 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/placeholder-loading/src/scss/placeholder-loading.scss",
               "src/styles.scss",
-              "node_modules/placeholder-loading/src/scss/placeholder-loading.scss"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
