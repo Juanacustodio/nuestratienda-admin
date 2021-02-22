@@ -31,6 +31,7 @@ import { CardFuncionComponent } from './components/card-funcion/card-funcion.com
 import { CardProductoComponent } from './components/card-producto/card-producto.component';
 import { PedidosComponent } from './pedidos/pedidos.component';
 import { PedidoComponent } from './pedido/pedido.component';
+import {FirebaseService} from './services/firebase.service';
 
 @NgModule({
   declarations: [
@@ -69,6 +70,7 @@ import { PedidoComponent } from './pedido/pedido.component';
     CulquiService,
     SessionService,
     PusherService,
+    FirebaseService,
   ],
   bootstrap: [AppComponent]
 })
