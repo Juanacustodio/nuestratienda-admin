@@ -57,9 +57,8 @@ export class RegistroComponent implements OnInit {
             // captura de token
             console.log('El token generado es ' + token);
             // Captura de fecha
-            const date: Date = new Date();
-            const pipe = new DatePipe('en-US');
-            const myFormattedDate = pipe.transform(date, 'YYYY-mm-dd');
+            
+            let fecha = this.generarFecha();
 
             // Vendedor Json
             let vendedor: Vendedor = {
@@ -69,7 +68,8 @@ export class RegistroComponent implements OnInit {
               correo: this.usuario.value.email,
               suscripcion: {
                 token: token,
-                fechaInicio: myFormattedDate || ''
+                
+                fechaInicio: fecha
               }
             };
             console.log(vendedor);
@@ -93,7 +93,15 @@ export class RegistroComponent implements OnInit {
       this.popup.showErrorPopup('datos invalidos');
     }
   }
-
+  generarFecha(){
+    let date: Date = new Date();
+    let year = date.getFullYear()+1;
+    let month = date.getMonth()+1;
+    let day = date.getDate();
+    let fecha = year + '-' + ('0' + month).slice(-2) + '-' + ('0' + day).slice(-2);
+    return fecha
+    
+  }
   // variables para validar
   get nombres() {
     return this.usuario.get('nombres');
