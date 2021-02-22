@@ -121,7 +121,7 @@ export class TiendaComponent implements OnInit {
         //  this.diasRestantes  = 28;
   }
 Renovar(){  
-  if (this.usuario.valid) {
+  // if (this.usuario.valid) {
     let expiration = this.usuario.value.expiration_year;
     let year = "20" + expiration.slice(3,5);
     let card = this.usuario.value.card_number;
@@ -203,15 +203,15 @@ Renovar(){
 
         }
       );
-  } else {
-    Swal.fire({
-      icon: 'error',
-      title: 'datos invalidos',
-      showConfirmButton: false,
-      timer: 1500
-    });
+  // } else {
+  //   Swal.fire({
+  //     icon: 'error',
+  //     title: 'datos invalidos',
+  //     showConfirmButton: false,
+  //     timer: 1500
+  //   });
 
-  }
+  // }
 
 }
 generarFecha(){
