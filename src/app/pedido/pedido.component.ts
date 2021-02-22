@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {AngularFirestore} from '@angular/fire/firestore';
 import {Pedido, Cliente} from '../models';
 import {ActivatedRoute} from '@angular/router';
-import {PusherService} from '../services';
+import {FirebaseService, PusherService} from '../services';
 import {PopupHelper} from '../helpers';
 
 @Component({
@@ -19,7 +19,7 @@ export class PedidoComponent implements OnInit {
   load: boolean;
   popup = new PopupHelper();
 
-  constructor(private activatedRoute: ActivatedRoute, private firestore: AngularFirestore, private pusherService: PusherService) {
+  constructor(private activatedRoute: ActivatedRoute, private firestore: FirebaseService, private pusherService: PusherService) {
     this.id = '';
     this.load = true;
     this.pedido = {} as Pedido;
@@ -39,11 +39,9 @@ export class PedidoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const pedido = this.firestore.collection('Pedidos').doc(this.id).valueChanges({idField: 'id'});
-    pedido.subscribe(params => {
+    this.firestore.getDoc('Pedidos', this.id, params => {
       const pedido = params as Pedido;
-      const cliente = this.firestore.collection('Usuarios').doc(pedido.clienteID).valueChanges();
-      cliente.subscribe(c => {
+      this.firestore.getDoc('Usuarios', pedido.clienteID, c => {
         this.pedido = {
           id: pedido.id,
           fecha: (new Date(pedido.fecha.toDate())).toLocaleString(),

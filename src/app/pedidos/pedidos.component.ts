@@ -3,8 +3,6 @@ import {Router} from '@angular/router';
 import * as _ from 'lodash';
 import {Pedido} from '../models';
 import {FirebaseService} from '../services';
-import Swal from 'sweetalert2';
-import fire = module
 
 @Component({
   selector: 'app-pedidos',
@@ -40,7 +38,7 @@ export class PedidosComponent implements OnInit {
         };
         this.pedidos.push(newPedido);
       });
-    })
+    });
   }
 
   ngOnInit(): void {
