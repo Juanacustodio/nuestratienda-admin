@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {Producto} from '../models';
-import {FirebaseService} from '../services/firebase.service';
+import {FirebaseService} from '../services';
 import {PopupHelper} from '../helpers';
 
 @Component({

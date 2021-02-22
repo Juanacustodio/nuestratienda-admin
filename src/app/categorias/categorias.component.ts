@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
+import {FirebaseService} from '../services';
+import {PopupHelper} from '../helpers';
 
 @Component({
   selector: 'app-categorias',
@@ -10,12 +11,12 @@ export class CategoriasComponent implements OnInit {
 
   categorias: any;
   id: any;
+  popup = new PopupHelper();
 
-  constructor(private firestore: AngularFirestore) { }
+  constructor(private firestore: FirebaseService) { }
 
   ngOnInit(): void {
-    const categorias = this.firestore.collection('Categorias').valueChanges({idField: 'id'});
-    categorias.subscribe(params => {
+    this.firestore.getCollection('Categorias', params => {
       [{'Categorias': this.categorias, id: this.id}] = params as Array<{id: string, Categorias: any}>;
     });
   }
@@ -33,7 +34,8 @@ export class CategoriasComponent implements OnInit {
   }
 
   saveCategories(): void {
-    this.firestore.collection('Categorias').doc(this.id).set({'Categorias': this.categorias});
+    this.firestore.updateDoc('Categorias', this.id, {'Categorias': this.categorias});
+    this.popup.showSuccessPopup('Se actualizaron las categorías');
   }
 
 }
