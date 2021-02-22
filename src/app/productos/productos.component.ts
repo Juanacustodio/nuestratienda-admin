@@ -16,10 +16,9 @@ export class ProductosComponent implements OnInit {
   modalTitle: string;
   id: string;
   categorias: any;
-  firestore = new FirebaseService();
   popup = new PopupHelper();
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private firestore: FirebaseService) {
     this.firestore.getCollection('Productos', (response: any) => {
       this.productos = response;
     });

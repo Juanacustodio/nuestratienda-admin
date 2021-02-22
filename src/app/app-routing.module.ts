@@ -1,8 +1,6 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
-// import { HomeComponent } from './home/home.component';
 import {ProductosComponent} from './productos/productos.component';
-import {ProductoComponent} from './producto/producto.component';
 import {CategoriasComponent} from './categorias/categorias.component';
 import {TiendaComponent} from './tienda/tienda.component';
 import {EjemplosComponent} from './components/ejemplos/ejemplos.component';
@@ -17,7 +15,6 @@ import {PedidosComponent} from './pedidos/pedidos.component';
 import {PedidoComponent} from './pedido/pedido.component';
 
 const routes: Routes = [
-  // { path: '', component: HomeComponent },
   {path: 'home', component: HomeComponent},
   {path: 'ejemplos', component: EjemplosComponent},
   {path: 'funciona', component: FuncionaComponent},
@@ -35,7 +32,6 @@ const routes: Routes = [
           { path: 'tienda', component: TiendaComponent },
           { path: 'categorias', component: CategoriasComponent },
           { path: 'productos', component: ProductosComponent },
-          { path: 'productos/:id', component: ProductoComponent },
           { path: 'pedidos', component: PedidosComponent },
           { path: 'pedidos/:id', component: PedidoComponent },
         ],

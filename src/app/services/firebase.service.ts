@@ -6,10 +6,12 @@ import {Producto} from '../models';
 @Injectable()
 export class FirebaseService {
   firestore: firebase.firestore.Firestore;
+  storage: firebase.storage.Storage;
   constructor() {
     const options = environment.firebase;
     firebase.initializeApp(options);
     this.firestore = firebase.firestore();
+    this.storage = firebase.storage();
   }
 
   getCollection(collection: string, callback: (...all: any) => void): any {
@@ -39,6 +41,20 @@ export class FirebaseService {
 
   deleteDoc(collection: string, id: string): void {
     this.firestore.collection(collection).doc(id).delete();
+  }
+
+  upload(ref: string, file: any, callback: (...all: any) => void): void {
+    const referencia = this.storage.ref(ref);
+    const uploadTask = referencia.put(file);
+    uploadTask.on('state_changed', (snapshot) => {
+      // to do
+    }, (error) => {
+      // Handle unsuccessful uploads
+    }, () => {
+      uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
+        callback(downloadURL);
+      });
+    });
   }
 
 }
