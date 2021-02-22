@@ -3,6 +3,7 @@ import { environment } from '../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import {Usuario, Tienda, Vendedor} from '../models';
 import {SessionService} from './session.service';
+import { Renovar } from '../models/renovar';
 
 @Injectable()
 export class ApiService {
@@ -43,6 +44,25 @@ export class ApiService {
     return this.http.post(
       `${this.endpoint}/api/vendedor/registro`,
       vendedor);
+  }
+  getSuscripcion(sucripcionId: number): any {
+    return this.http.get(
+      `${this.endpoint}/api/vendedor/suscripcion/${sucripcionId}`,
+      this.getOptions()
+    );
+  }
+
+  getUser(userId: number): any {
+    return this.http.get(
+      `${this.endpoint}/api/vendedor/${userId}`,
+      this.getOptions()
+    );
+  }
+  RenovarSuscripcion(renovar: Renovar): any {
+    return this.http.post(
+      `${this.endpoint}/api/vendedor/renovar`,
+      renovar,
+      this.getOptions());
   }
 
 }
