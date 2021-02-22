@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {AngularFirestore} from '@angular/fire/firestore';
 import {Router} from '@angular/router';
 import {Producto} from '../models';
+import {FirebaseService} from '../services/firebase.service';
+import {PopupHelper} from '../helpers';
 
 @Component({
   selector: 'app-productos',
@@ -9,45 +10,47 @@ import {Producto} from '../models';
   styleUrls: ['./productos.component.scss']
 })
 export class ProductosComponent implements OnInit {
-  productos: any;
+  productos: Array<Producto> = [];
   producto = {} as Producto;
   btnText: string;
   modalTitle: string;
   id: string;
   categorias: any;
+  firestore = new FirebaseService();
+  popup = new PopupHelper();
 
-  constructor(private router: Router, private firestore: AngularFirestore) {
-    this.productos = firestore.collection('Productos').valueChanges({idField: 'id'})
-      .subscribe(productos => this.productos = productos);
+  constructor(private router: Router) {
+    this.firestore.getCollection('Productos', (response: any) => {
+      this.productos = response;
+    });
     this.btnText = 'GUARDAR';
     this.modalTitle = 'Detalles del producto';
     this.id = '';
   }
 
   ngOnInit(): void {
-    const categorias = this.firestore.collection('Categorias').valueChanges();
-    categorias.subscribe(params => {
-      [{'Categorias': this.categorias}] = params as Array<{ Categorias: any }>;
+    this.firestore.getCollection('Categorias', (response: any) => {
+      [{'Categorias': this.categorias}] = response as Array<{ Categorias: any }>;
     });
   }
 
-  guardarProducto() {
+  guardarProducto(): void {
     const {id, ...producto} = this.producto;
     if (this.id === 'nuevo') {
-      this.firestore.collection('Productos').add(producto);
-      console.log(this.producto);
+      this.firestore.addDoc('Productos', producto);
     } else {
-      this.firestore.collection('Productos').doc(this.id).set(producto as Producto);
-      console.log(this.producto);
+      this.firestore.updateDoc('Productos', this.id, producto);
     }
+    this.popup.showSuccessPopup('Se actualizó el producto');
   }
 
-  setIdToDelete(id: string) {
-    this.id = id
+  setIdToDelete(id: string): void {
+    this.id = id;
   }
 
-  eliminarProducto() {
-    this.firestore.collection('Productos').doc(this.id).delete();
+  eliminarProducto(): void {
+    this.firestore.deleteDoc('Productos', this.id);
+    this.popup.showSuccessPopup('Se eliminó el producto');
   }
 
   productDetail(id: string): void {
