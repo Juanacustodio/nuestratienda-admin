@@ -69,7 +69,7 @@ export class RegistroComponent implements OnInit {
               suscripcion: {
                 token: token,
                 
-                fechaInicio: fecha
+                fechaFin: fecha
               }
             };
             console.log(vendedor);

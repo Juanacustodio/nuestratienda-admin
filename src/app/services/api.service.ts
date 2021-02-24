@@ -45,6 +45,7 @@ export class ApiService {
       `${this.endpoint}/api/vendedor/registro`,
       vendedor);
   }
+  
   getSuscripcion(sucripcionId: number): any {
     return this.http.get(
       `${this.endpoint}/api/vendedor/suscripcion/${sucripcionId}`,
