@@ -79,8 +79,8 @@ export class RegistroComponent implements OnInit {
                 console.log('Se registro con el ID ', enviado);
                 this.popup.showSuccessPopup('Usuario creado', 'Correctamente');
 
-                this.cookies.set('tiendaId', result.UserID);
-                this.sessionService.setSessionToken(result.token);
+                this.cookies.set('tiendaId', enviado.UserID);
+                this.sessionService.setSessionToken(enviado.token);
                 this.router.navigate(['/admin/productos']);
 
 
