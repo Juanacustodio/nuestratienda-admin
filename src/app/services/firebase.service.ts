@@ -27,7 +27,7 @@ export class FirebaseService {
 
   getDoc(collection: string, id: string, callback: (...all: any) => void): any {
     this.firestore.collection(collection).doc(id).get().then((doc: any) => {
-      callback(doc.data());
+      callback({...doc.data(), id: doc.id});
     });
   }
 
