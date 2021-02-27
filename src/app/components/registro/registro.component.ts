@@ -56,10 +56,8 @@ export class RegistroComponent implements OnInit {
             this.popup.showSuccessPopup('Datos de tarjeta aprobados', 'Generando Usuario');
             // captura de token
             console.log('El token generado es ' + token);
-            // Captura de fecha
-            
+            // Captura de fecha            
             let fecha = this.generarFecha();
-
             // Vendedor Json
             let vendedor: Vendedor = {
               nombres: this.usuario.value.nombres,
@@ -67,8 +65,7 @@ export class RegistroComponent implements OnInit {
               password: this.usuario.value.password,
               correo: this.usuario.value.email,
               suscripcion: {
-                token: token,
-                
+                token: token,                
                 fechaFin: fecha
               }
             };
@@ -78,11 +75,11 @@ export class RegistroComponent implements OnInit {
               .subscribe((enviado: any) => {
                 console.log('Se registro con el ID ', enviado);
                 this.popup.showSuccessPopup('Usuario creado', 'Correctamente');
-
-                this.cookies.set('tiendaId', enviado.UserID);
-                this.sessionService.setSessionToken(enviado.token);
-                this.router.navigate(['/admin/productos']);
-
+                //TODO REVISAR 79 AL 81
+                //this.cookies.set('tiendaId', enviado.UserID);
+                //this.sessionService.setSessionToken(enviado.token);
+                //this.router.navigate(['/admin/productos']);
+                this.router.navigate(['login']);
 
               }, (err: any) => {
                 this.popup.showErrorPopup('Usuario no creado', err);
