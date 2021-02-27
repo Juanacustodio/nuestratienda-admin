@@ -58,6 +58,7 @@ export class TiendaComponent implements OnInit {
         this.suscripcion =result as Suscripcion;
 
         this.verificarSuscripcion();
+       
         
 
       });
@@ -115,10 +116,13 @@ export class TiendaComponent implements OnInit {
       });
 
   verificarSuscripcion(){
-    let fechaFin = new Date(this.suscripcion.fechaInicio);
+    let fechaFin = new Date(this.suscripcion.fechaFin);
          let diasRestantes = fechaFin.getTime() - new Date().getTime();
          this.diasRestantes  = Math.round(diasRestantes/(1000*60*60*24));
+         console.log(fechaFin);
+         console.log( this.diasRestantes);
         //  this.diasRestantes  = 28;
+        
   }
 Renovar(){  
   // if (this.usuario.valid) {
@@ -159,7 +163,7 @@ Renovar(){
           let renovar: Renovar = {
             idSuscripcion: this.tienda.idTienda,
             token: token,
-            fechaInicio: fecha,
+            fechaFin: fecha,
           };
           console.log(renovar);
           //Registro de Vendedor

@@ -8,6 +8,6 @@ export interface Vendedor {
       
 export interface Suscripcion {
       token: string,   
-      fechaInicio: string
+      fechaFin: string
       }
 

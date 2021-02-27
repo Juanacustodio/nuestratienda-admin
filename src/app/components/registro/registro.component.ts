@@ -2,8 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {FormGroup, FormControl, Validators} from '@angular/forms';
 import {Vendedor, TarjetaCulqui} from '../../models';
 import {Router} from '@angular/router';
-import {CulquiService, ApiService} from '../../services';
-import {DatePipe} from '@angular/common';
+import {CulquiService, ApiService, SessionService} from '../../services';
+import {CookieService} from 'ngx-cookie-service';
 import {PopupHelper} from '../../helpers';
 
 @Component({
@@ -15,7 +15,7 @@ export class RegistroComponent implements OnInit {
 
   popup = new PopupHelper();
 
-  constructor(private router: Router, private culquiService: CulquiService, private apiService: ApiService) {
+  constructor(private router: Router, private culquiService: CulquiService, private cookies: CookieService, private apiService: ApiService, private sessionService: SessionService) {
   }
 
   correoFormat = '[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$';
@@ -56,10 +56,8 @@ export class RegistroComponent implements OnInit {
             this.popup.showSuccessPopup('Datos de tarjeta aprobados', 'Generando Usuario');
             // captura de token
             console.log('El token generado es ' + token);
-            // Captura de fecha
-            
+            // Captura de fecha            
             let fecha = this.generarFecha();
-
             // Vendedor Json
             let vendedor: Vendedor = {
               nombres: this.usuario.value.nombres,
@@ -67,9 +65,8 @@ export class RegistroComponent implements OnInit {
               password: this.usuario.value.password,
               correo: this.usuario.value.email,
               suscripcion: {
-                token: token,
-                
-                fechaInicio: fecha
+                token: token,                
+                fechaFin: fecha
               }
             };
             console.log(vendedor);
@@ -78,7 +75,12 @@ export class RegistroComponent implements OnInit {
               .subscribe((enviado: any) => {
                 console.log('Se registro con el ID ', enviado);
                 this.popup.showSuccessPopup('Usuario creado', 'Correctamente');
-                this.router.navigate(['/productos']);
+                //TODO REVISAR 79 AL 81
+                //this.cookies.set('tiendaId', enviado.UserID);
+                //this.sessionService.setSessionToken(enviado.token);
+                //this.router.navigate(['/admin/productos']);
+                this.router.navigate(['login']);
+
               }, (err: any) => {
                 this.popup.showErrorPopup('Usuario no creado', err);
                 console.log(err);
