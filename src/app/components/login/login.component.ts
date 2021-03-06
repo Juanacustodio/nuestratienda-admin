@@ -41,12 +41,17 @@ export class LoginComponent implements OnInit {
       this.apiService
         .login(user)
         .subscribe((result: Session) => {
-          this.popup.showSuccessPopup('Bienvenido a mi Tienda');
-
           this.cookies.set('tiendaId', result.UserID);
           this.sessionService.setSessionToken(result.token);
 
+          this.apiService.getFirebaseConfig(result.UserID)
+            .subscribe((fireConfig: Object) => {
+              this.cookies.delete('firestoreConfig');
+              this.cookies.set('firestoreConfig', JSON.stringify(fireConfig));
+            });
+
           this.router.navigate(['/admin/productos']);
+          this.popup.showSuccessPopup('Bienvenido a mi Tienda');
         }, (err: any) => {
           this.popup.showErrorPopup('correo o contraseña incorrectos');
         });

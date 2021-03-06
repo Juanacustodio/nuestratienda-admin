@@ -66,4 +66,11 @@ export class ApiService {
       this.getOptions());
   }
 
+  getFirebaseConfig(id: string): any {
+    return this.http.get(
+      `${this.endpoint}/api/firebase/${id}`,
+      this.getOptions()
+    );
+  }
+
 }

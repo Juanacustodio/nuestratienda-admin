@@ -1,14 +1,16 @@
 import {Injectable} from '@angular/core';
-import {environment} from '../../environments/environment';
 import firebase from 'firebase/app';
 import {Producto} from '../models';
+import { CookieService } from 'ngx-cookie-service';
+import { PopupHelper } from '../helpers';
 
 @Injectable()
 export class FirebaseService {
   firestore: firebase.firestore.Firestore;
   storage: firebase.storage.Storage;
-  constructor() {
-    const options = environment.firebase;
+  popup = new PopupHelper();
+  constructor(private cookies: CookieService) {
+    const {idFirebase, ...options} = JSON.parse(this.cookies.get('firestoreConfig'));
     firebase.initializeApp(options);
     this.firestore = firebase.firestore();
     this.storage = firebase.storage();
