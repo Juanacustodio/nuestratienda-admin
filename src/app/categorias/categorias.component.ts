@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FirebaseService} from '../services';
 import {PopupHelper} from '../helpers';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-categorias',
@@ -9,7 +10,7 @@ import {PopupHelper} from '../helpers';
 })
 export class CategoriasComponent implements OnInit {
 
-  categorias: any;
+  categorias: Array<{nombre: string}> = [];
   id: any;
   popup = new PopupHelper();
 
@@ -17,7 +18,12 @@ export class CategoriasComponent implements OnInit {
 
   ngOnInit(): void {
     this.firestore.getCollection('Categorias', params => {
-      [{'Categorias': this.categorias, id: this.id}] = params as Array<{id: string, Categorias: any}>;
+      if (_.isEmpty(params)) {
+        this.categorias = [];
+      }
+      else {
+        [{'Categorias': this.categorias, id: this.id}] = params as Array<{id: string, Categorias: any}>;
+      }
     });
   }
 
