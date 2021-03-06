@@ -12,6 +12,7 @@ import {PopupHelper} from '../helpers';
 export class PedidoComponent implements OnInit {
 
   id: string;
+  firePedido: any;
   pedido: Pedido;
   estados: any;
   estadosColor: any;
@@ -39,6 +40,7 @@ export class PedidoComponent implements OnInit {
 
   ngOnInit(): void {
     this.firestore.getDoc('Pedidos', this.id, params => {
+      this.firePedido = params;
       const pedido = params as Pedido;
       this.firestore.getDoc('Usuarios', pedido.clienteID, c => {
         this.pedido = {
@@ -60,6 +62,12 @@ export class PedidoComponent implements OnInit {
   sendNotification(): void {
     this.pusherService.trigger('pedido', 'enviado-' + this.pedido.id);
     this.popup.showSuccessPopup('Notificación enviada');
+
+    this.pedido.estado = "Finalizado";
+    this.pedido.estadoColor = this.estadosColor[2];
+    this.firePedido.estado = 2;
+    const {id, ...pedido} = this.firePedido;
+    this.firestore.updateDoc("Pedidos", this.id, pedido);
   }
 
 }
