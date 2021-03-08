@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormGroup, FormControl, Validators} from '@angular/forms';
 import {Vendedor, TarjetaCulqui} from '../../models';
 import {Router} from '@angular/router';
+import {Usuario, Session} from '../../models';
 import {CulquiService, ApiService, SessionService} from '../../services';
 import {CookieService} from 'ngx-cookie-service';
 import {PopupHelper} from '../../helpers';
@@ -35,7 +36,9 @@ export class RegistroComponent implements OnInit {
   });
 
   ngOnInit() {
+
   }
+  
 
   guardar(): void {
     if (this.usuario.valid) {
@@ -68,20 +71,17 @@ export class RegistroComponent implements OnInit {
                 token: token,                
                 fechaFin: fecha
               }
+              
             };
+            
             console.log(vendedor);
             // Registro de Vendedor
-            this.apiService.registrarVendedor(vendedor)
+            this.apiService
+            .registrarVendedor(vendedor)
               .subscribe((enviado: any) => {
-                console.log('Se registro con el ID ', enviado);
-                this.popup.showSuccessPopup('Usuario creado', 'Correctamente');
-
-                this.cookies.set('tiendaId', enviado);
-                this.sessionService.setSessionToken(enviado.token);
-                this.router.navigate(['/login']);
-
-
-              }, (err: any) => {
+               this.popup.showSuccessPopup('Usuario creado', 'Correctamente');
+               this.generarSession();
+               }, (err: any) => {
                 this.popup.showErrorPopup('Usuario no creado', err);
                 console.log(err);
               });
@@ -136,9 +136,31 @@ export class RegistroComponent implements OnInit {
   get cvv() {
     return this.usuario.get('cvv');
   }
+  generarSession(): void {
+        const user: Usuario = {
+        password: this.usuario.value.password,
+        correo: this.usuario.value.email,
+      };
 
-  // get precio() {
-  //   return this.usuario.get('precio');
-  // }
+      this.apiService
+        .login(user)
+        .subscribe((result: Session) => {
+          this.cookies.set('tiendaId', result.UserID);
+          this.sessionService.setSessionToken(result.token);
+
+          this.apiService.getFirebaseConfig(result.UserID)
+            .subscribe((fireConfig: Object) => {
+              this.cookies.delete('firestoreConfig');
+              this.cookies.set('firestoreConfig', JSON.stringify(fireConfig));
+            });
+
+          this.router.navigate(['/admin/productos']);
+          this.popup.showSuccessPopup('Bienvenido a mi Tienda');
+        }, (err: any) => {
+          this.popup.showErrorPopup('correo o contraseña incorrectos');
+        });
+    
+  }
+  
 
 }
