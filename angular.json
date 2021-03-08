@@ -32,13 +32,15 @@
                         ],
                         "styles": [
                             "node_modules/placeholder-loading/src/scss/placeholder-loading.scss",
-                            "src/styles.scss",
+                            "src/styles.scss"
                         ],
                         "scripts": [
                             "node_modules/jquery/dist/jquery.min.js",
                             "node_modules/@popperjs/core/dist/umd/popper.min.js",
                             "node_modules/bootstrap/dist/js/bootstrap.min.js",
-                            "src/nt.js"
+                            "src/nt.js",
+                            "src/script.js"
+
                         ],
                         "allowedCommonJsDependencies": [
                             "lodash"
@@ -108,8 +110,7 @@
                             "node_modules/@popperjs/core/dist/umd/popper.min.js",
                             "node_modules/bootstrap/dist/js/bootstrap.min.js",
                             "src/nt.js",
-                            "src/script.js",
-                            "src/cdn.js"
+                            "src/script.js"
                         ]
                     }
                 },
