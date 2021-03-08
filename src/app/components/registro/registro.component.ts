@@ -31,7 +31,7 @@ export class RegistroComponent implements OnInit {
     cvv: new FormControl('', [Validators.required, Validators.pattern(this.cvvFormat)]),
     expiration_month: new FormControl('', [Validators.required]),
     expiration_year: new FormControl('', [Validators.required]),
-    precio: new FormControl('', [Validators.required]),
+    // precio: new FormControl('', [Validators.required]),
   });
 
   ngOnInit() {
@@ -137,8 +137,8 @@ export class RegistroComponent implements OnInit {
     return this.usuario.get('cvv');
   }
 
-  get precio() {
-    return this.usuario.get('precio');
-  }
+  // get precio() {
+  //   return this.usuario.get('precio');
+  // }
 
 }
