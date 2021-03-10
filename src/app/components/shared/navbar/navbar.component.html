@@ -1,26 +1,26 @@
 <nav class="navbar">
-  <div class="container">
-    <div class="navbar-header">
-      <button class="navbar-toggler" data-toggle="open-navbar1">
+    <div class="container">
+        <div class="navbar-header">
+            <button class="navbar-toggler" data-toggle="open-navbar1">
         <span></span>
         <span></span>
         <span></span>
       </button>
-      <a [routerLink]="['home']">
-        <img src="assets/img/logo.png" class="logo">
-      </a>
+            <a [routerLink]="['home']">
+                <img src="assets/img/logo.png" class="logo">
+            </a>
+        </div>
+        <div class="navbar-menu open-navbar1" id="open-navbar1">
+            <ul class="navbar-nav">
+                <li class="active"><a [routerLink]="['/funciona']">Cómo funciona</a></li>
+                <li><a [routerLink]="['/home']" fragment="beneficios-planes">Por qué elegirnos</a></li>
+                <li><a [routerLink]="['/ejemplos']">Asociados</a></li>
+                <li><a [routerLink]="['/home']" fragment="precios">Precios</a></li>
+                <li class="nav-user">
+                    <a class="register" [routerLink]="['/registro']">Registrar</a>
+                    <a [routerLink]="['/login']">Ingresar</a>
+                </li>
+            </ul>
+        </div>
     </div>
-    <div class="navbar-menu open-navbar1" id="open-navbar1">
-      <ul class="navbar-nav">
-        <li class="active"><a [routerLink]="['/funciona']">Cómo funciona</a></li>
-        <li><a [routerLink]="['/home']" fragment="elegirnos">Por qué elegirnos</a></li>
-        <li><a [routerLink]="['/ejemplos']">Asociados</a></li>
-        <li><a [routerLink]="['/home']" fragment="precios">Precios</a></li>
-        <li class="nav-user">
-          <a class="register" [routerLink]="['/registro']">Registrar</a>
-          <a [routerLink]="['/login']">Ingresar</a>
-        </li>
-      </ul>
-    </div>
-  </div>
 </nav>
