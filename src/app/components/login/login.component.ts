@@ -48,10 +48,10 @@ export class LoginComponent implements OnInit {
             .subscribe((fireConfig: Object) => {
               this.cookies.delete('firestoreConfig');
               this.cookies.set('firestoreConfig', JSON.stringify(fireConfig));
+              
+              this.router.navigate(['/admin/productos']);
+              this.popup.showSuccessPopup('Bienvenido a mi Tienda');
             });
-
-          this.router.navigate(['/admin/productos']);
-          this.popup.showSuccessPopup('Bienvenido a mi Tienda');
         }, (err: any) => {
           this.popup.showErrorPopup('correo o contraseña incorrectos');
         });
