@@ -39,8 +39,13 @@ export class ProductosComponent implements OnInit {
     const {id, ...producto} = this.producto;
     if (this.id === 'nuevo') {
       this.firestore.addDoc('Productos', producto);
+      this.firestore.getCollection('Productos', (response: any) => {
+        this.productos = response;
+       })
     } else {
       this.firestore.updateDoc('Productos', this.id, producto);
+
+      
     }
     this.popup.showSuccessPopup('Se actualizó el producto');
   }
@@ -51,6 +56,11 @@ export class ProductosComponent implements OnInit {
 
   eliminarProducto(): void {
     this.firestore.deleteDoc('Productos', this.id);
+    this.productos.forEach((producto, index) => {
+      if (this.id == producto.id) {
+        this.productos.splice(index, 1)
+      }
+    })
     this.popup.showSuccessPopup('Se eliminó el producto');
   }
 
