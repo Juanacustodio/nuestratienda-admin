@@ -46,9 +46,9 @@ export class LoginComponent implements OnInit {
 
           this.apiService.getFirebaseConfig(result.UserID)
             .subscribe((fireConfig: Object) => {
-              this.cookies.delete('firestoreConfig');
+              this.sessionService.deleteSession()
               this.cookies.set('firestoreConfig', JSON.stringify(fireConfig));
-              
+
               this.router.navigate(['/admin/productos']);
               this.popup.showSuccessPopup('Bienvenido a mi Tienda');
             });

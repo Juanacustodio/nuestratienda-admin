@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {Producto} from '../models';
-import {FirebaseService} from '../services';
+import {FirebaseService, SessionService} from '../services';
 import {PopupHelper} from '../helpers';
 
 @Component({
@@ -17,8 +17,10 @@ export class ProductosComponent implements OnInit {
   id: string;
   categorias: any;
   popup = new PopupHelper();
+  firestore: FirebaseService;
 
-  constructor(private router: Router, private firestore: FirebaseService) {
+  constructor(private router: Router, private sessionService: SessionService) {
+    this.firestore = new FirebaseService(sessionService.getFirebaseJsonConfig());
     this.firestore.getCollection('Productos', (response: any) => {
       this.productos = response;
     });

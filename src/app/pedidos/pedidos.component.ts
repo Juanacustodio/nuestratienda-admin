@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import * as _ from 'lodash';
 import {Pedido} from '../models';
-import {FirebaseService} from '../services';
+import {FirebaseService, SessionService} from '../services';
 
 @Component({
   selector: 'app-pedidos',
@@ -13,8 +13,10 @@ export class PedidosComponent implements OnInit {
   pedidos: Array<any> = [];
   estados: any;
   estadosColor: any;
+  firestore: FirebaseService;
 
-  constructor(private router: Router, private firestore: FirebaseService) {
+  constructor(private router: Router, private sessionService: SessionService) {
+    this.firestore = new FirebaseService(sessionService.getFirebaseJsonConfig());
     this.estados = {
       1: 'Pendiente',
       2: 'Finalizado',
@@ -25,7 +27,7 @@ export class PedidosComponent implements OnInit {
       2: 'success',
       3: 'danger'
     };
-    firestore.getCollection('Pedidos', pedidos => {
+    this.firestore.getCollection('Pedidos', pedidos => {
       _.forEach(pedidos, (p) => {
         const pedido = p as Pedido;
         const newPedido = {

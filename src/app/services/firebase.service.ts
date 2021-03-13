@@ -1,19 +1,30 @@
-import {Injectable} from '@angular/core';
 import firebase from 'firebase/app';
 import {Producto} from '../models';
-import { CookieService } from 'ngx-cookie-service';
 import { PopupHelper } from '../helpers';
+import * as _ from 'lodash';
 
-@Injectable()
 export class FirebaseService {
   firestore: firebase.firestore.Firestore;
   storage: firebase.storage.Storage;
   popup = new PopupHelper();
-  constructor(private cookies: CookieService) {
-    const {idFirebase, ...options} = JSON.parse(this.cookies.get('firestoreConfig'));
-    firebase.initializeApp(options);
-    this.firestore = firebase.firestore();
-    this.storage = firebase.storage();
+  constructor(firestoreConfig: any) {
+    const {idFirebase, ...options} = firestoreConfig;
+    const appName = 'tienda' + idFirebase;
+    var myApp = undefined;
+    firebase.apps.forEach(app => {
+      if (app.name == appName) {
+        myApp = app;
+      }
+      else {
+        app.delete();
+      }
+    });
+
+    if (myApp == undefined) {
+      myApp = firebase.initializeApp(options, appName);
+    }
+    this.firestore = firebase.firestore(myApp);
+    this.storage = firebase.storage(myApp);
   }
 
   getCollection(collection: string, callback: (...all: any) => void): any {

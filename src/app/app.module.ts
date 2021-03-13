@@ -57,7 +57,7 @@ import {FirebaseService} from './services/firebase.service';
   imports: [
     CommonModule,
     BrowserModule,
-    AngularFireModule.initializeApp(environment.firebase),
+    // AngularFireModule.initializeApp(environment.firebase),
     ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
@@ -70,7 +70,7 @@ import {FirebaseService} from './services/firebase.service';
     CulquiService,
     SessionService,
     PusherService,
-    FirebaseService,
+    // FirebaseService,
   ],
   bootstrap: [AppComponent]
 })

@@ -1,5 +1,4 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
 import {CookieService} from 'ngx-cookie-service';
 import * as _ from 'lodash';
 
@@ -7,7 +6,7 @@ import * as _ from 'lodash';
 export class SessionService {
   token: string;
 
-  constructor(private http: HttpClient, private cookies: CookieService) {
+  constructor(private cookies: CookieService) {
     this.token = '';
   }
 
@@ -24,7 +23,13 @@ export class SessionService {
     return this.token;
   }
 
+  getFirebaseJsonConfig(): string {
+    return JSON.parse(this.cookies.get('firestoreConfig'));
+  }
+
   deleteSession(): void {
+    this.cookies.deleteAll();
     this.cookies.deleteAll('/');
+    this.cookies.deleteAll('/admin');
   }
 }

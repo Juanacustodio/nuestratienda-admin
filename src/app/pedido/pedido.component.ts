@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Pedido, Cliente} from '../models';
 import {ActivatedRoute} from '@angular/router';
-import {FirebaseService, PusherService} from '../services';
+import {FirebaseService, PusherService, SessionService} from '../services';
 import {PopupHelper} from '../helpers';
 
 @Component({
@@ -18,8 +18,10 @@ export class PedidoComponent implements OnInit {
   estadosColor: any;
   load: boolean;
   popup = new PopupHelper();
+  firestore: FirebaseService;
 
-  constructor(private activatedRoute: ActivatedRoute, private firestore: FirebaseService, private pusherService: PusherService) {
+  constructor(private activatedRoute: ActivatedRoute, private sessionService: SessionService, private pusherService: PusherService) {
+    this.firestore = new FirebaseService(sessionService.getFirebaseJsonConfig());
     this.id = '';
     this.load = true;
     this.pedido = {} as Pedido;

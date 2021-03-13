@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FirebaseService} from '../services';
+import {FirebaseService, SessionService} from '../services';
 import {PopupHelper} from '../helpers';
 import * as _ from 'lodash';
 
@@ -13,8 +13,11 @@ export class CategoriasComponent implements OnInit {
   categorias: Array<{nombre: string}> = [];
   id: any;
   popup = new PopupHelper();
+  firestore: FirebaseService;
 
-  constructor(private firestore: FirebaseService) { }
+  constructor(sessionService: SessionService) {
+    this.firestore = new FirebaseService(sessionService.getFirebaseJsonConfig());
+  }
 
   ngOnInit(): void {
     this.firestore.getCollection('Categorias', params => {

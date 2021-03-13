@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {CookieService} from 'ngx-cookie-service';
 import {Tienda} from '../models';
-import {ApiService} from '../services';
+import {ApiService, FirebaseService, SessionService} from '../services';
 import { AngularFireStorage } from '@angular/fire/storage';
 import {PopupHelper} from '../helpers';
 
@@ -15,8 +15,6 @@ import {Router} from '@angular/router';
 import {CulquiService} from '../services/culqui.service';
 import { Renovar } from '../models/renovar';
 import Swal from 'sweetalert2';
-
-
 
 @Component({
   selector: 'app-tienda',
@@ -35,8 +33,10 @@ export class TiendaComponent implements OnInit {
   suscripcion:Suscripcion;
   user:Vendedor;
   diasRestantes: number=0;
+  firebase: FirebaseService;
 
-  constructor(private apiService: ApiService, private cookies: CookieService, private firestorage: AngularFireStorage, private router: Router, private culquiService: CulquiService) {
+  constructor(private apiService: ApiService, private cookies: CookieService, private firestorage: AngularFireStorage, sessionService: SessionService, private router: Router, private culquiService: CulquiService) {
+    this.firebase = new FirebaseService(sessionService.getFirebaseJsonConfig());
     this.tiendaId = parseInt(this.cookies.get('tiendaId'));
     this.tienda = {} as Tienda;
     this.load = true;
@@ -94,16 +94,14 @@ export class TiendaComponent implements OnInit {
 
   guardarTienda(): void {
     const logo  = (<HTMLInputElement>document.getElementById('logo')).files?.item(0);
-    const referencia = this.firestorage.ref('logo');
-    this.firestorage.upload('logo', logo);
-    referencia.getDownloadURL().subscribe((URL) => {
+    this.firebase.upload('logo', logo, URL => {
       this.tienda.logoUrl = URL;
       this.apiService
         .updateTienda(this.tienda)
         .subscribe((result: any) => {
           this.popup.showSuccessPopup('Actualización exitosa');
         });
-    });
+    })
   }
   // correoFormat = '[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$';
   numeroFormat = '[0-9]{16}';
