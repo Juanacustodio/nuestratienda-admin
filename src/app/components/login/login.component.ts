@@ -38,6 +38,8 @@ export class LoginComponent implements OnInit {
         correo: this.usuario.value.correo,
       };
 
+      this.sessionService.deleteSession();
+
       this.apiService
         .login(user)
         .subscribe((result: Session) => {
@@ -46,7 +48,6 @@ export class LoginComponent implements OnInit {
 
           this.apiService.getFirebaseConfig(result.UserID)
             .subscribe((fireConfig: Object) => {
-              this.sessionService.deleteSession()
               this.cookies.set('firestoreConfig', JSON.stringify(fireConfig));
 
               this.router.navigate(['/admin/productos']);

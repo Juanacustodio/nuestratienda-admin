@@ -57,7 +57,7 @@ import {FirebaseService} from './services/firebase.service';
   imports: [
     CommonModule,
     BrowserModule,
-    // AngularFireModule.initializeApp(environment.firebase),
+    AngularFireModule.initializeApp(environment.firebase),
     ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
