@@ -4,6 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import {Usuario, Tienda, Vendedor} from '../models';
 import {SessionService} from './session.service';
 import { Renovar } from '../models/renovar';
+import { Cuenta } from '../models/cuenta';
 
 @Injectable()
 export class ApiService {
@@ -36,6 +37,20 @@ export class ApiService {
     return this.http.post(
       `${this.endpoint}/api/tienda/actualizar`,
       tienda,
+      this.getOptions()
+    );
+  }
+  getCuenta(cuentaId: number): any {
+    return this.http.get(
+      `${this.endpoint}/api/vendedor/${cuentaId}`,
+      this.getOptions()
+    );
+  }
+
+  updateCuenta(cuenta: Cuenta): any {
+    return this.http.post(
+      `${this.endpoint}/api/vendedor/actualizar`,
+      cuenta,
       this.getOptions()
     );
   }
