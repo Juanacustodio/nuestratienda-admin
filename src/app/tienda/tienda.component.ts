@@ -7,7 +7,6 @@ import {PopupHelper} from '../helpers';
 
 import { Suscripcion } from '../models/Vendedor';
 import { Vendedor } from '../models/Vendedor';
-import { result, trim } from 'lodash';
 
 import {FormGroup, FormControl, Validators} from '@angular/forms';
 import {TarjetaCulqui} from '../models';
@@ -52,27 +51,18 @@ export class TiendaComponent implements OnInit {
         this.load = false;
       });
 
-      this.apiService
+    this.apiService
       .getSuscripcion(this.tiendaId)  
-      .subscribe((result: Suscripcion)   =>{
+      .subscribe((result: Suscripcion) => {
         this.suscripcion =result as Suscripcion;
-
         this.verificarSuscripcion();
-       
-        
-
       });
 
-      this.apiService
+    this.apiService
      .getUser(this.tiendaId)
      .subscribe((result: Vendedor) => {
        this.user = result as Vendedor;
-       
-            });
-
-
-
-
+      });
   }
 
   preview(files: any): void {
@@ -120,7 +110,6 @@ export class TiendaComponent implements OnInit {
          console.log(fechaFin);
          console.log( this.diasRestantes);
         //  this.diasRestantes  = 28;
-        
   }
 Renovar(){  
   // if (this.usuario.valid) {
@@ -216,13 +205,13 @@ Renovar(){
   // }
 
 }
-generarFecha(){
-  let date: Date = new Date();
-  let year = date.getFullYear()+1;
-  let month = date.getMonth()+1;
-  let day = date.getDate();
-  let fecha = year + '-' + ('0' + month).slice(-2) + '-' + ('0' + day).slice(-2);
-  return fecha
-  
-}
+  generarFecha(){
+    let date: Date = new Date();
+    let year = date.getFullYear()+1;
+    let month = date.getMonth()+1;
+    let day = date.getDate();
+    let fecha = year + '-' + ('0' + month).slice(-2) + '-' + ('0' + day).slice(-2);
+    return fecha
+    
+  }
 }
