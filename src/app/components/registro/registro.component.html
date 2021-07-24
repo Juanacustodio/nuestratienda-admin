@@ -77,8 +77,8 @@
                             <label class="my-0">
                 <small> <strong class="text">Número de la tarjeta</strong></small>
                 <i class="fas fa-credit-card text-muted derecha"></i>
-                <input type="number" class="myInput" name="card_number" placeholder="1234456745431685"
-                       formControlName="card_number">
+                <input type="text" id="cardNumber" onkeyup="cardNumberFormat()" class="myInput" name="card_number" placeholder="1234456745431685"
+                       formControlName="card_number" maxlength="19">
               </label>
                             <!-- Validar campos -->
                             <div class="alert-danger izquierda2" *ngIf="card_number!.invalid && (card_number!.dirty || card_number!.touched)">

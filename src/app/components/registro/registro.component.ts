@@ -28,7 +28,7 @@ export class RegistroComponent implements OnInit {
     apellidos: new FormControl('', [Validators.required]),
     password: new FormControl('', [Validators.required, Validators.minLength(6)]),
     email: new FormControl('', [Validators.required, Validators.pattern(this.correoFormat)]),
-    card_number: new FormControl('', [Validators.required, Validators.pattern(this.numeroFormat)]),
+    card_number: new FormControl('', [Validators.required]),
     cvv: new FormControl('', [Validators.required, Validators.pattern(this.cvvFormat)]),
     expiration_month: new FormControl('', [Validators.required]),
     expiration_year: new FormControl('', [Validators.required]),
@@ -43,7 +43,7 @@ export class RegistroComponent implements OnInit {
   guardar(): void {
     if (this.usuario.valid) {
       const tarjeta: TarjetaCulqui = {
-        card_number: this.usuario.value.card_number,
+        card_number: this.usuario.value.card_number.replace(/\s/g, ''),
         cvv: this.usuario.value.cvv,
         expiration_month: this.usuario.value.expiration_month,
         expiration_year: this.usuario.value.expiration_year,

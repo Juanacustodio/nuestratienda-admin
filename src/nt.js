@@ -23,3 +23,14 @@ $(document).ready(function () {
   })
 });
 
+function cardNumberFormat() {
+  var _newVal = document.getElementById("cardNumber").value;
+  
+  var foo = _newVal.split(" ").join("");
+
+  if (foo.length > 0) {
+    foo = foo.match(new RegExp('.{1,4}', 'g')).join(" ");
+  }
+
+  document.getElementById("cardNumber").value = foo;
+}
