@@ -1,0 +1,51 @@
+<div class="container">
+
+    <div class="alert alert-success text-right" role="alert" *ngIf="diasRestantes > 31 ">
+        Tienes suscripción activa y vencerá en <strong>{{diasRestantes}}</strong> dias
+        <button type="submit" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">Renovar</button>
+    </div>
+    <div class="alert alert-warning text-right" role="alert" *ngIf="diasRestantes < 31 && diasRestantes> 0">
+        <i class="fas fa-exclamation-circle"></i> Tu suscripción vencerá en <strong>{{diasRestantes}}</strong> dias
+        <button type="submit" class="btn btn-success" (click)="Renovar()">Renovar</button>
+    </div>
+
+    <h2 class="text-primary">
+        <i class="fas fa-mobile-alt"></i> Mi cuenta
+    </h2>
+    <div class="card">
+        <div *ngIf="load; else content" class="ph-item">
+            <div class="ph-col-12">
+                <div class="ph-row">
+                    <div class="ph-col-2 big"></div>
+                    <div class="ph-col-10 empty big"></div>
+                    <div class="ph-col-12 big"></div>
+                    <div class="ph-col-2 big"></div>
+                    <div class="ph-col-10 empty big"></div>
+                    <div class="ph-col-12 big"></div>
+                    <div class="ph-col-2 big"></div>
+                    <div class="ph-col-10 empty big"></div>
+                    <div class="ph-col-12 big"></div>
+                    <div class="ph-col-2 big"></div>
+                    <div class="ph-col-10 empty big"></div>
+                    <div class="ph-col-12 big"></div>
+                </div>
+                <div class="ph-picture"></div>
+            </div>
+        </div>
+        <ng-template #content>
+        </ng-template>
+        <div class="card-body">
+            <div class="form-group">
+                <label for="nombre">Nombres</label>
+                <input type="text" class="form-control" id="nombre" name="nombre" value="{{ cuenta.nombres }}" [(ngModel)]="cuenta.nombres">
+            </div>
+            <div class="form-group">
+                <label for="detalle">Apellidos</label>
+                <input type="text" class="form-control" id="detalle" name="detalle" value="{{ cuenta.apellidos }}" [(ngModel)]="cuenta.apellidos">
+            </div>
+            <div class="card-footer bg-transparent border-primary">
+                <button type="submit" class="btn btn-primary" (click)="guardarCuenta()">Guardar</button>
+            </div>
+
+        </div>
+    </div>

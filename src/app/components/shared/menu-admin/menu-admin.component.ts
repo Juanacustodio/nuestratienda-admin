@@ -10,6 +10,10 @@ import {SessionService} from '../../../services';
 export class MenuAdminComponent implements OnInit {
   menu = [
     {
+      nombre: 'Mi Cuenta',
+      route: '/admin/cuenta'
+    },
+    {
       nombre: 'Mi tienda',
       route: '/admin/tienda'
     },
