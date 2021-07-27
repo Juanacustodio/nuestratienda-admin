@@ -10,6 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { ColorPickerModule } from 'ngx-color-picker';
 import { AngularFireModule } from '@angular/fire';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 import { CookieService } from 'ngx-cookie-service';
 import {ApiService, CulquiService, SessionService, PusherService} from './services';
@@ -65,6 +66,7 @@ import { CuentaComponent } from './cuenta/cuenta.component';
     AppRoutingModule,
     FormsModule,
     ColorPickerModule,
+    MatSlideToggleModule,
   ],
   providers: [
     CookieService,

@@ -1,3 +1,9 @@
-<router-outlet></router-outlet>
+<div class="theme" [ngClass]="{'dark-theme': isChecked}">
+    <router-outlet></router-outlet>
 
-<app-footer></app-footer>
+    <app-footer></app-footer>
+
+    <div class="switch-dark">
+        <mat-slide-toggle [(ngModel)]="isChecked"> Modo oscuro </mat-slide-toggle>
+    </div>
+</div>

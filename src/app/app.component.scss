@@ -3,3 +3,18 @@
     max-width: 150px;
   }
 }
+
+.switch-dark {
+  padding: 15px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.dark-theme {
+  background-color: rgb(26, 26, 26);
+  color: aliceblue;
+};
+
+:host ::ng-deep child.navbar {
+  background-color: rgb(85, 85, 85);
+}
