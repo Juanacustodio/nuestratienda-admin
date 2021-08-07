@@ -26,6 +26,13 @@ export class ApiService {
     return this.http.post(`${this.endpoint}/api/vendedor/login`, user);
   }
 
+  getTiendas(): any {
+    return this.http.get(
+      `${this.endpoint}/api/tienda/listar`,
+      this.getOptions()
+    );
+  }
+
   getTienda(tiendaId: number): any {
     return this.http.get(
       `${this.endpoint}/api/tienda/${tiendaId}`,
@@ -60,7 +67,7 @@ export class ApiService {
       `${this.endpoint}/api/vendedor/registro`,
       vendedor);
   }
-  
+
   getSuscripcion(sucripcionId: number): any {
     return this.http.get(
       `${this.endpoint}/api/vendedor/suscripcion/${sucripcionId}`,

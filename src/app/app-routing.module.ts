@@ -33,7 +33,7 @@ const routes: Routes = [
           { path: '', component: ProductosComponent },
           { path: 'cuenta', component: CuentaComponent },
           { path: 'tiendas', component: TiendasComponent },
-          { path: 'tienda/:id', component: TiendaComponent },
+          { path: 'tiendas/:id', component: TiendaComponent },
           { path: 'categorias', component: CategoriasComponent },
           { path: 'productos', component: ProductosComponent },
           { path: 'pedidos', component: PedidosComponent },
