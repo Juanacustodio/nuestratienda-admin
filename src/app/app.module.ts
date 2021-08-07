@@ -34,6 +34,7 @@ import { PedidosComponent } from './pedidos/pedidos.component';
 import { PedidoComponent } from './pedido/pedido.component';
 import {FirebaseService} from './services/firebase.service';
 import { CuentaComponent } from './cuenta/cuenta.component';
+import { TiendasComponent } from './tiendas/tiendas.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { CuentaComponent } from './cuenta/cuenta.component';
     CardProductoComponent,
     PedidosComponent,
     PedidoComponent,
-    CuentaComponent
+    CuentaComponent,
+    TiendasComponent
   ],
   imports: [
     CommonModule,

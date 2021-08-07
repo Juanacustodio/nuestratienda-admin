@@ -14,6 +14,7 @@ import {AdminComponent} from './admin/admin.component';
 import {PedidosComponent} from './pedidos/pedidos.component';
 import {PedidoComponent} from './pedido/pedido.component';
 import { CuentaComponent } from './cuenta/cuenta.component';
+import {TiendasComponent} from './tiendas/tiendas.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -31,7 +32,8 @@ const routes: Routes = [
         children: [
           { path: '', component: ProductosComponent },
           { path: 'cuenta', component: CuentaComponent },
-          { path: 'tienda', component: TiendaComponent },
+          { path: 'tiendas', component: TiendasComponent },
+          { path: 'tienda/:id', component: TiendaComponent },
           { path: 'categorias', component: CategoriasComponent },
           { path: 'productos', component: ProductosComponent },
           { path: 'pedidos', component: PedidosComponent },
