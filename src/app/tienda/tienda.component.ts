@@ -10,7 +10,7 @@ import { Vendedor } from '../models/Vendedor';
 
 import {FormGroup, FormControl, Validators} from '@angular/forms';
 import {TarjetaCulqui} from '../models';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {CulquiService} from '../services/culqui.service';
 import { Renovar } from '../models/renovar';
 import Swal from 'sweetalert2';
@@ -34,9 +34,11 @@ export class TiendaComponent implements OnInit {
   diasRestantes: number=0;
   firebase: FirebaseService;
 
-  constructor(private apiService: ApiService, private cookies: CookieService, private firestorage: AngularFireStorage, sessionService: SessionService, private router: Router, private culquiService: CulquiService) {
+  constructor(private activatedRoute: ActivatedRoute, private apiService: ApiService, private cookies: CookieService, private firestorage: AngularFireStorage, sessionService: SessionService, private router: Router, private culquiService: CulquiService) {
     this.firebase = new FirebaseService(sessionService.getFirebaseJsonConfig());
-    this.tiendaId = parseInt(this.cookies.get('tiendaId'));
+    this.activatedRoute.params.subscribe(params => {
+      this.tiendaId = params.id;
+    });
     this.tienda = {} as Tienda;
     this.load = true;
     this.suscripcion={} as Suscripcion;
@@ -52,7 +54,7 @@ export class TiendaComponent implements OnInit {
       });
 
     this.apiService
-      .getSuscripcion(this.tiendaId)  
+      .getSuscripcion(this.tiendaId)
       .subscribe((result: Suscripcion) => {
         this.suscripcion =result as Suscripcion;
         this.verificarSuscripcion();
@@ -111,7 +113,7 @@ export class TiendaComponent implements OnInit {
          console.log( this.diasRestantes);
         //  this.diasRestantes  = 28;
   }
-Renovar(){  
+Renovar(){
   // if (this.usuario.valid) {
     let expiration = this.usuario.value.expiration_year;
     let year = "20" + expiration.slice(3,5);
@@ -125,7 +127,7 @@ Renovar(){
     };
     console.log(tarjeta);
     //inicio Generar Token
-    
+
     this.culquiService.generarToken(tarjeta)
       .subscribe((result: any) => {
           //captura de token
@@ -142,9 +144,9 @@ Renovar(){
           //captura de token
           console.log('El token generado es ' + token);
           //Captura de fecha
-          
+
           let fecha = this.generarFecha();
-         
+
 
           //Vendedor Json
           let renovar: Renovar = {
@@ -212,6 +214,6 @@ Renovar(){
     let day = date.getDate();
     let fecha = year + '-' + ('0' + month).slice(-2) + '-' + ('0' + day).slice(-2);
     return fecha
-    
+
   }
 }
