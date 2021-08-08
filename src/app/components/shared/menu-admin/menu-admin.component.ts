@@ -18,6 +18,10 @@ export class MenuAdminComponent implements OnInit {
       route: '/admin/tiendas'
     },
     {
+      nombre: 'Vendedores',
+      route: '/admin/vendedores'
+    },
+    {
       nombre: 'Categorías',
       route: '/admin/categorias'
     },
