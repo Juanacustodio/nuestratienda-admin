@@ -36,6 +36,7 @@ import {FirebaseService} from './services/firebase.service';
 import { CuentaComponent } from './cuenta/cuenta.component';
 import { TiendasComponent } from './tiendas/tiendas.component';
 import { VendedoresComponent } from './vendedores/vendedores.component';
+import { VendedorComponent } from './vendedor/vendedor.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,8 @@ import { VendedoresComponent } from './vendedores/vendedores.component';
     PedidoComponent,
     CuentaComponent,
     TiendasComponent,
-    VendedoresComponent
+    VendedoresComponent,
+    VendedorComponent
   ],
   imports: [
     CommonModule,
