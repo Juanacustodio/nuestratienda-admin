@@ -40,6 +40,20 @@ export class ApiService {
     );
   }
 
+  getVendedores(): any {
+    return this.http.get(
+      `${this.endpoint}/api/vendedor/listar`,
+      this.getOptions()
+    );
+  }
+
+  getVendedor(vendedorId: number): any {
+    return this.http.get(
+      `${this.endpoint}/api/vendedor/${vendedorId}`,
+      this.getOptions()
+    );
+  }
+
   updateTienda(tienda: Tienda): any {
     return this.http.post(
       `${this.endpoint}/api/tienda/actualizar`,
