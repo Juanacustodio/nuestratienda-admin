@@ -54,6 +54,14 @@ export class ApiService {
     );
   }
 
+  updateVendedor(vendedor: Vendedor): any {
+    return this.http.post(
+      `${this.endpoint}/api/vendedor/actualizar`,
+      vendedor,
+      this.getOptions()
+    );
+  }
+
   updateTienda(tienda: Tienda): any {
     return this.http.post(
       `${this.endpoint}/api/tienda/actualizar`,
