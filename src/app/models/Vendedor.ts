@@ -1,13 +1,14 @@
 export interface Vendedor {
-        nombres: string,
-        apellidos: string,
-        password: string,
-        correo: string,
-      suscripcion: Suscripcion
-      }
-      
+  id?: number;
+  nombres: string;
+  apellidos: string;
+  password: string;
+  correo: string;
+  suscripcion: Suscripcion;
+}
+
 export interface Suscripcion {
-      token: string,   
-      fechaFin: string
-      }
+  token: string;
+  fechaFin: string;
+}
 
