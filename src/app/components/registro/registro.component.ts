@@ -20,7 +20,7 @@ export class RegistroComponent implements OnInit {
   }
 
   correoFormat = '[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$';
-  numeroFormat = '[0-9]{16}';
+  numeroFormat = '[0-9 ]{19}';
   cvvFormat = '[0-9]{3}';
 
   public usuario: FormGroup = new FormGroup({
@@ -28,7 +28,7 @@ export class RegistroComponent implements OnInit {
     apellidos: new FormControl('', [Validators.required]),
     password: new FormControl('', [Validators.required, Validators.minLength(6)]),
     email: new FormControl('', [Validators.required, Validators.pattern(this.correoFormat)]),
-    card_number: new FormControl('', [Validators.required]),
+    card_number: new FormControl('', [Validators.required, Validators.pattern(this.numeroFormat)]),
     cvv: new FormControl('', [Validators.required, Validators.pattern(this.cvvFormat)]),
     expiration_month: new FormControl('', [Validators.required]),
     expiration_year: new FormControl('', [Validators.required]),
