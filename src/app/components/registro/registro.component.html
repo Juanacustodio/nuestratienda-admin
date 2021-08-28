@@ -72,8 +72,8 @@
                             <!-- Validar campos -->
                         </div>
                     </div>
-                    <div class="col-md-6 margin-top-20">
-                        <div class="form-group my-0">
+                    <div class="col-md-6 margin-top-20 text-center">
+                        <div style="width: 270px; margin: auto; text-align: left" class="form-group my-0">
                             <label class="my-0">
                 <small> <strong class="text">Número de la tarjeta</strong></small>
                 <i class="fas fa-credit-card text-muted derecha"></i>
@@ -91,50 +91,54 @@
                             </div>
                             <!-- Validar campos -->
                         </div>
-                        <div class="form-group my-0">
+                        <div style="width: 270px; margin: auto; text-align: left" class="form-group my-0">
                             <label class="my-0">
                 <small> <strong class="text">Fecha de Expiración</strong></small>
               </label>
                             <div class="form-group row">
-                                <select class="myInput col-4 ml-3" name="expiration_month" formControlName="expiration_month">
-                  <option>01</option>
-                  <option>02</option>
-                  <option>03</option>
-                  <option>04</option>
-                  <option>05</option>
-                  <option>06</option>
-                  <option>07</option>
-                  <option>08</option>
-                  <option>09</option>
-                  <option>10</option>
-                  <option>11</option>
-                  <option>12</option>
-                </select>
+                              <div class="col-6">
+                                <select class="myInput w-100" name="expiration_month" formControlName="expiration_month">
+                                  <option>01</option>
+                                  <option>02</option>
+                                  <option>03</option>
+                                  <option>04</option>
+                                  <option>05</option>
+                                  <option>06</option>
+                                  <option>07</option>
+                                  <option>08</option>
+                                  <option>09</option>
+                                  <option>10</option>
+                                  <option>11</option>
+                                  <option>12</option>
+                                </select>
                                 <!-- Validar campos -->
-                                <div class="alert-danger izquierda2 " *ngIf="expiration_month!.invalid && (expiration_month!.dirty || expiration_month!.touched)">
-                                    <div class="container-error-message" *ngIf="expiration_month!.errors!.required">
-                                        Seleccione el mes
-                                    </div>
+                                <div class="alert-danger w-100 izquierda2 " *ngIf="expiration_month!.invalid && (expiration_month!.dirty || expiration_month!.touched)">
+                                  <div class="container-error-message" *ngIf="expiration_month!.errors!.required">
+                                    Seleccione el mes
+                                  </div>
                                 </div>
+                              </div>
+                              <div class="col-6">
                                 <!-- Validar campos -->
-                                <select class="myInput col-4 ml-3" name="expiration_year" formControlName="expiration_year">
-                  <option>2021</option>
-                  <option>2022</option>
-                  <option>2023</option>
-                  <option>2024</option>
-                  <option>2025</option>
-                </select>
+                                <select class="myInput w-100" name="expiration_year" formControlName="expiration_year">
+                                  <option>2021</option>
+                                  <option>2022</option>
+                                  <option>2023</option>
+                                  <option>2024</option>
+                                  <option>2025</option>
+                                </select>
                                 <!-- Validar campos -->
-                                <div class="alert-danger izquierda2" *ngIf="expiration_year!.invalid && (expiration_year!.dirty || expiration_year!.touched)">
-                                    <div class="container-error-message" *ngIf="expiration_year!.errors!.required">
-                                        Seleccione el año
-                                    </div>
+                                <div class="alert-danger w-100 izquierda2" *ngIf="expiration_year!.invalid && (expiration_year!.dirty || expiration_year!.touched)">
+                                  <div class="container-error-message" *ngIf="expiration_year!.errors!.required">
+                                    Seleccione el año
+                                  </div>
                                 </div>
+                              </div>
                                 <!-- Validar campos -->
                             </div>
                         </div>
                         <!-- Parte 4 -->
-                        <div class="form-group my-0 row">
+                        <div style="width: 270px; margin: auto; text-align: left" class="form-group my-0 row">
                             <!-- Caja CVV -->
                             <div class="col-4">
                                 <label class="my-0">
