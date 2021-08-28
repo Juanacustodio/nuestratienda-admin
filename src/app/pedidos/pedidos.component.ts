@@ -11,6 +11,7 @@ import {FirebaseService, SessionService} from '../services';
 })
 export class PedidosComponent implements OnInit {
   pedidos: Array<any> = [];
+  hasPedidos = false;
   estados: any;
   estadosColor: any;
   firestore: FirebaseService;
@@ -44,6 +45,7 @@ export class PedidosComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.hasPedidos = this.pedidos.length > 0;
   }
 
   toPedidoDetail(id: string): void {

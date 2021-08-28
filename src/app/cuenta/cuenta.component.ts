@@ -29,6 +29,11 @@ export class CuentaComponent implements OnInit {
   }
 
   guardarCuenta(): void {
+    if (!this.cuenta.nombres.match('[a-z]') || !this.cuenta.apellidos.match('[a-z]')) {
+      this.popup.showErrorPopup('Nombre o apellidos inválido');
+      return;
+    }
+
     this.apiService
       .updateCuenta(this.cuenta)
       .subscribe((result: any) => {
