@@ -23,6 +23,7 @@ export class CategoriasComponent implements OnInit {
     this.firestore.getCollection('Categorias', params => {
       if (_.isEmpty(params)) {
         this.categorias = [];
+        this.id = '1231313qdqwasdadad'
       }
       else {
         [{'Categorias': this.categorias, id: this.id}] = params as Array<{id: string, Categorias: any}>;
@@ -46,5 +47,4 @@ export class CategoriasComponent implements OnInit {
     this.firestore.updateDoc('Categorias', this.id, {'Categorias': this.categorias});
     this.popup.showSuccessPopup('Se actualizaron las categorías');
   }
-
 }
