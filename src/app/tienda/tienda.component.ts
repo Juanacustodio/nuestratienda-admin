@@ -83,6 +83,11 @@ export class TiendaComponent implements OnInit {
   }
 
   guardarTienda(): void {
+    if (!this.tienda.nombre.match('[a-z]') || !this.tienda.detalle.match('[a-z]') || !this.tienda.direccion.match('[a-z]')) {
+      this.popup.showErrorPopup('Datos de tienda inválidos');
+      return;
+    }
+
     const logo  = (<HTMLInputElement>document.getElementById('logo')).files?.item(0);
     this.firebase.upload('logo', logo, URL => {
       this.tienda.logoUrl = URL;

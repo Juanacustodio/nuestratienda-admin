@@ -11,7 +11,7 @@ export class CardFuncionComponent implements OnInit {
    {
      imgUrl: "https://mitienda.pe/_/img/como-funciona-1.png",
      titulo: "Eliges el plan que más te convenga",
-     desc: "Tenemos 4 planes entre los que puedes elegir de acuerdo a tu necesidad. Procedes a pagar con tu tarjeta de crédito y la tienda se te habilitará de manera instantánea. Ingresas información de tu empresa y listo."
+     desc: "Tenemos 3 planes entre los que puedes elegir de acuerdo a tu necesidad. Procedes a pagar con tu tarjeta de crédito y la tienda se te habilitará de manera instantánea. Ingresas información de tu empresa y listo."
    },
    {
     imgUrl: "https://mitienda.pe/_/img/como-funciona-2.png",
@@ -27,11 +27,6 @@ export class CardFuncionComponent implements OnInit {
     imgUrl: "https://mitienda.pe/_/img/como-funciona-4.png",
     titulo: "Establece tus métodos de pago",
     desc: "Podrás acordar con tus clientes el metodo de pago."
-  },
-  {
-    imgUrl: "https://mitienda.pe/_/img/como-funciona-5.png",
-    titulo: "Determina tus zonas de reparto y tarifas de envío",
-    desc: "Tu eliges a donde vas a repartir y a que precio. Puedes hacer envíos locales, nacionales o incluso al extranjero. El valor del envío se agregará al total del carrito de compras. También puedes habilitar el recojo en tienda gratis y envío grátis a partir de cierto monto."
   },
   {
     imgUrl: "https://mitienda.pe/_/img/como-funciona-6.png",
