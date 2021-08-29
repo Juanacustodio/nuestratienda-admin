@@ -41,7 +41,7 @@ export class CardFuncionComponent implements OnInit {
   {
     imgUrl: "https://mitienda.pe/_/img/como-funciona-8.png",
     titulo: "Serás notificado",
-    desc: "Tenemos 4 planes entre los que puedes elegir de acuerdo a tu necesidad. Procedes a pagar con tu tarjeta y la tienda se te habilitará de manera instantánea. Ingresas información de tu empresa y listo."
+    desc: "Tenemos 3 planes entre los que puedes elegir de acuerdo a tu necesidad. Procedes a pagar con tu tarjeta y la tienda se te habilitará de manera instantánea. Ingresas información de tu empresa y listo."
   },
   {
     imgUrl: "https://mitienda.pe/_/img/como-funciona-9.png",
