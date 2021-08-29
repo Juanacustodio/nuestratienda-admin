@@ -70,4 +70,18 @@ export class FirebaseService {
     });
   }
 
+  uploadProductImage(ref: string, file: any, callback: (...all: any) => void): void {
+    const referencia = this.storage.ref(ref);
+    const uploadTask = referencia.put(file);
+    uploadTask.on('state_changed', (snapshot) => {
+      // to do
+    }, (error) => {
+      // Handle unsuccessful uploads
+    }, () => {
+      uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
+        callback(downloadURL);
+      });
+    });
+  }
+
 }
