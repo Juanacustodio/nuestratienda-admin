@@ -40,6 +40,7 @@ export class PedidosComponent implements OnInit {
           productos: pedido.pedido,
         };
         this.pedidos.push(newPedido);
+        this.hasPedidos = true;
       });
     });
   }
