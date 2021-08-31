@@ -28,7 +28,7 @@ export class PedidosComponent implements OnInit {
       2: 'success',
       3: 'danger'
     };
-    this.firestore.getCollection('Pedidos', pedidos => {
+    this.firestore.getCollectionInOrder('Pedidos', pedidos => {
       _.forEach(pedidos, (p) => {
         const pedido = p as Pedido;
         const newPedido = {
@@ -46,7 +46,6 @@ export class PedidosComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.hasPedidos = this.pedidos.length > 0;
   }
 
   toPedidoDetail(id: string): void {

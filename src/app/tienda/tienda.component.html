@@ -2,7 +2,7 @@
 
     <div class="alert alert-success text-right" role="alert" *ngIf="diasRestantes > 31 ">
         Tienes suscripción activa y vencerá en <strong>{{diasRestantes}}</strong> dias
-        <button type="submit" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">Renovar</button>
+        <!-- <button type="submit" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">Renovar</button> -->
     </div>
     <div class="alert alert-warning text-right" role="alert" *ngIf="diasRestantes < 31 && diasRestantes> 0">
         <i class="fas fa-exclamation-circle"></i> Tu suscripción vencerá en <strong>{{diasRestantes}}</strong> dias

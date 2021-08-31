@@ -37,6 +37,16 @@ export class FirebaseService {
       callback(result);
     });
   }
+  getCollectionInOrder(collection: string, callback: (...all: any) => void): any {
+    return this.firestore.collection(collection).orderBy('fecha', 'desc').get().then((response: any) => {
+      const result: Array<any> = [];
+      response.forEach((doc: any) => {
+        const p = {...doc.data(), id: doc.id} as Producto;
+        result.push(p);
+      });
+      callback(result);
+    });
+  }
 
   getDoc(collection: string, id: string, callback: (...all: any) => void): any {
     this.firestore.collection(collection).doc(id).get().then((doc: any) => {
